@@ -1,0 +1,313 @@
+﻿---
+interface Highlight { text: string; }
+interface Metric { value: string; label: string; }
+interface Project {
+	title: string;
+	description: string;
+	techStack: string[];
+	liveUrl?: string;
+	githubUrl?: string;
+	featured?: boolean;
+	year?: string;
+	accent?: 'primary' | 'secondary' | 'accent';
+	highlights?: Highlight[];
+	metrics?: Metric[];
+	mockupUrl?: string;
+}
+
+const projects: Project[] = [
+	{
+		title: 'Hitungrumah',
+		description: 'Aplikasi kalkulator biaya konstruksi rumah dengan sistem manajemen harga satuan material dan pekerja. Memudahkan pengguna mengestimasi biaya pembangunan rumah sesuai desain yang diinginkan.',
+		techStack: ['Laravel', 'Vue.js', 'MySQL', 'Tailwind CSS', 'REST API'],
+		githubUrl: '#',
+		featured: true,
+		year: '2024',
+		accent: 'primary',
+		highlights: [
+			{ text: 'Manajemen 100+ jenis material & pekerja' },
+			{ text: 'Kalkulasi real-time berdasarkan input desain' },
+			{ text: 'Export laporan estimasi ke PDF' },
+		],
+		metrics: [{ value: '100+', label: 'Material' }, { value: '5', label: 'Bulan Dev' }, { value: 'Live', label: 'Status' }],
+	},
+	{
+		title: 'Slum Area Scoring',
+		description: 'Aplikasi scoring untuk menentukan klasifikasi tingkat kekumuhan suatu kawasan di Kabupaten Lumajang. Membantu DPKP dalam pengambilan keputusan pemberian bantuan dan perbaikan kawasan permukiman.',
+		techStack: ['Laravel', 'PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
+		githubUrl: '#',
+		featured: true,
+		year: '2024',
+		accent: 'secondary',
+		highlights: [
+			{ text: 'Sistem scoring multi-kriteria kekumuhan' },
+			{ text: 'Visualisasi peta interaktif kawasan' },
+			{ text: 'Dashboard laporan untuk pemerintah daerah' },
+		],
+		metrics: [{ value: '15+', label: 'Screens' }, { value: '5', label: 'Bulan Dev' }, { value: 'Gov', label: 'Client' }],
+	},
+	{
+		title: 'MLBB Data APIs',
+		description: 'Endpoint management system untuk Mobile Legends Bang Bang data APIs menggunakan GraphQL. Include dashboard admin terintegrasi untuk mengelola data hero, item, dan statistik game.',
+		techStack: ['Nest.js', 'GraphQL', 'MongoDB', 'Node.js', 'TypeScript'],
+		githubUrl: '#',
+		featured: true,
+		year: '2025',
+		accent: 'accent',
+		highlights: [
+			{ text: 'GraphQL API dengan schema-first design' },
+			{ text: 'Admin dashboard Vue.js terintegrasi' },
+			{ text: 'Real-time data sync hero & item MLBB' },
+		],
+		metrics: [{ value: 'GQL', label: 'Protocol' }, { value: '2', label: 'Apps' }, { value: '2025', label: 'Year' }],
+	},
+	{
+		title: 'MLBB Admin Dashboard',
+		description: 'Web admin panel berbasis Vue.js untuk mengelola data API Mobile Legends. Terhubung dengan backend GraphQL untuk CRUD hero, item, dan konfigurasi lainnya.',
+		techStack: ['Vue.js', 'GraphQL', 'Tailwind CSS', 'TypeScript'],
+		githubUrl: '#', year: '2025',
+	},
+	{
+		title: 'Decision Support System (WASPAS)',
+		description: 'Web application yang mengimplementasikan metode WASPAS untuk sistem pendukung keputusan multi-criteria.',
+		techStack: ['Laravel', 'PHP', 'MySQL', 'Bootstrap'],
+		githubUrl: '#', year: '2023',
+	},
+	{
+		title: 'Student ID Card Scanner',
+		description: 'Mobile application yang dapat memindai dan mendeteksi kartu identitas mahasiswa menggunakan teknologi OCR.',
+		techStack: ['Flutter', 'OCR', 'Dart', 'REST API'],
+		githubUrl: '#', year: '2023',
+	},
+	{
+		title: 'My Bengkel App',
+		description: 'Service queue information system untuk meningkatkan proses bisnis service dealer. Include fitur antrian, notifikasi, dan laporan harian.',
+		techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
+		githubUrl: '#', year: '2022',
+	},
+	{
+		title: 'Niagahoster Landing Page',
+		description: 'Project pertama saya — slicing landing page Niagahoster menggunakan HTML, CSS, dan JavaScript vanilla.',
+		techStack: ['HTML', 'CSS', 'JavaScript'],
+		githubUrl: '#', year: '2021',
+	},
+];
+
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
+---
+
+<section id="projects" class="relative" data-horizontal-section>
+	<div class="horizontal-pin relative h-screen overflow-hidden">
+		<div class="horizontal-track flex h-full items-center">
+
+			<div class="shrink-0 w-screen px-6 flex flex-col justify-center">
+				<div class="mx-auto max-w-4xl w-full">
+					<p class="mb-3 font-mono text-sm font-medium text-primary">03. Projects</p>
+					<h2 class="section-title text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Featured Projects</h2>
+					<p class="mt-8 max-w-xl text-lg opacity-70 leading-relaxed">
+						Tiga project unggulan yang merepresentasikan keahlian teknis dan proses pengembangan saya.
+					</p>
+					<div class="mt-12 flex items-center gap-3 opacity-50">
+						<span class="text-xs font-mono uppercase tracking-widest">Scroll</span>
+						<svg class="h-5 w-5 animate-bounce-x" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+						</svg>
+					</div>
+				</div>
+			</div>
+
+			{featured.map((project, i) => (
+				<article class="shrink-0 w-screen px-6 flex items-center" data-panel={i}>
+					<div class="mx-auto max-w-5xl w-full grid gap-8 lg:grid-cols-[1fr_1.4fr] items-center">
+
+						<div class="flex flex-col gap-5">
+							<div class="flex items-center gap-3">
+								<span class="font-mono text-xs opacity-50">Featured · {project.year}</span>
+								<span class={`inline-block rounded-full bg-${project.accent}/10 px-2.5 py-0.5 font-mono text-xs font-medium text-${project.accent}`}>
+									{String(i + 1).padStart(2, '0')}
+								</span>
+							</div>
+							<h3 class={`text-3xl font-extrabold tracking-tight sm:text-4xl text-${project.accent}`}>
+								{project.title}
+							</h3>
+							<p class="opacity-70 leading-relaxed">{project.description}</p>
+
+							{project.metrics && (
+								<div class="flex gap-5">
+									{project.metrics.map((m) => (
+										<div class="flex flex-col">
+											<span class={`text-xl font-extrabold text-${project.accent}`}>{m.value}</span>
+											<span class="font-mono text-xs opacity-50 uppercase tracking-wider">{m.label}</span>
+										</div>
+									))}
+								</div>
+							)}
+
+							<div class="flex items-center gap-3">
+								{project.githubUrl && (
+									<a href={project.githubUrl} class="flex h-10 w-10 items-center justify-center rounded-xl border border-base-content/20 opacity-70 transition-all hover:border-primary/40 hover:text-primary hover:bg-primary/5 hover:opacity-100" aria-label="GitHub">
+										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+										</svg>
+									</a>
+								)}
+								{project.liveUrl && (
+									<a href={project.liveUrl} class="flex h-10 w-10 items-center justify-center rounded-xl border border-base-content/20 opacity-70 transition-all hover:border-primary/40 hover:text-primary hover:bg-primary/5 hover:opacity-100" aria-label="Live">
+										<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+										</svg>
+									</a>
+								)}
+							</div>
+						</div>
+
+						<div class="browser-mockup">
+							<div class="browser-mockup__bar">
+								<div class="browser-mockup__dots">
+									<span class="browser-mockup__dot browser-mockup__dot--red"></span>
+									<span class="browser-mockup__dot browser-mockup__dot--yellow"></span>
+									<span class="browser-mockup__dot browser-mockup__dot--green"></span>
+								</div>
+								<div class="browser-mockup__url">
+									<span class="browser-mockup__url-text">{project.title.toLowerCase().replace(/\s+/g, '-')}.app</span>
+								</div>
+							</div>
+							<div class={`browser-mockup__content relative overflow-hidden`} style={`background: color-mix(in oklch, var(--color-${project.accent}) 5%, var(--color-base-200));`}>
+								<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--color-base-content) 1px, transparent 1px); background-size: 20px 20px;"></div>
+								<div class="relative p-6 flex flex-col gap-4">
+									<div class="flex items-center gap-3">
+										<div class={`h-10 w-10 rounded-xl flex items-center justify-center text-sm font-bold`} style={`background: var(--color-${project.accent}); color: white;`}>
+											{project.title.slice(0,2).toUpperCase()}
+										</div>
+										<div>
+											<div class="h-2.5 w-24 rounded-full bg-base-content/20"></div>
+											<div class="mt-1.5 h-2 w-16 rounded-full bg-base-content/10"></div>
+										</div>
+									</div>
+									<div class="grid grid-cols-3 gap-3">
+										{project.metrics?.map((m) => (
+											<div class="rounded-xl p-3" style="background: color-mix(in oklch, var(--color-base-100) 60%, transparent); border: 1px solid color-mix(in oklch, var(--color-base-content) 8%, transparent);">
+												<div class={`text-lg font-bold text-${project.accent}`}>{m.value}</div>
+												<div class="text-xs opacity-50 mt-0.5">{m.label}</div>
+											</div>
+										))}
+									</div>
+									{project.highlights && (
+										<div class="space-y-2">
+											{project.highlights.map((h) => (
+												<div class="flex items-center gap-2 rounded-lg px-3 py-2" style="background: color-mix(in oklch, var(--color-base-100) 40%, transparent);">
+													<svg class={`h-3.5 w-3.5 shrink-0 text-${project.accent}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+														<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+													</svg>
+													<span class="text-xs opacity-70">{h.text}</span>
+												</div>
+											))}
+										</div>
+									)}
+									<div class="flex flex-wrap gap-1.5 mt-1">
+										{project.techStack.map((tech) => (
+											<span class="tech-badge text-[0.6rem]">{tech}</span>
+										))}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+			))}
+		</div>
+
+		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-none z-10">
+			{featured.map((_, i) => (
+				<span class={`h-1 rounded-full bg-base-content/15 transition-all duration-500 projects-progress-${i}`} style={`width: ${i === 0 ? '2.5rem' : '0.75rem'};`}></span>
+			))}
+		</div>
+	</div>
+
+	<div class="py-24 px-6">
+		<div class="mx-auto max-w-6xl">
+			<div class="reveal mb-12">
+				<h3 class="text-2xl font-semibold">Other Projects</h3>
+				<p class="mt-2 opacity-60">Beberapa project lain yang pernah saya kerjakan.</p>
+			</div>
+			<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{others.map((project) => (
+					<div class="reveal glass glass-hover rounded-2xl p-6 flex flex-col">
+						<div class="flex items-start justify-between mb-4">
+							<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+								<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+								</svg>
+							</div>
+							<div class="flex items-center gap-2">
+								{project.year && <span class="font-mono text-xs opacity-50">{project.year}</span>}
+								{project.githubUrl && (
+									<a href={project.githubUrl} class="opacity-60 transition-opacity hover:opacity-100 hover:text-primary" aria-label="GitHub">
+										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+										</svg>
+									</a>
+								)}
+							</div>
+						</div>
+						<h4 class="text-lg font-bold mb-2">{project.title}</h4>
+						<p class="text-sm opacity-70 leading-relaxed mb-4 flex-1">{project.description}</p>
+						<div class="flex flex-wrap gap-1.5">
+							{project.techStack.map((tech) => (
+								<span class="tech-badge text-[0.65rem]">{tech}</span>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	@keyframes bounce-x {
+		0%, 100% { transform: translateX(0); }
+		50%       { transform: translateX(0.5rem); }
+	}
+	.animate-bounce-x { animation: bounce-x 1.5s ease-in-out infinite; }
+
+	.browser-mockup {
+		border-radius: 0.75rem;
+		overflow: hidden;
+		border: 1px solid color-mix(in oklch, var(--color-base-content) 10%, transparent);
+		box-shadow: 0 24px 48px color-mix(in oklch, var(--color-neutral) 20%, transparent);
+	}
+	.browser-mockup__bar {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.625rem 1rem;
+		background: color-mix(in oklch, var(--color-base-300) 80%, transparent);
+		border-bottom: 1px solid color-mix(in oklch, var(--color-base-content) 8%, transparent);
+	}
+	.browser-mockup__dots { display: flex; gap: 0.375rem; }
+	.browser-mockup__dot {
+		width: 0.625rem;
+		height: 0.625rem;
+		border-radius: 9999px;
+	}
+	.browser-mockup__dot--red    { background: #ff5f57; }
+	.browser-mockup__dot--yellow { background: #febc2e; }
+	.browser-mockup__dot--green  { background: #28c840; }
+	.browser-mockup__url {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: color-mix(in oklch, var(--color-base-100) 60%, transparent);
+		border-radius: 0.375rem;
+		padding: 0.25rem 0.75rem;
+	}
+	.browser-mockup__url-text {
+		font-family: var(--font-mono, monospace);
+		font-size: 0.7rem;
+		opacity: 0.5;
+	}
+	.browser-mockup__content { min-height: 280px; }
+</style>

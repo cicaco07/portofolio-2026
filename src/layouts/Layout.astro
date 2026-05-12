@@ -1,0 +1,306 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Aryo Deva Saputra — Fullstack Web Developer',
+	description = 'Portfolio Aryo Deva Saputra, Fullstack Web Developer dengan 3+ tahun pengalaman di Laravel, Vue.js, Next.js, dan Nest.js.',
+} = Astro.props;
+
+const navLinks = [
+	{ label: 'Home', href: '#hero' },
+	{ label: 'Education', href: '#education' },
+	{ label: 'Experience', href: '#experience' },
+	{ label: 'Projects', href: '#projects' },
+	{ label: 'Skills', href: '#skills' },
+	{ label: 'Contact', href: '#contact' },
+];
+---
+
+<!doctype html>
+<html lang="en" data-theme="sunset">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#1a1625" />
+		<title>{title}</title>
+		<script is:inline>
+			(function () {
+				try {
+					const stored = localStorage.getItem('theme');
+					const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+					const theme = stored || (prefersLight ? 'acid' : 'sunset');
+					document.documentElement.setAttribute('data-theme', theme);
+				} catch (_) {
+					document.documentElement.setAttribute('data-theme', 'sunset');
+				}
+			})();
+		</script>
+	</head>
+	<body class="min-h-screen antialiased">
+		<nav
+			id="navbar"
+			class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+		>
+			<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+				<a href="#hero" class="text-xl font-bold tracking-tight text-gradient">
+					AD<span class="opacity-60">.</span>
+				</a>
+
+				<div class="flex items-center gap-2">
+					<ul class="hidden items-center gap-1 md:flex">
+						{navLinks.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									class="nav-link relative px-3 py-2 text-sm font-medium opacity-60 transition-opacity hover:opacity-100"
+									data-section={link.href.slice(1)}
+								>
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+
+					<button
+						id="theme-toggle"
+						class="theme-toggle"
+						aria-label="Toggle theme"
+						type="button"
+					>
+						<svg class="icon-sun h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+							<circle cx="12" cy="12" r="4" fill="currentColor" stroke="none" />
+							<path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
+						</svg>
+						<svg class="icon-moon h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+						</svg>
+					</button>
+
+					<button
+						id="menu-toggle"
+						class="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg transition-colors hover:bg-base-content/5 md:hidden"
+						aria-label="Toggle menu"
+						type="button"
+					>
+						<div class="hamburger-lines flex flex-col gap-1.5">
+							<span class="block h-0.5 w-6 rounded-full bg-current transition-all duration-300"></span>
+							<span class="block h-0.5 w-4 rounded-full bg-current transition-all duration-300 ml-auto"></span>
+							<span class="block h-0.5 w-6 rounded-full bg-current transition-all duration-300"></span>
+						</div>
+					</button>
+				</div>
+			</div>
+
+			<div
+				id="mobile-menu"
+				class="fixed inset-0 z-40 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+				style="background: color-mix(in oklch, var(--color-base-100) 95%, transparent); backdrop-filter: blur(24px);"
+			>
+				<ul class="flex flex-col items-center gap-6">
+					{navLinks.map((link, i) => (
+						<li>
+							<a
+								href={link.href}
+								class="mobile-nav-link text-2xl font-semibold opacity-80 transition-opacity hover:opacity-100"
+								style={`transition-delay: ${i * 60}ms;`}
+								data-section={link.href.slice(1)}
+							>
+								{link.label}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</nav>
+
+		<slot />
+
+		<script>
+			import { gsap } from 'gsap';
+			import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+			gsap.registerPlugin(ScrollTrigger);
+
+			const mm = gsap.matchMedia();
+
+			mm.add('(min-width: 768px)', () => {
+				document.querySelectorAll<HTMLElement>('[data-horizontal-section]').forEach((section) => {
+					const pin = section.querySelector<HTMLElement>('.horizontal-pin');
+					const track = section.querySelector<HTMLElement>('.horizontal-track');
+					if (!pin || !track) return;
+
+					const panels = track.children;
+					const panelCount = panels.length;
+					const distance = track.scrollWidth - window.innerWidth;
+
+					const isProjects = section.id === 'projects';
+					const progressClass = isProjects ? 'projects-progress' : 'experience-progress';
+
+					const tween = gsap.to(track, {
+						x: () => -distance,
+						ease: 'none',
+						scrollTrigger: {
+							trigger: pin,
+							start: 'top top',
+							end: () => `+=${distance}`,
+							pin: true,
+							scrub: 1,
+							invalidateOnRefresh: true,
+							anticipatePin: 1,
+							onUpdate: (self) => {
+								const activeIdx = Math.min(
+									panelCount - 1,
+									Math.floor(self.progress * panelCount)
+								);
+								document.querySelectorAll(`[class*="${progressClass}-"]`).forEach((el, i) => {
+									const element = el as HTMLElement;
+									if (i === activeIdx) {
+										element.style.width = '2.5rem';
+										element.style.background = 'var(--color-primary)';
+									} else {
+										element.style.width = '0.75rem';
+										element.style.background = '';
+									}
+								});
+							},
+						},
+					});
+
+					Array.from(panels).forEach((panel, i) => {
+						if (i === 0) return;
+						const card = panel.querySelector('.glass');
+						if (!card) return;
+						gsap.from(card, {
+							opacity: 0,
+							y: 60,
+							scale: 0.95,
+							duration: 0.5,
+							scrollTrigger: {
+								trigger: panel,
+								containerAnimation: tween,
+								start: 'left 80%',
+								end: 'left 40%',
+								scrub: 1,
+							},
+						});
+					});
+				});
+
+				return () => {
+					ScrollTrigger.getAll().forEach((st) => st.kill());
+				};
+			});
+
+			window.addEventListener('load', () => {
+				ScrollTrigger.refresh();
+			});
+		</script>
+
+		<script>
+			const navbar = document.getElementById('navbar')!;
+			const menuToggle = document.getElementById('menu-toggle')!;
+			const mobileMenu = document.getElementById('mobile-menu')!;
+			const themeToggle = document.getElementById('theme-toggle')!;
+			const hamburgerSpans = menuToggle.querySelectorAll('.hamburger-lines span');
+			let menuOpen = false;
+
+			themeToggle.addEventListener('click', () => {
+				const current = document.documentElement.getAttribute('data-theme');
+				const next = current === 'sunset' ? 'acid' : 'sunset';
+				document.documentElement.setAttribute('data-theme', next);
+				localStorage.setItem('theme', next);
+				themeToggle.classList.remove('animate-theme-switch');
+				void (themeToggle as HTMLElement).offsetWidth;
+				themeToggle.classList.add('animate-theme-switch');
+			});
+
+			menuToggle.addEventListener('click', () => {
+				menuOpen = !menuOpen;
+				if (menuOpen) {
+					mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+					mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+					hamburgerSpans[0].classList.add('rotate-45', 'translate-y-2');
+					hamburgerSpans[1].classList.add('opacity-0', 'scale-0');
+					hamburgerSpans[2].classList.add('-rotate-45', '-translate-y-2');
+				} else {
+					closeMobileMenu();
+				}
+			});
+
+			document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+				link.addEventListener('click', () => {
+					menuOpen = false;
+					closeMobileMenu();
+				});
+			});
+
+			function closeMobileMenu() {
+				mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+				mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+				hamburgerSpans[0].classList.remove('rotate-45', 'translate-y-2');
+				hamburgerSpans[1].classList.remove('opacity-0', 'scale-0');
+				hamburgerSpans[2].classList.remove('-rotate-45', '-translate-y-2');
+			}
+
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 50) {
+					navbar.classList.add('nav-scrolled');
+				} else {
+					navbar.classList.remove('nav-scrolled');
+				}
+			});
+
+			const sections = document.querySelectorAll('section[id]');
+			const navLinks = document.querySelectorAll('.nav-link');
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							navLinks.forEach((l) => l.classList.remove('nav-active'));
+							const active = document.querySelector(
+								`.nav-link[data-section="${entry.target.id}"]`
+							);
+							active?.classList.add('nav-active');
+						}
+					});
+				},
+				{ rootMargin: '-30% 0px -60% 0px' }
+			);
+			sections.forEach((s) => observer.observe(s));
+
+			const reveals = document.querySelectorAll('.reveal');
+			const revealObserver = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+						}
+					});
+				},
+				{ threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+			);
+			reveals.forEach((r) => revealObserver.observe(r));
+		</script>
+
+		<style is:global>
+			#navbar.nav-scrolled {
+				background: color-mix(in oklch, var(--color-base-100) 70%, transparent);
+				backdrop-filter: blur(16px) saturate(1.5);
+				border-bottom: 1px solid color-mix(in oklch, var(--color-base-content) 8%, transparent);
+			}
+
+			.nav-link.nav-active {
+				opacity: 1 !important;
+				color: var(--color-primary);
+			}
+		</style>
+	</body>
+</html>

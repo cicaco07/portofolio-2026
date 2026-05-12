@@ -1,0 +1,52 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+	{ label: 'Home', href: '#hero' },
+	{ label: 'Education', href: '#education' },
+	{ label: 'Experience', href: '#experience' },
+	{ label: 'Projects', href: '#projects' },
+	{ label: 'Skills', href: '#skills' },
+	{ label: 'Contact', href: '#contact' },
+];
+---
+
+<footer class="relative border-t border-base-content/10 py-12 px-6">
+	<div class="mx-auto max-w-6xl">
+		<div class="flex flex-col items-center gap-8 md:flex-row md:justify-between">
+			<!-- Logo & credit -->
+			<div class="text-center md:text-left">
+				<a href="#hero" class="text-xl font-bold tracking-tight text-gradient">
+					AD<span class="opacity-70">.</span>
+				</a>
+				<p class="mt-2 text-sm opacity-60">
+					Built with
+					<a href="https://astro.build" class="opacity-70 hover:text-primary transition-colors">Astro</a>
+					&
+					<a href="https://tailwindcss.com" class="opacity-70 hover:text-primary transition-colors">Tailwind CSS</a>
+				</p>
+			</div>
+
+			<!-- Navigation -->
+			<nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+				{footerLinks.map((link) => (
+					<a href={link.href} class="text-sm opacity-60 transition-colors hover:text-primary">
+						{link.label}
+					</a>
+				))}
+			</nav>
+		</div>
+
+		<div class="mt-8 flex flex-col items-center gap-4 border-t border-base-content/10 pt-8 sm:flex-row sm:justify-between">
+			<p class="text-xs opacity-50">
+				&copy; {currentYear} Aryo Deva Saputra. All rights reserved.
+			</p>
+			<a href="#hero" class="group flex items-center gap-1.5 text-xs opacity-50 transition-colors hover:text-primary">
+				Back to top
+				<svg class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+				</svg>
+			</a>
+		</div>
+	</div>
+</footer>
