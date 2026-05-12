@@ -1,49 +1,18 @@
----
-interface Education {
-	period: string;
-	degree: string;
-	institution: string;
-	description: string;
-}
-
-const educations: Education[] = [
-	{
-		period: 'Aug 2021 — Jul 2025',
-		degree: 'Diploma (D4) — Informatics Engineering',
-		institution: 'State Polytechnic of Malang (Polinema)',
-		description:
-			'Fresh graduate dengan IPK 3.83/4.00. Fokus pada rekayasa perangkat lunak, pengembangan web, dan sistem informasi. Aktif di organisasi Workshop Riset Informatika (WRI).',
-	},
-	{
-		period: 'Jun 2017 — May 2020',
-		degree: 'SMA — Mathematics & Science',
-		institution: 'SMAN 01 Batu',
-		description:
-			'Jurusan IPA (Mathematics & Science). Menumbuhkan dasar logika dan problem solving yang menjadi fondasi dalam dunia pengembangan perangkat lunak.',
-	},
-];
+﻿---
+import { educations } from '../data/education';
+import SectionHeader from './ui/SectionHeader.astro';
 ---
 
 <section id="education" class="relative py-24 px-6">
 	<div class="mx-auto max-w-4xl">
-		<div class="reveal mb-16">
-			<p class="mb-2 font-mono text-sm font-medium text-primary">01. Education</p>
-			<h2 class="section-title text-3xl font-bold tracking-tight sm:text-4xl">
-				Riwayat Pendidikan
-			</h2>
-		</div>
+		<SectionHeader number="01. Education" title="Riwayat Pendidikan" />
 
 		<div class="relative">
 			<div class="timeline-line"></div>
 
 			{educations.map((edu, i) => (
-				<div
-					class={`reveal relative pb-12 last:pb-0 pl-12 md:pl-0 ${
-						i % 2 === 0 ? 'md:pr-[calc(50%+2rem)] md:text-right' : 'md:pl-[calc(50%+2rem)]'
-					}`}
-				>
+				<div class={`reveal relative pb-12 last:pb-0 pl-12 md:pl-0 ${i % 2 === 0 ? 'md:pr-[calc(50%+2rem)] md:text-right' : 'md:pl-[calc(50%+2rem)]'}`}>
 					<div class="timeline-dot"></div>
-
 					<div class="glass glass-hover rounded-2xl p-6">
 						<span class="inline-block rounded-full bg-primary/10 px-3 py-1 font-mono text-xs font-medium text-primary mb-3">
 							{edu.period}

@@ -1,0 +1,17 @@
+---
+interface Props {
+	title: string;
+	hex: string;
+	path: string;
+	size: 's' | 'm' | 'l';
+}
+
+const { title, hex, path, size } = Astro.props;
+---
+
+<div class={`bento-item bento-item--${size}`} style={`--brand: #${hex};`}>
+	<svg viewBox="0 0 24 24" class="bento-svg" aria-hidden="true">
+		<path d={path} />
+	</svg>
+	<span class="bento-name">{title}</span>
+</div>

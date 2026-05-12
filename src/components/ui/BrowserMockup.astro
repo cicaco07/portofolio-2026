@@ -1,0 +1,64 @@
+---
+interface Props {
+	url: string;
+}
+
+const { url } = Astro.props;
+---
+
+<div class="browser-mockup">
+	<div class="browser-mockup__bar">
+		<div class="browser-mockup__dots">
+			<span class="browser-mockup__dot browser-mockup__dot--red"></span>
+			<span class="browser-mockup__dot browser-mockup__dot--yellow"></span>
+			<span class="browser-mockup__dot browser-mockup__dot--green"></span>
+		</div>
+		<div class="browser-mockup__url">
+			<span class="browser-mockup__url-text">{url}</span>
+		</div>
+	</div>
+	<div class="browser-mockup__content">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.browser-mockup {
+		border-radius: 0.75rem;
+		overflow: hidden;
+		border: 1px solid color-mix(in oklch, var(--color-base-content) 10%, transparent);
+		box-shadow: 0 24px 48px color-mix(in oklch, var(--color-neutral) 20%, transparent);
+	}
+	.browser-mockup__bar {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.625rem 1rem;
+		background: color-mix(in oklch, var(--color-base-300) 80%, transparent);
+		border-bottom: 1px solid color-mix(in oklch, var(--color-base-content) 8%, transparent);
+	}
+	.browser-mockup__dots { display: flex; gap: 0.375rem; }
+	.browser-mockup__dot {
+		width: 0.625rem;
+		height: 0.625rem;
+		border-radius: 9999px;
+	}
+	.browser-mockup__dot--red    { background: #ff5f57; }
+	.browser-mockup__dot--yellow { background: #febc2e; }
+	.browser-mockup__dot--green  { background: #28c840; }
+	.browser-mockup__url {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: color-mix(in oklch, var(--color-base-100) 60%, transparent);
+		border-radius: 0.375rem;
+		padding: 0.25rem 0.75rem;
+	}
+	.browser-mockup__url-text {
+		font-family: var(--font-mono, monospace);
+		font-size: 0.7rem;
+		opacity: 0.5;
+	}
+	.browser-mockup__content { min-height: 280px; }
+</style>

@@ -1,0 +1,46 @@
+---
+interface Props {
+	initials: string;
+	shape: 'circle' | 'squircle' | 'hexagon';
+	accent: 'primary' | 'secondary' | 'accent';
+}
+
+const { initials, shape, accent } = Astro.props;
+---
+
+<div class={`brand-mark brand-mark--${shape} brand-mark--${accent}`}>
+	<span class="brand-mark__initials">{initials}</span>
+</div>
+
+<style>
+	.brand-mark {
+		width: 5rem;
+		height: 5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.brand-mark__initials {
+		font-size: 1.25rem;
+		font-weight: 800;
+		color: white;
+		letter-spacing: 0.05em;
+	}
+	.brand-mark--circle   { border-radius: 9999px; }
+	.brand-mark--squircle { border-radius: 30%; }
+	.brand-mark--hexagon  {
+		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	}
+	.brand-mark--primary {
+		background: linear-gradient(135deg, var(--color-primary), color-mix(in oklch, var(--color-primary) 60%, var(--color-secondary)));
+		box-shadow: 0 8px 24px color-mix(in oklch, var(--color-primary) 35%, transparent);
+	}
+	.brand-mark--secondary {
+		background: linear-gradient(135deg, var(--color-secondary), color-mix(in oklch, var(--color-secondary) 60%, var(--color-accent)));
+		box-shadow: 0 8px 24px color-mix(in oklch, var(--color-secondary) 35%, transparent);
+	}
+	.brand-mark--accent {
+		background: linear-gradient(135deg, var(--color-accent), color-mix(in oklch, var(--color-accent) 60%, var(--color-primary)));
+		box-shadow: 0 8px 24px color-mix(in oklch, var(--color-accent) 35%, transparent);
+	}
+</style>

@@ -1,17 +1,17 @@
----
+﻿---
 import {
 	siLaravel, siVuedotjs, siPhp, siNodedotjs, siMysql, siDocker, siGit, siTypescript,
 } from 'simple-icons';
 
 const floatingLogos = [
-	{ icon: siLaravel,    top: '15%', left: '8%',   size: 32, delay: '0s',   duration: '8s'  },
-	{ icon: siVuedotjs,   top: '70%', left: '5%',   size: 28, delay: '1.5s', duration: '10s' },
-	{ icon: siPhp,        top: '25%', left: '88%',  size: 36, delay: '0.8s', duration: '9s'  },
-	{ icon: siNodedotjs,  top: '75%', left: '85%',  size: 30, delay: '2s',   duration: '7s'  },
-	{ icon: siMysql,      top: '50%', left: '3%',   size: 26, delay: '3s',   duration: '11s' },
-	{ icon: siDocker,     top: '10%', left: '55%',  size: 34, delay: '1s',   duration: '8.5s'},
-	{ icon: siGit,        top: '85%', left: '45%',  size: 28, delay: '2.5s', duration: '9.5s'},
-	{ icon: siTypescript, top: '40%', left: '92%',  size: 30, delay: '0.5s', duration: '7.5s'},
+	{ icon: siLaravel,    top: '15%', left: '8%',   size: 32, delay: '0s',    duration: '8s'   },
+	{ icon: siVuedotjs,   top: '70%', left: '5%',   size: 28, delay: '1.5s',  duration: '10s'  },
+	{ icon: siPhp,        top: '25%', left: '88%',  size: 36, delay: '0.8s',  duration: '9s'   },
+	{ icon: siNodedotjs,  top: '75%', left: '85%',  size: 30, delay: '2s',    duration: '7s'   },
+	{ icon: siMysql,      top: '50%', left: '3%',   size: 26, delay: '3s',    duration: '11s'  },
+	{ icon: siDocker,     top: '10%', left: '55%',  size: 34, delay: '1s',    duration: '8.5s' },
+	{ icon: siGit,        top: '85%', left: '45%',  size: 28, delay: '2.5s',  duration: '9.5s' },
+	{ icon: siTypescript, top: '40%', left: '92%',  size: 30, delay: '0.5s',  duration: '7.5s' },
 ];
 
 const stats = [
@@ -36,24 +36,12 @@ const roles = [
 		<div class="hero-orb-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[800px] rounded-full opacity-15 blur-3xl" id="orb3"></div>
 	</div>
 
-	<div
-		class="pointer-events-none absolute inset-0 opacity-[0.04]"
-		style="background-image: linear-gradient(var(--color-base-content) 1px, transparent 1px), linear-gradient(90deg, var(--color-base-content) 1px, transparent 1px); background-size: 60px 60px;"
-	></div>
+	<div class="pointer-events-none absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(var(--color-base-content) 1px, transparent 1px), linear-gradient(90deg, var(--color-base-content) 1px, transparent 1px); background-size: 60px 60px;"></div>
 
 	<div class="pointer-events-none absolute inset-0 overflow-hidden">
 		{floatingLogos.map((item) => (
-			<div
-				class="floating-logo absolute"
-				style={`top:${item.top}; left:${item.left}; animation-delay:${item.delay}; animation-duration:${item.duration};`}
-			>
-				<svg
-					viewBox="0 0 24 24"
-					width={item.size}
-					height={item.size}
-					style={`fill: var(--color-base-content);`}
-					aria-hidden="true"
-				>
+			<div class="floating-logo absolute" style={`top:${item.top}; left:${item.left}; animation-delay:${item.delay}; animation-duration:${item.duration};`}>
+				<svg viewBox="0 0 24 24" width={item.size} height={item.size} style="fill: var(--color-base-content);" aria-hidden="true">
 					<path d={item.icon.path} />
 				</svg>
 			</div>
@@ -73,22 +61,19 @@ const roles = [
 
 		<div class="animate-fade-up delay-100 mb-8">
 			<div class="h-32 w-32 rounded-full p-[3px] animate-pulse-glow" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));">
-				<div class="flex h-full w-full items-center justify-center rounded-full bg-base-100 text-4xl font-bold text-gradient">
-					AD
-				</div>
+				<div class="flex h-full w-full items-center justify-center rounded-full bg-base-100 text-4xl font-bold text-gradient">AD</div>
 			</div>
 		</div>
 
 		<h1 class="animate-fade-up delay-200 text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-			Hi, I'm
-			<span class="text-gradient"> Aryo Deva Saputra</span>
+			Hi, I'm <span class="text-gradient"> Aryo Deva Saputra</span>
 		</h1>
 
-		<div class="animate-fade-up delay-300 mt-4 h-8 flex items-center justify-center">
-			<p class="text-lg font-medium opacity-70 sm:text-xl lg:text-2xl font-mono">
-				<span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
-			</p>
-		</div>
+	<div class="animate-fade-up delay-300 mt-4 h-8 flex items-center justify-center">
+		<p class="text-lg font-medium opacity-70 sm:text-xl lg:text-2xl font-mono">
+			<span id="typewriter-text" data-roles={JSON.stringify(roles)}></span><span class="typewriter-cursor">|</span>
+		</p>
+	</div>
 
 		<p class="animate-fade-up delay-400 mt-6 max-w-2xl text-base leading-relaxed opacity-60 sm:text-lg">
 			3+ tahun pengalaman membangun aplikasi web dengan PHP & JavaScript.
@@ -106,20 +91,13 @@ const roles = [
 		</div>
 
 		<div class="animate-fade-up delay-600 mt-10 flex flex-wrap items-center justify-center gap-4">
-			<a
-				href="#projects"
-				class="group relative inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-semibold text-primary-content shadow-lg transition-all duration-300 hover:scale-105"
-				style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); box-shadow: 0 10px 30px color-mix(in oklch, var(--color-primary) 30%, transparent);"
-			>
+			<a href="#projects" class="group relative inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-semibold text-primary-content shadow-lg transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); box-shadow: 0 10px 30px color-mix(in oklch, var(--color-primary) 30%, transparent);">
 				View My Work
 				<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 				</svg>
 			</a>
-			<a
-				href="#contact"
-				class="inline-flex items-center gap-2 rounded-xl border border-base-content/20 px-7 py-3.5 text-sm font-semibold opacity-80 transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:opacity-100 hover:text-primary"
-			>
+			<a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-base-content/20 px-7 py-3.5 text-sm font-semibold opacity-80 transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:opacity-100 hover:text-primary">
 				Get In Touch
 			</a>
 		</div>
@@ -139,16 +117,13 @@ const roles = [
 	.floating-logo {
 		opacity: 0.06;
 		animation: float-drift var(--duration, 8s) ease-in-out infinite alternate;
-		transition: opacity 0.3s;
 	}
-
 	@keyframes float-drift {
 		0%   { transform: translateY(0px) rotate(0deg); }
 		33%  { transform: translateY(-12px) rotate(3deg); }
 		66%  { transform: translateY(6px) rotate(-2deg); }
 		100% { transform: translateY(-8px) rotate(1deg); }
 	}
-
 	.typewriter-cursor {
 		display: inline-block;
 		animation: blink-cursor 0.8s step-end infinite;
@@ -156,61 +131,23 @@ const roles = [
 		font-weight: 300;
 		margin-left: 1px;
 	}
-
 	@keyframes blink-cursor {
 		from, to { opacity: 1; }
 		50%       { opacity: 0; }
 	}
 </style>
 
-<script define:vars={{ roles }}>
+<script>
+	import { initTypewriter } from '../scripts/typewriter';
+
 	const el = document.getElementById('typewriter-text');
-	if (!el) throw new Error('typewriter-text not found');
-
-	let roleIdx = 0;
-	let charIdx = 0;
-	let deleting = false;
-	let pauseFrames = 0;
-
-	function tick() {
-		const current = roles[roleIdx];
-
-		if (pauseFrames > 0) {
-			pauseFrames--;
-			setTimeout(tick, 80);
-			return;
-		}
-
-		if (!deleting) {
-			el.textContent = current.slice(0, charIdx + 1);
-			charIdx++;
-			if (charIdx === current.length) {
-				deleting = true;
-				pauseFrames = 20;
-				setTimeout(tick, 80);
-			} else {
-				setTimeout(tick, 80);
-			}
-		} else {
-			el.textContent = current.slice(0, charIdx - 1);
-			charIdx--;
-			if (charIdx === 0) {
-				deleting = false;
-				roleIdx = (roleIdx + 1) % roles.length;
-				pauseFrames = 5;
-				setTimeout(tick, 80);
-			} else {
-				setTimeout(tick, 40);
-			}
-		}
-	}
-
-	setTimeout(tick, 800);
+	const roles = el ? JSON.parse(el.dataset.roles ?? '[]') : [];
+	initTypewriter('typewriter-text', roles);
 
 	const section = document.getElementById('hero');
-	const orb1 = document.getElementById('orb1');
-	const orb2 = document.getElementById('orb2');
-	const orb3 = document.getElementById('orb3');
+	const orb1    = document.getElementById('orb1');
+	const orb2    = document.getElementById('orb2');
+	const orb3    = document.getElementById('orb3');
 
 	if (section && orb1 && orb2 && orb3) {
 		let targetX = 0, targetY = 0;
@@ -218,8 +155,8 @@ const roles = [
 
 		section.addEventListener('mousemove', (e) => {
 			const rect = section.getBoundingClientRect();
-			targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-			targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+			targetX = ((e.clientX - rect.left) / rect.width  - 0.5) * 20;
+			targetY = ((e.clientY - rect.top)  / rect.height - 0.5) * 20;
 		});
 
 		function animateParallax() {

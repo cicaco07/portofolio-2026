@@ -1,0 +1,24 @@
+---
+interface Props {
+	title: string;
+	hex: string;
+	path: string;
+	angle: number;
+	radius: string;
+}
+
+const { title, hex, path, angle, radius } = Astro.props;
+---
+
+<div
+	class="orbit-item"
+	style={`--angle: ${angle}deg; --brand: #${hex}; --radius: ${radius};`}
+	data-name={title}
+>
+	<div class="orbit-item__inner">
+		<svg viewBox="0 0 24 24" class="orbit-item__svg" aria-hidden="true">
+			<path d={path} />
+		</svg>
+	</div>
+	<span class="orbit-item__tooltip">{title}</span>
+</div>

@@ -1,96 +1,7 @@
 ﻿---
-interface Achievement {
-	text: string;
-}
-
-interface Metric {
-	value: string;
-	label: string;
-}
-
-interface Experience {
-	period: string;
-	role: string;
-	company: string;
-	type: string;
-	description: string;
-	techStack: string[];
-	accent: 'primary' | 'secondary' | 'accent';
-	initials: string;
-	shape: 'circle' | 'squircle' | 'hexagon';
-	achievements: Achievement[];
-	metrics: Metric[];
-	pattern: 'dots' | 'grid' | 'lines';
-}
-
-const experiences: Experience[] = [
-	{
-		period: 'Aug 2024 — Dec 2024',
-		role: 'Fullstack Web Developer',
-		company: 'DPKP Lumajang',
-		type: 'Internship',
-		description: 'Mengembangkan aplikasi untuk survey dan scoring tingkat kekumuhan kawasan di Kabupaten Lumajang. Membantu pemerintah daerah dalam pengambilan keputusan pemberian bantuan.',
-		techStack: ['Laravel', 'PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
-		accent: 'primary',
-		initials: 'DP',
-		shape: 'squircle',
-		achievements: [
-			{ text: 'Membangun sistem scoring multi-kriteria dari nol' },
-			{ text: 'Integrasi peta interaktif untuk visualisasi kawasan' },
-			{ text: 'Dashboard laporan untuk pengambilan keputusan' },
-		],
-		metrics: [
-			{ value: '5', label: 'Bulan' },
-			{ value: '15+', label: 'Screens' },
-			{ value: '1', label: 'Produksi' },
-		],
-		pattern: 'dots',
-	},
-	{
-		period: 'Feb 2024 — Jun 2024',
-		role: 'Fullstack Web Developer',
-		company: 'PT Arkatama Multi Solusindo',
-		type: 'Internship',
-		description: 'Membangun Hitungrumah — aplikasi kalkulator biaya konstruksi rumah dengan manajemen harga satuan material dan pekerja untuk estimasi biaya pembangunan.',
-		techStack: ['Laravel', 'Vue.js', 'MySQL', 'Tailwind CSS', 'REST API'],
-		accent: 'secondary',
-		initials: 'AM',
-		shape: 'hexagon',
-		achievements: [
-			{ text: 'Sistem manajemen harga satuan material & pekerja' },
-			{ text: 'Kalkulasi otomatis berdasarkan desain rumah' },
-			{ text: 'Export laporan estimasi biaya ke PDF' },
-		],
-		metrics: [
-			{ value: '5', label: 'Bulan' },
-			{ value: '100+', label: 'Material' },
-			{ value: 'Live', label: 'Produksi' },
-		],
-		pattern: 'grid',
-	},
-	{
-		period: 'Oct 2021 — Jun 2023',
-		role: 'Member — Web Dev Miniclass',
-		company: 'WRI Polinema',
-		type: 'Organization',
-		description: 'Aktif di Workshop Riset Informatika Polinema. Mempelajari HTML, CSS, JavaScript ES6, PHP, metodologi Twelve-Factor App, dan backend C# dengan .NET framework.',
-		techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'C#', '.NET'],
-		accent: 'accent',
-		initials: 'WR',
-		shape: 'circle',
-		achievements: [
-			{ text: 'Menguasai Twelve-Factor App methodology' },
-			{ text: 'Membangun backend C# dengan .NET framework' },
-			{ text: 'Aktif 20+ bulan dalam komunitas developer' },
-		],
-		metrics: [
-			{ value: '20+', label: 'Bulan' },
-			{ value: '6+', label: 'Teknologi' },
-			{ value: '1', label: 'Komunitas' },
-		],
-		pattern: 'lines',
-	},
-];
+import { experiences } from '../data/experience';
+import SectionHeader from './ui/SectionHeader.astro';
+import BrandMark from './ui/BrandMark.astro';
 ---
 
 <section id="experience" class="relative" data-horizontal-section>
@@ -99,14 +10,12 @@ const experiences: Experience[] = [
 
 			<div class="shrink-0 w-screen px-6 flex flex-col justify-center">
 				<div class="mx-auto max-w-4xl w-full">
-					<p class="mb-3 font-mono text-sm font-medium text-primary">02. Experience</p>
-					<h2 class="section-title text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-						Pengalaman Kerja
-					</h2>
-					<p class="mt-8 max-w-xl text-lg opacity-70 leading-relaxed">
-						Perjalanan profesional saya sebagai developer, dari miniclass hingga internship di perusahaan teknologi.
-					</p>
-					<div class="mt-12 flex items-center gap-3 opacity-50">
+					<SectionHeader
+						number="02. Experience"
+						title="Pengalaman Kerja"
+						subtitle="Perjalanan profesional saya sebagai developer, dari miniclass hingga internship di perusahaan teknologi."
+					/>
+					<div class="mt-4 flex items-center gap-3 opacity-50">
 						<span class="text-xs font-mono uppercase tracking-widest">Scroll</span>
 						<svg class="h-5 w-5 animate-bounce-x" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -119,9 +28,7 @@ const experiences: Experience[] = [
 				<article class="shrink-0 w-screen px-6 flex items-center" data-panel={i}>
 					<div class="mx-auto max-w-5xl w-full grid gap-8 lg:grid-cols-[280px_1fr] items-start">
 						<div class="flex flex-col gap-5">
-							<div class={`brand-mark brand-mark--${exp.shape} brand-mark--${exp.accent}`}>
-								<span class="brand-mark__initials">{exp.initials}</span>
-							</div>
+							<BrandMark initials={exp.initials} shape={exp.shape} accent={exp.accent} />
 							<div>
 								<div class="flex flex-wrap items-center gap-2 mb-2">
 									<span class={`inline-block rounded-full bg-${exp.accent}/10 px-3 py-1 font-mono text-xs font-medium text-${exp.accent}`}>
@@ -189,65 +96,19 @@ const experiences: Experience[] = [
 	}
 	.animate-bounce-x { animation: bounce-x 1.5s ease-in-out infinite; }
 
-	.brand-mark {
-		width: 5rem;
-		height: 5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-	}
-	.brand-mark__initials {
-		font-size: 1.25rem;
-		font-weight: 800;
-		color: white;
-		position: relative;
-		z-index: 1;
-		letter-spacing: 0.05em;
-	}
-	.brand-mark--circle { border-radius: 9999px; }
-	.brand-mark--squircle { border-radius: 30%; }
-	.brand-mark--hexagon {
-		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-		border-radius: 0;
-	}
-	.brand-mark--primary {
-		background: linear-gradient(135deg, var(--color-primary), color-mix(in oklch, var(--color-primary) 60%, var(--color-secondary)));
-		box-shadow: 0 8px 24px color-mix(in oklch, var(--color-primary) 35%, transparent);
-	}
-	.brand-mark--secondary {
-		background: linear-gradient(135deg, var(--color-secondary), color-mix(in oklch, var(--color-secondary) 60%, var(--color-accent)));
-		box-shadow: 0 8px 24px color-mix(in oklch, var(--color-secondary) 35%, transparent);
-	}
-	.brand-mark--accent {
-		background: linear-gradient(135deg, var(--color-accent), color-mix(in oklch, var(--color-accent) 60%, var(--color-primary)));
-		box-shadow: 0 8px 24px color-mix(in oklch, var(--color-accent) 35%, transparent);
-	}
 	.exp-pattern--dots::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		opacity: 0.04;
+		content: ''; position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
 		background-image: radial-gradient(circle, var(--color-base-content) 1px, transparent 1px);
 		background-size: 20px 20px;
-		pointer-events: none;
 	}
 	.exp-pattern--grid::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		opacity: 0.04;
+		content: ''; position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
 		background-image: linear-gradient(var(--color-base-content) 1px, transparent 1px), linear-gradient(90deg, var(--color-base-content) 1px, transparent 1px);
 		background-size: 24px 24px;
-		pointer-events: none;
 	}
 	.exp-pattern--lines::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		opacity: 0.04;
+		content: ''; position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
 		background-image: repeating-linear-gradient(45deg, var(--color-base-content) 0, var(--color-base-content) 1px, transparent 0, transparent 50%);
 		background-size: 16px 16px;
-		pointer-events: none;
 	}
 </style>
