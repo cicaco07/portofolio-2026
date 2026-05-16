@@ -1,0 +1,124 @@
+---
+title: 'MLBB Admin Dashboard'
+slug: 'mlbb-admin-dashboard'
+year: '2025'
+role: 'Frontend Developer'
+description: 'Web admin panel berbasis Vue.js untuk mengelola data API Mobile Legends. Dashboard terintegrasi dengan backend GraphQL untuk operasi CRUD hero, item, build, dan konfigurasi meta game.'
+techStack:
+  - 'Vue.js'
+  - 'GraphQL'
+  - 'Tailwind CSS'
+  - 'TypeScript'
+  - 'Apollo Client'
+accent: 'primary'
+duration: '2 bulan'
+teamSize: 'Solo'
+status: 'live'
+---
+
+## Overview
+
+**MLBB Admin Dashboard** adalah companion frontend untuk MLBB Data APIs. Dibangun dengan Vue.js + Apollo Client, dashboard ini memberikan UI yang clean dan efisien untuk admin mengelola data game lewat operasi CRUD yang terintegrasi dengan GraphQL backend.
+
+## The Problem
+
+Backend GraphQL membutuhkan UI yang bisa:
+
+- Manage data hero, item, build, dan patch dengan **mudah**
+- Memberikan feedback **real-time** saat data berubah
+- Handle bulk operations untuk update massal (misal saat patch baru)
+- **Type-safe** end-to-end dari schema sampai UI
+
+## The Solution
+
+Vue.js dipilih karena reactivity-nya yang clean dan ekosistemnya yang mendukung type-safety dengan TypeScript.
+
+### Key Features
+
+- **Hero Management** — CRUD interface dengan drag-and-drop ordering
+- **Item & Build Editor** — editor visual dengan preview
+- **Patch Manager** — bulk update meta stats per patch dengan diff view
+- **Live GraphQL Playground** — embedded GraphiQL untuk testing query
+- **Optimistic UI** — instant feedback untuk user, sync dengan server di background
+
+### Apollo Client Setup
+
+```typescript
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT,
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('mlbb_admin_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+export const apolloClient = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Hero: {
+        fields: {
+          recommendedBuilds: {
+            merge(_, incoming) { return incoming; },
+          },
+        },
+      },
+    },
+  }),
+});
+```
+
+### Composable Pattern (Vue 3)
+
+```typescript
+export function useHeroes() {
+  const { result, loading, refetch } = useQuery(HEROES_QUERY);
+
+  const heroes = computed(() => result.value?.heroes ?? []);
+  const heroesByRole = computed(() => groupBy(heroes.value, 'role'));
+
+  return { heroes, heroesByRole, loading, refetch };
+}
+```
+
+## Technical Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Vue.js 3 dengan Composition API |
+| State / Data | Apollo Client untuk GraphQL state management |
+| Styling | Tailwind CSS dengan custom design tokens |
+| Forms | VeeValidate + Zod schema |
+| Routing | Vue Router dengan route guards |
+| Build | Vite dengan TypeScript strict mode |
+
+## Challenges & Solutions
+
+**Challenge 1: Cache consistency setelah mutation**
+Solution: Menggunakan Apollo Client `update` callback untuk update cache manual setelah mutation, plus refetch queries strategis untuk data yang complex.
+
+**Challenge 2: Bulk operation UX**
+Solution: Implementasi optimistic updates dengan rollback jika server error, plus progress indicator untuk operasi panjang.
+
+**Challenge 3: Form validation yang complex**
+Solution: VeeValidate + Zod schema yang **shared** dengan backend. Schema validation jadi single source of truth.
+
+## Integration with Backend
+
+Dashboard ini **tightly integrated** dengan [MLBB Data APIs](/projects/mlbb-data-apis) sebagai consumer utama. Setiap perubahan di admin dashboard langsung tersimpan via GraphQL mutations dan ter-reflect di public API.
+
+## Lessons Learned
+
+- **Composition API** sangat clean untuk extracting logic yang reusable
+- **Apollo cache** adalah double-edged sword — powerful tapi butuh attention untuk consistency
+- **Type-safe end-to-end** (GraphQL Codegen → TypeScript types → Vue components) sangat worth it untuk DX
+- Optimistic UI butuh perencanaan careful untuk error handling

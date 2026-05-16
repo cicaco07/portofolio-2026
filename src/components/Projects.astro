@@ -51,6 +51,14 @@ import BrowserMockup from './ui/BrowserMockup.astro';
 							)}
 
 							<div class="flex items-center gap-3">
+								{project.detailSlug && (
+									<a href={`/projects/${project.detailSlug}`} class={`group inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-primary-content transition-all hover:scale-105`} style={`background: linear-gradient(135deg, var(--color-${project.accent}), var(--color-secondary)); box-shadow: 0 8px 20px color-mix(in oklch, var(--color-${project.accent}) 25%, transparent);`}>
+										View Case Study
+										<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+										</svg>
+									</a>
+								)}
 								{project.githubUrl && (
 									<a href={project.githubUrl} class="flex h-10 w-10 items-center justify-center rounded-xl border border-base-content/20 opacity-70 transition-all hover:border-primary/40 hover:text-primary hover:bg-primary/5 hover:opacity-100" aria-label="GitHub">
 										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -151,11 +159,19 @@ import BrowserMockup from './ui/BrowserMockup.astro';
 						</div>
 						<h4 class="text-lg font-bold mb-2">{project.title}</h4>
 						<p class="text-sm opacity-70 leading-relaxed mb-4 flex-1">{project.description}</p>
-						<div class="flex flex-wrap gap-1.5">
+						<div class="flex flex-wrap gap-1.5 mb-4">
 							{project.techStack.map((tech) => (
 								<span class="tech-badge text-[0.65rem]">{tech}</span>
 							))}
 						</div>
+						{project.detailSlug && (
+							<a href={`/projects/${project.detailSlug}`} class="group inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 hover:opacity-100 transition-opacity">
+								View case study
+								<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+								</svg>
+							</a>
+						)}
 					</div>
 				))}
 			</div>

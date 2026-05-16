@@ -1,0 +1,100 @@
+---
+title: 'Agromodern'
+slug: 'agromodern'
+year: '2026'
+role: 'Fullstack Laravel Developer'
+client: 'Kementerian Pertanian Republik Indonesia'
+description: 'Platform diseminasi informasi pertanian nasional yang dibangun untuk Kementerian Pertanian Republik Indonesia, mendistribusikan informasi pertanian modern ke pengguna di seluruh Indonesia.'
+techStack:
+  - 'Laravel'
+  - 'PHP'
+  - 'MySQL'
+  - 'REST API'
+  - 'Tailwind CSS'
+accent: 'secondary'
+duration: '4 bulan'
+teamSize: 'Team of 3'
+status: 'in-development'
+---
+
+## Overview
+
+**Agromodern** adalah aplikasi diseminasi informasi pertanian yang dikembangkan untuk **Kementerian Pertanian Republik Indonesia**. Aplikasi ini berfungsi sebagai single platform untuk menyebarluaskan informasi pertanian modern, teknologi tepat guna, dan kebijakan pertanian ke seluruh Indonesia.
+
+## The Problem
+
+Diseminasi informasi pertanian di Indonesia menghadapi tantangan:
+
+- Informasi pertanian terbaru **lambat sampai ke petani** di daerah
+- Tidak ada platform terpusat untuk **publikasi resmi** Kementerian Pertanian
+- Distribusi konten masih dominan via media konvensional yang **terbatas jangkauan**
+- Tidak ada **analytics** untuk mengukur efektivitas diseminasi informasi
+
+## The Solution
+
+Agromodern dibangun sebagai content management dan distribution platform berbasis web dengan REST API, sehingga konten yang sama bisa dijangkau dari berbagai channel.
+
+### Key Features
+
+- **Content Management** — admin panel untuk Kementerian Pertanian publish artikel, infografis, dan video
+- **Multi-Channel Distribution** — REST API yang bisa di-konsumsi mobile app, web, dan integrasi pihak ketiga
+- **Categorization** — kategorisasi konten berdasarkan komoditas, daerah, dan jenis informasi
+- **Search & Filter** — pencarian cepat untuk pengguna mencari informasi spesifik
+- **Analytics Dashboard** — tracking views, downloads, dan engagement per konten
+
+### Tech Highlights
+
+```php
+// API resource untuk konten pertanian
+class AgroContentResource extends JsonResource
+{
+    public function toArray($request): array
+    {
+        return [
+            'id'         => $this->id,
+            'title'      => $this->title,
+            'category'   => $this->category->name,
+            'commodity'  => $this->commodity?->name,
+            'published'  => $this->published_at->toIso8601String(),
+            'media'      => MediaResource::collection($this->media),
+            'engagement' => [
+                'views'     => $this->views_count,
+                'downloads' => $this->downloads_count,
+            ],
+        ];
+    }
+}
+```
+
+## Technical Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | Laravel 11 dengan Repository pattern |
+| Database | MySQL dengan full-text search untuk konten |
+| API | RESTful API dengan rate limiting |
+| Frontend Admin | Tailwind CSS + Alpine.js |
+| Auth | Laravel Sanctum dengan role-based permissions |
+
+## Challenges & Solutions
+
+**Challenge 1: Skala pengguna nasional**
+Solution: Implementasi caching layer dengan Redis untuk konten yang sering diakses, dan CDN untuk media files.
+
+**Challenge 2: Multi-format media (artikel, video, infografis, PDF)**
+Solution: Polymorphic relationship di Laravel untuk menangani berbagai jenis media dalam satu konten dengan API response yang konsisten.
+
+**Challenge 3: Kebutuhan klien yang dinamis**
+Solution: Konfigurasi via database untuk kategori, tag, dan metadata, sehingga admin bisa adjust tanpa deploy code baru.
+
+## Impact
+
+- **Klien**: Kementerian Pertanian Republik Indonesia
+- **Scope**: Nasional (seluruh provinsi Indonesia)
+- **Status**: In active development & deployment
+
+## Lessons Learned
+
+- Bekerja dengan klien pemerintah membutuhkan **dokumentasi yang sangat detail** dan compliance yang ketat
+- **API-first design** terbukti tepat untuk multi-channel distribution
+- Caching dan database optimization krusial untuk skala nasional

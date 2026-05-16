@@ -24,6 +24,29 @@ export interface Experience {
 
 export const experiences: Experience[] = [
 	{
+		period: 'Nov 2025 — May 2026',
+		role: 'Fullstack Laravel Developer',
+		company: 'Software Development',
+		type: 'Full-time',
+		description:
+			'Membangun, mengembangkan, dan menguji aplikasi untuk sistem akademik, penerimaan mahasiswa baru, diseminasi informasi pertanian, dan kebutuhan lainnya berupa admin panel website serta REST API.',
+		techStack: ['Laravel', 'PHP', 'MySQL', 'REST API', 'CypressJS', 'Tailwind CSS'],
+		accent: 'secondary',
+		initials: 'SD',
+		shape: 'circle',
+		achievements: [
+			{ text: 'Membangun OBE Academic System super app dengan Laravel' },
+			{ text: 'Mengembangkan Agromodern untuk Kementerian Pertanian RI' },
+			{ text: 'Automated testing CypressJS untuk academic super app' },
+		],
+		metrics: [
+			{ value: '7',   label: 'Bulan'  },
+			{ value: '3+',  label: 'Apps'   },
+			{ value: 'Gov', label: 'Client' },
+		],
+		pattern: 'grid',
+	},
+	{
 		period: 'Aug 2024 — Dec 2024',
 		role: 'Fullstack Web Developer',
 		company: 'DPKP Lumajang',
