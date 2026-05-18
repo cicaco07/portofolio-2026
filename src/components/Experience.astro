@@ -1,7 +1,9 @@
 ﻿---
 import { experiences } from '../data/experience';
+import { UI } from '../i18n';
 import SectionHeader from './ui/SectionHeader.astro';
 import BrandMark from './ui/BrandMark.astro';
+import T from './ui/T.astro';
 ---
 
 <section id="experience" class="relative" data-horizontal-section>
@@ -11,12 +13,12 @@ import BrandMark from './ui/BrandMark.astro';
 			<div class="shrink-0 w-screen px-6 flex flex-col justify-center">
 				<div class="mx-auto max-w-4xl w-full">
 					<SectionHeader
-						number="02. Experience"
-						title="Pengalaman Kerja"
-						subtitle="Perjalanan profesional saya sebagai developer, dari miniclass hingga internship di perusahaan teknologi."
+						number={UI.section.experience.number}
+						title={UI.section.experience.title}
+						subtitle={UI.section.experience.subtitle}
 					/>
 					<div class="mt-4 flex items-center gap-3 opacity-50">
-						<span class="text-xs font-mono uppercase tracking-widest">Scroll</span>
+						<span class="text-xs font-mono uppercase tracking-widest"><T tr={UI.hero.scroll} /></span>
 						<svg class="h-5 w-5 animate-bounce-x" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 						</svg>
@@ -35,17 +37,17 @@ import BrandMark from './ui/BrandMark.astro';
 										{exp.period}
 									</span>
 									<span class="inline-block rounded-full border border-base-content/20 px-2.5 py-0.5 text-xs font-medium opacity-60">
-										{exp.type}
+										<T tr={exp.type} />
 									</span>
 								</div>
-								<h3 class={`text-xl font-bold text-${exp.accent}`}>{exp.role}</h3>
+								<h3 class={`text-xl font-bold text-${exp.accent}`}><T tr={exp.role} /></h3>
 								<p class="mt-1 font-medium opacity-70">{exp.company}</p>
 							</div>
 							<div class="flex gap-4">
 								{exp.metrics.map((m) => (
 									<div class="flex flex-col">
 										<span class={`text-2xl font-extrabold text-${exp.accent}`}>{m.value}</span>
-										<span class="font-mono text-xs opacity-50 uppercase tracking-wider">{m.label}</span>
+										<span class="font-mono text-xs opacity-50 uppercase tracking-wider"><T tr={m.label} /></span>
 									</div>
 								))}
 							</div>
@@ -53,22 +55,22 @@ import BrandMark from './ui/BrandMark.astro';
 
 						<div class={`glass rounded-3xl p-8 relative overflow-hidden exp-pattern exp-pattern--${exp.pattern}`}>
 							<div class="absolute -top-12 -right-12 h-40 w-40 rounded-full blur-3xl opacity-20 pointer-events-none" style={`background: var(--color-${exp.accent});`}></div>
-							<p class="leading-relaxed opacity-80 mb-6 relative">{exp.description}</p>
+							<p class="leading-relaxed opacity-80 mb-6 relative"><T tr={exp.description} /></p>
 							<div class="mb-6 relative">
-								<p class="mb-3 font-mono text-xs uppercase tracking-widest opacity-50">Key Achievements</p>
+								<p class="mb-3 font-mono text-xs uppercase tracking-widest opacity-50"><T tr={UI.exp.keyAchievements} /></p>
 								<ul class="space-y-2">
 									{exp.achievements.map((a) => (
 										<li class="flex items-start gap-2.5 text-sm opacity-80">
 											<svg class={`h-4 w-4 shrink-0 mt-0.5 text-${exp.accent}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
 												<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
 											</svg>
-											{a.text}
+											<T tr={a.text} />
 										</li>
 									))}
 								</ul>
 							</div>
 							<div class="relative">
-								<p class="mb-3 font-mono text-xs uppercase tracking-widest opacity-50">Tech Stack</p>
+								<p class="mb-3 font-mono text-xs uppercase tracking-widest opacity-50"><T tr={UI.exp.techStack} /></p>
 								<div class="flex flex-wrap gap-2">
 									{exp.techStack.map((tech) => (
 										<span class="tech-badge">{tech}</span>

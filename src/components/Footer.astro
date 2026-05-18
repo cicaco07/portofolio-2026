@@ -1,5 +1,7 @@
 ﻿---
 import { SITE, FOOTER_LINKS } from '../config/site';
+import { UI } from '../i18n';
+import T from './ui/T.astro';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -12,7 +14,7 @@ const currentYear = new Date().getFullYear();
 					AD<span class="opacity-70">.</span>
 				</a>
 				<p class="mt-2 text-sm opacity-60">
-					Built with
+					<T tr={UI.footer.builtWith} />
 					<a href="https://astro.build" class="opacity-70 hover:text-primary transition-colors">Astro</a>
 					&
 					<a href="https://tailwindcss.com" class="opacity-70 hover:text-primary transition-colors">Tailwind CSS</a>
@@ -22,16 +24,16 @@ const currentYear = new Date().getFullYear();
 			<nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
 				{FOOTER_LINKS.map((link) => (
 					<a href={link.href} class="text-sm opacity-60 transition-colors hover:text-primary">
-						{link.label}
+						<T tr={link.label} />
 					</a>
 				))}
 			</nav>
 		</div>
 
 		<div class="mt-8 flex flex-col items-center gap-4 border-t border-base-content/10 pt-8 sm:flex-row sm:justify-between">
-			<p class="text-xs opacity-50">&copy; {currentYear} {SITE.author}. All rights reserved.</p>
+			<p class="text-xs opacity-50">&copy; {currentYear} {SITE.author}. <T tr={UI.footer.rights} /></p>
 			<a href="#hero" class="group flex items-center gap-1.5 text-xs opacity-50 transition-colors hover:text-primary">
-				Back to top
+				<T tr={UI.footer.toTop} />
 				<svg class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
 				</svg>
@@ -39,3 +41,4 @@ const currentYear = new Date().getFullYear();
 		</div>
 	</div>
 </footer>
+

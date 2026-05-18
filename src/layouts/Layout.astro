@@ -1,34 +1,63 @@
 ﻿---
 import '../styles/global.css';
 import { SITE, NAV_LINKS } from '../config/site';
+import { UI } from '../i18n';
+import T from '../components/ui/T.astro';
 
 interface Props {
 	title?: string;
 	description?: string;
 }
 
-const { title = SITE.title, description = SITE.description } = Astro.props;
+const { title = SITE.title, description } = Astro.props;
+const descId = description ?? SITE.description.id;
+const descEn = description ?? SITE.description.en;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="sunset">
+<html lang="id" data-theme="sunset" data-lang="id">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
+		<meta
+			id="meta-description"
+			name="description"
+			content={descId}
+			data-i18n-id={descId}
+			data-i18n-en={descEn}
+		/>
 		<meta name="theme-color" content="#1a1625" />
 		<title>{title}</title>
 		<script is:inline>
 			(function () {
 				try {
-					const stored = localStorage.getItem('theme');
+					const storedTheme = localStorage.getItem('theme');
 					const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-					const theme = stored || (prefersLight ? 'acid' : 'sunset');
+					const theme = storedTheme || (prefersLight ? 'acid' : 'sunset');
 					document.documentElement.setAttribute('data-theme', theme);
 				} catch (_) {
 					document.documentElement.setAttribute('data-theme', 'sunset');
+				}
+				try {
+					var storedLang = localStorage.getItem('lang');
+					var lang;
+					if (storedLang === 'id' || storedLang === 'en') {
+						lang = storedLang;
+					} else {
+						var nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'id';
+						lang = String(nav).toLowerCase().indexOf('en') === 0 ? 'en' : 'id';
+					}
+					document.documentElement.setAttribute('data-lang', lang);
+					document.documentElement.setAttribute('lang', lang);
+					var meta = document.getElementById('meta-description');
+					if (meta) {
+						var c = meta.getAttribute('data-i18n-' + lang);
+						if (c) meta.setAttribute('content', c);
+					}
+				} catch (_) {
+					document.documentElement.setAttribute('data-lang', 'id');
 				}
 			})();
 		</script>
@@ -49,13 +78,31 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
 									class="nav-link relative px-3 py-2 text-sm font-medium opacity-60 transition-opacity hover:opacity-100"
 									data-section={link.href.slice(1)}
 								>
-									{link.label}
+									<T tr={link.label} />
 								</a>
 							</li>
 						))}
 					</ul>
 
-					<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" type="button">
+					<button
+						id="lang-toggle"
+						class="lang-toggle relative flex h-10 items-center justify-center rounded-lg px-3 text-xs font-bold tracking-wider transition-colors hover:bg-base-content/5"
+						type="button"
+						data-i18n-id-aria-label={UI.a11y.toggleLanguage.id}
+						data-i18n-en-aria-label={UI.a11y.toggleLanguage.en}
+						aria-label={UI.a11y.toggleLanguage.id}
+					>
+						<span data-lang="id">EN</span><span data-lang="en">ID</span>
+					</button>
+
+					<button
+						id="theme-toggle"
+						class="theme-toggle"
+						type="button"
+						data-i18n-id-aria-label={UI.a11y.toggleTheme.id}
+						data-i18n-en-aria-label={UI.a11y.toggleTheme.en}
+						aria-label={UI.a11y.toggleTheme.id}
+					>
 						<svg class="icon-sun h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 							<circle cx="12" cy="12" r="4" fill="currentColor" stroke="none" />
 							<path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
@@ -68,8 +115,10 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
 					<button
 						id="menu-toggle"
 						class="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg transition-colors hover:bg-base-content/5 md:hidden"
-						aria-label="Toggle menu"
 						type="button"
+						data-i18n-id-aria-label={UI.a11y.toggleMenu.id}
+						data-i18n-en-aria-label={UI.a11y.toggleMenu.en}
+						aria-label={UI.a11y.toggleMenu.id}
 					>
 						<div class="hamburger-lines flex flex-col gap-1.5">
 							<span class="block h-0.5 w-6 rounded-full bg-current transition-all duration-300"></span>
@@ -94,7 +143,7 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
 								style={`transition-delay: ${i * 60}ms;`}
 								data-section={link.href.slice(1)}
 							>
-								{link.label}
+								<T tr={link.label} />
 							</a>
 						</li>
 					))}
@@ -108,6 +157,7 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
 			import { gsap } from 'gsap';
 			import { ScrollTrigger } from 'gsap/ScrollTrigger';
 			import { initThemeToggle } from '../scripts/theme-toggle';
+			import { initLangToggle } from '../scripts/lang-toggle';
 			import { initMobileMenu, initNavScroll, initNavActiveLink } from '../scripts/navbar';
 			import { initReveal } from '../scripts/reveal';
 
@@ -177,6 +227,7 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
 			window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 
 			initThemeToggle();
+			initLangToggle();
 			initMobileMenu();
 			initNavScroll();
 			initNavActiveLink();
@@ -191,6 +242,13 @@ const { title = SITE.title, description = SITE.description } = Astro.props;
 			}
 			.nav-link.nav-active {
 				opacity: 1 !important;
+				color: var(--color-primary);
+			}
+			.lang-toggle {
+				color: color-mix(in oklch, var(--color-base-content) 70%, transparent);
+				font-family: var(--font-mono, monospace);
+			}
+			.lang-toggle:hover {
 				color: var(--color-primary);
 			}
 		</style>

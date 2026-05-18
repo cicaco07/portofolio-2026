@@ -1,22 +1,26 @@
 ---
+import type { Tr } from '../../i18n';
+import T from './T.astro';
+
 interface Props {
 	number: string;
-	title: string;
-	subtitle?: string;
+	title: string | Tr;
+	subtitle?: string | Tr;
 	centered?: boolean;
 }
 
 const { number, title, subtitle, centered = false } = Astro.props;
+const isStr = (v: unknown): v is string => typeof v === 'string';
 ---
 
 <div class={`reveal mb-16 ${centered ? 'text-center' : ''}`}>
 	<p class="mb-2 font-mono text-sm font-medium text-primary">{number}</p>
 	<h2 class={`section-title text-3xl font-bold tracking-tight sm:text-4xl ${centered ? 'inline-block' : ''}`}>
-		{title}
+		{isStr(title) ? title : <T tr={title} />}
 	</h2>
 	{subtitle && (
 		<p class={`mt-6 max-w-2xl opacity-70 ${centered ? 'mx-auto' : ''}`}>
-			{subtitle}
+			{isStr(subtitle) ? subtitle : <T tr={subtitle} />}
 		</p>
 	)}
 </div>

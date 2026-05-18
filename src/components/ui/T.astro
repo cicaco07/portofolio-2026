@@ -1,0 +1,21 @@
+---
+/**
+ * Inline bilingual text. Renders both ID & EN; CSS hides the inactive one.
+ *
+ * Usage:
+ *   <T id="Halo" en="Hello" />
+ *   <T tr={UI.nav.home} />
+ */
+import type { Tr } from '../../i18n';
+
+interface Props {
+	id?: string;
+	en?: string;
+	tr?: Tr;
+}
+
+const { id, en, tr } = Astro.props;
+const idText = tr?.id ?? id ?? '';
+const enText = tr?.en ?? en ?? '';
+---
+<Fragment><span data-lang="id">{idText}</span><span data-lang="en">{enText}</span></Fragment>

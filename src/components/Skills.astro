@@ -1,5 +1,6 @@
 ﻿---
 import { coreSkills, innerRing, middleRing, outerRing, allSkills, BENTO_SIZE_PATTERN } from '../data/skills';
+import { UI } from '../i18n';
 import SectionHeader from './ui/SectionHeader.astro';
 import OrbitItem from './ui/OrbitItem.astro';
 import BentoItem from './ui/BentoItem.astro';
@@ -8,9 +9,9 @@ import BentoItem from './ui/BentoItem.astro';
 <section id="skills" class="relative py-24 px-6 overflow-hidden">
 	<div class="mx-auto max-w-6xl">
 		<SectionHeader
-			number="04. Skills"
-			title="Tech Universe"
-			subtitle="Ecosystem teknologi yang saya kuasai — hover untuk pause dan lihat detail."
+			number={UI.section.skills.number}
+			title={UI.section.skills.title}
+			subtitle={UI.section.skills.subtitle}
 			centered
 		/>
 	</div>

@@ -1,11 +1,13 @@
 ﻿---
 import { educations } from '../data/education';
+import { UI } from '../i18n';
 import SectionHeader from './ui/SectionHeader.astro';
+import T from './ui/T.astro';
 ---
 
 <section id="education" class="relative py-24 px-6">
 	<div class="mx-auto max-w-4xl">
-		<SectionHeader number="01. Education" title="Riwayat Pendidikan" />
+		<SectionHeader number={UI.section.education.number} title={UI.section.education.title} />
 
 		<div class="relative">
 			<div class="timeline-line"></div>
@@ -17,9 +19,9 @@ import SectionHeader from './ui/SectionHeader.astro';
 						<span class="inline-block rounded-full bg-primary/10 px-3 py-1 font-mono text-xs font-medium text-primary mb-3">
 							{edu.period}
 						</span>
-						<h3 class="text-xl font-bold">{edu.degree}</h3>
+						<h3 class="text-xl font-bold"><T tr={edu.degree} /></h3>
 						<p class="mt-1 font-medium text-primary/80">{edu.institution}</p>
-						<p class="mt-3 text-sm leading-relaxed opacity-70">{edu.description}</p>
+						<p class="mt-3 text-sm leading-relaxed opacity-70"><T tr={edu.description} /></p>
 					</div>
 				</div>
 			))}

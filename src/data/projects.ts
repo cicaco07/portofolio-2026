@@ -1,15 +1,18 @@
+import type { Tr } from '../i18n';
+import { tr } from '../i18n';
+
 export interface Highlight {
-	text: string;
+	text: Tr;
 }
 
 export interface Metric {
 	value: string;
-	label: string;
+	label: Tr;
 }
 
 export interface Project {
 	title: string;
-	description: string;
+	description: Tr;
 	techStack: string[];
 	liveUrl?: string;
 	githubUrl?: string;
@@ -21,11 +24,21 @@ export interface Project {
 	metrics?: Metric[];
 }
 
+const lblFramework = tr('Framework',  'Framework');
+const lblModule    = tr('Modul',      'Module');
+const lblYear      = tr('Tahun',      'Year');
+const lblScope     = tr('Cakupan',    'Scope');
+const lblClient    = tr('Klien',      'Client');
+const lblCoverage  = tr('Cakupan',    'Coverage');
+const lblTesting   = tr('Pengujian',  'Testing');
+
 export const projects: Project[] = [
 	{
 		title: 'OBE Academic System',
-		description:
+		description: tr(
 			'Web-based academic system super app yang dikembangkan menggunakan Laravel. Sistem terintegrasi untuk pengelolaan akademik berbasis Outcome-Based Education dengan multi-modul yang saling terhubung.',
+			'A web-based academic system super app developed using Laravel. An integrated system for academic management based on Outcome-Based Education with multiple interconnected modules.',
+		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'REST API', 'Tailwind CSS'],
 		githubUrl: '#',
 		detailSlug: 'obe-academic-system',
@@ -33,20 +46,22 @@ export const projects: Project[] = [
 		year: '2026',
 		accent: 'primary',
 		highlights: [
-			{ text: 'Super app dengan multi-modul akademik terintegrasi' },
-			{ text: 'Implementasi Outcome-Based Education framework' },
-			{ text: 'REST API untuk integrasi dengan sistem eksternal' },
+			{ text: tr('Super app dengan multi-modul akademik terintegrasi', 'Super app with integrated multi-module academic features') },
+			{ text: tr('Implementasi framework Outcome-Based Education', 'Implementation of the Outcome-Based Education framework') },
+			{ text: tr('REST API untuk integrasi dengan sistem eksternal', 'REST API for integration with external systems') },
 		],
 		metrics: [
-			{ value: 'OBE',  label: 'Framework' },
-			{ value: 'Multi', label: 'Module'    },
-			{ value: '2026', label: 'Year'      },
+			{ value: 'OBE',  label: lblFramework },
+			{ value: 'Multi', label: lblModule   },
+			{ value: '2026', label: lblYear     },
 		],
 	},
 	{
 		title: 'Agromodern',
-		description:
+		description: tr(
 			'Aplikasi diseminasi informasi pertanian untuk Kementerian Pertanian Republik Indonesia. Dibangun dengan Laravel sebagai platform penyebaran informasi pertanian modern ke pengguna di seluruh Indonesia.',
+			'An agricultural information dissemination application for the Ministry of Agriculture of the Republic of Indonesia. Built with Laravel as a platform for distributing modern agricultural information to users across Indonesia.',
+		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'REST API', 'Tailwind CSS'],
 		githubUrl: '#',
 		detailSlug: 'agromodern',
@@ -54,56 +69,64 @@ export const projects: Project[] = [
 		year: '2026',
 		accent: 'secondary',
 		highlights: [
-			{ text: 'Platform diseminasi informasi pertanian nasional' },
-			{ text: 'Klien: Kementerian Pertanian Republik Indonesia' },
-			{ text: 'Multi-channel content distribution' },
+			{ text: tr('Platform diseminasi informasi pertanian nasional', 'National agricultural information dissemination platform') },
+			{ text: tr('Klien: Kementerian Pertanian Republik Indonesia', 'Client: Ministry of Agriculture of the Republic of Indonesia') },
+			{ text: tr('Distribusi konten multi-channel', 'Multi-channel content distribution') },
 		],
 		metrics: [
-			{ value: 'Gov',  label: 'Client' },
-			{ value: 'RI',   label: 'Scope'  },
-			{ value: '2026', label: 'Year'   },
+			{ value: 'Gov',  label: lblClient },
+			{ value: 'RI',   label: lblScope  },
+			{ value: '2026', label: lblYear   },
 		],
 	},
 	{
 		title: 'Academic System E2E Testing',
-		description:
+		description: tr(
 			'Automated end-to-end testing untuk academic system super app menggunakan CypressJS. Mencakup test scenario untuk seluruh user journey dari penerimaan mahasiswa hingga pengelolaan akademik.',
+			'Automated end-to-end testing for the academic system super app using CypressJS. Covers test scenarios for the entire user journey from student admissions to academic management.',
+		),
 		techStack: ['CypressJS', 'JavaScript', 'Node.js', 'Laravel'],
 		githubUrl: '#',
 		featured: true,
 		year: '2026',
 		accent: 'accent',
 		highlights: [
-			{ text: 'E2E test coverage untuk academic super app' },
-			{ text: 'Automated regression testing dengan CypressJS' },
-			{ text: 'CI/CD integration untuk continuous testing' },
+			{ text: tr('Cakupan test E2E untuk academic super app', 'E2E test coverage for the academic super app') },
+			{ text: tr('Automated regression testing dengan CypressJS', 'Automated regression testing with CypressJS') },
+			{ text: tr('Integrasi CI/CD untuk continuous testing', 'CI/CD integration for continuous testing') },
 		],
 		metrics: [
-			{ value: 'E2E',  label: 'Coverage' },
-			{ value: 'Auto', label: 'Testing'  },
-			{ value: '2026', label: 'Year'     },
+			{ value: 'E2E',  label: lblCoverage },
+			{ value: 'Auto', label: lblTesting  },
+			{ value: '2026', label: lblYear     },
 		],
 	},
 	{
 		title: 'Hitungrumah',
-		description:
+		description: tr(
 			'Aplikasi kalkulator biaya konstruksi rumah dengan sistem manajemen harga satuan material dan pekerja. Memudahkan pengguna mengestimasi biaya pembangunan rumah sesuai desain yang diinginkan.',
+			'A house construction cost calculator with a unit price management system for materials and workers. Helps users estimate construction costs based on the desired design.',
+		),
 		techStack: ['Laravel', 'Vue.js', 'MySQL', 'Tailwind CSS', 'REST API'],
 		githubUrl: '#',
 		year: '2024',
 	},
 	{
 		title: 'Slum Area Scoring',
-		description:
+		description: tr(
 			'Aplikasi scoring untuk menentukan klasifikasi tingkat kekumuhan suatu kawasan di Kabupaten Lumajang. Membantu DPKP dalam pengambilan keputusan pemberian bantuan dan perbaikan kawasan permukiman.',
+			'A scoring application to determine the slum-level classification of an area in Lumajang Regency. Assists DPKP in deciding on aid distribution and settlement improvements.',
+		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
 		githubUrl: '#',
 		year: '2024',
 	},
 	{
 		title: 'MLBB Data APIs',
-		description:
-			'Endpoint management system untuk Mobile Legends Bang Bang data APIs menggunakan GraphQL. Include dashboard admin terintegrasi untuk mengelola data hero, item, dan statistik game.',
+		description: tr(
+			'Endpoint management system untuk Mobile Legends Bang Bang data APIs menggunakan GraphQL. Termasuk dashboard admin terintegrasi untuk mengelola data hero, item, dan statistik game.',
+			'Endpoint management system for Mobile Legends Bang Bang data APIs using GraphQL. Includes an integrated admin dashboard for managing hero, item, and game statistics data.',
+		),
 		techStack: ['Nest.js', 'GraphQL', 'MongoDB', 'Node.js', 'TypeScript'],
 		githubUrl: '#',
 		detailSlug: 'mlbb-data-apis',
@@ -111,8 +134,10 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'MLBB Admin Dashboard',
-		description:
+		description: tr(
 			'Web admin panel berbasis Vue.js untuk mengelola data API Mobile Legends. Terhubung dengan backend GraphQL untuk CRUD hero, item, dan konfigurasi lainnya.',
+			'A Vue.js-based admin web panel for managing Mobile Legends API data. Connected to the GraphQL backend for CRUD operations on heroes, items, and other configurations.',
+		),
 		techStack: ['Vue.js', 'GraphQL', 'Tailwind CSS', 'TypeScript'],
 		githubUrl: '#',
 		detailSlug: 'mlbb-admin-dashboard',
@@ -120,32 +145,40 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Decision Support System (WASPAS)',
-		description:
-			'Web application yang mengimplementasikan metode WASPAS untuk sistem pendukung keputusan multi-criteria.',
+		description: tr(
+			'Aplikasi web yang mengimplementasikan metode WASPAS untuk sistem pendukung keputusan multi-kriteria.',
+			'A web application that implements the WASPAS method for a multi-criteria decision support system.',
+		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'Bootstrap'],
 		githubUrl: '#',
 		year: '2023',
 	},
 	{
 		title: 'Student ID Card Scanner',
-		description:
-			'Mobile application yang dapat memindai dan mendeteksi kartu identitas mahasiswa menggunakan teknologi OCR.',
+		description: tr(
+			'Aplikasi mobile yang dapat memindai dan mendeteksi kartu identitas mahasiswa menggunakan teknologi OCR.',
+			'A mobile application that can scan and detect student ID cards using OCR technology.',
+		),
 		techStack: ['Flutter', 'OCR', 'Dart', 'REST API'],
 		githubUrl: '#',
 		year: '2023',
 	},
 	{
 		title: 'My Bengkel App',
-		description:
-			'Service queue information system untuk meningkatkan proses bisnis service dealer. Include fitur antrian, notifikasi, dan laporan harian.',
+		description: tr(
+			'Sistem informasi antrian servis untuk meningkatkan proses bisnis dealer servis. Mencakup fitur antrian, notifikasi, dan laporan harian.',
+			'A service queue information system to improve a service dealer\'s business processes. Includes queue management, notifications, and daily reports.',
+		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
 		githubUrl: '#',
 		year: '2022',
 	},
 	{
 		title: 'Niagahoster Landing Page',
-		description:
+		description: tr(
 			'Project pertama saya — slicing landing page Niagahoster menggunakan HTML, CSS, dan JavaScript vanilla.',
+			'My first project — slicing the Niagahoster landing page using HTML, CSS, and vanilla JavaScript.',
+		),
 		techStack: ['HTML', 'CSS', 'JavaScript'],
 		githubUrl: '#',
 		year: '2021',

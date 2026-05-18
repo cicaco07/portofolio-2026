@@ -90,6 +90,13 @@ body {
   animation: gradient-shift 6s ease infinite;
 }
 .animate-theme-switch { animation: theme-switch-rotate 0.6s ease-in-out; }
+.animate-lang-switch  { animation: theme-switch-rotate 0.5s ease-in-out; }
+
+/* ── Language toggle (i18n) ── */
+[data-lang="id"] [data-lang="en"],
+[data-lang="en"] [data-lang="id"] {
+  display: none !important;
+}
 
 /* ── Animation delays ── */
 .delay-100 { animation-delay: 100ms; }
