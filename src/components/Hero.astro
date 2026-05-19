@@ -52,13 +52,6 @@ const roles = [
 
 	<div class="relative z-10 flex flex-col items-center text-center max-w-4xl">
 		<div class="animate-fade-up mb-8">
-			<span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-				<span class="relative flex h-2 w-2">
-					<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-					<span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
-				</span>
-				<T tr={UI.hero.badge} />
-			</span>
 		</div>
 
 		<div class="animate-fade-up delay-100 mb-8">
@@ -162,9 +155,6 @@ const roles = [
 		function animateParallax() {
 			currentX += (targetX - currentX) * 0.05;
 			currentY += (targetY - currentY) * 0.05;
-			orb1.style.transform = `translate(${currentX * 1.2}px, ${currentY * 1.2}px)`;
-			orb2.style.transform = `translate(${-currentX * 0.8}px, ${-currentY * 0.8}px)`;
-			orb3.style.transform = `translate(${currentX * 0.5}px, ${currentY * 0.5}px)`;
 			requestAnimationFrame(animateParallax);
 		}
 

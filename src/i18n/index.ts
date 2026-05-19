@@ -27,7 +27,6 @@ export const UI = {
 		toggleLanguage: tr('Ubah bahasa',   'Toggle language'),
 	},
 	hero: {
-		badge:    tr('Tersedia untuk peluang baru', 'Available for opportunities'),
 		greet:    tr('Halo, saya',                  "Hi, I'm"),
 		intro:    tr(
 			'3+ tahun pengalaman membangun aplikasi web dengan PHP & JavaScript. Familiar dengan Laravel, Next.js, Vue.js, dan Nest.js. Fokus pada REST & GraphQL API serta clean architecture.',
