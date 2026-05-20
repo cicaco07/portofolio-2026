@@ -88,9 +88,15 @@ export const UI = {
 		techStack:       tr('Tech Stack',       'Tech Stack'),
 	},
 	projects: {
-		featured:  tr('Unggulan',         'Featured'),
-		viewCase:  tr('Lihat Studi Kasus','View Case Study'),
-		viewCaseS: tr('Lihat studi kasus','View case study'),
+		featured:    tr('Unggulan',           'Featured'),
+		viewCase:    tr('Lihat Studi Kasus',  'View Case Study'),
+		viewCaseS:   tr('Lihat studi kasus',  'View case study'),
+		viewMore:    tr('Lihat Selengkapnya', 'View More'),
+		privateRepo: tr('Repo Privat',        'Private Repo'),
+		privateHint: tr(
+			'Kode sumber tidak tersedia secara publik karena dimiliki klien.',
+			'Source code is not publicly available due to client ownership.',
+		),
 	},
 	contact: {
 		labelName:        tr('Nama',                    'Name'),

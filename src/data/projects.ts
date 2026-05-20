@@ -16,8 +16,8 @@ export interface Project {
 	techStack: string[];
 	liveUrl?: string;
 	githubUrl?: string;
+	repoVisibility?: 'public' | 'private';
 	detailSlug?: string;
-	featured?: boolean;
 	year?: string;
 	accent?: 'primary' | 'secondary' | 'accent';
 	highlights?: Highlight[];
@@ -29,8 +29,9 @@ const lblModule    = tr('Modul',      'Module');
 const lblYear      = tr('Tahun',      'Year');
 const lblScope     = tr('Cakupan',    'Scope');
 const lblClient    = tr('Klien',      'Client');
-const lblCoverage  = tr('Cakupan',    'Coverage');
-const lblTesting   = tr('Pengujian',  'Testing');
+const lblStack     = tr('Stack',      'Stack');
+const lblPanel     = tr('Panel',      'Panel');
+const lblData     = tr('Data',        'Data');
 
 export const projects: Project[] = [
 	{
@@ -40,9 +41,8 @@ export const projects: Project[] = [
 			'A web-based academic system super app developed using Laravel. An integrated system for academic management based on Outcome-Based Education with multiple interconnected modules.',
 		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'REST API', 'Tailwind CSS'],
-		githubUrl: '#',
+		repoVisibility: 'private',
 		detailSlug: 'obe-academic-system',
-		featured: true,
 		year: '2026',
 		accent: 'primary',
 		highlights: [
@@ -63,9 +63,8 @@ export const projects: Project[] = [
 			'An agricultural information dissemination application for the Ministry of Agriculture of the Republic of Indonesia. Built with Laravel as a platform for distributing modern agricultural information to users across Indonesia.',
 		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'REST API', 'Tailwind CSS'],
-		githubUrl: '#',
+		repoVisibility: 'private',
 		detailSlug: 'agromodern',
-		featured: true,
 		year: '2026',
 		accent: 'secondary',
 		highlights: [
@@ -86,19 +85,13 @@ export const projects: Project[] = [
 			'Automated end-to-end testing for the academic system super app using CypressJS. Covers test scenarios for the entire user journey from student admissions to academic management.',
 		),
 		techStack: ['CypressJS', 'JavaScript', 'Node.js', 'Laravel'],
-		githubUrl: '#',
-		featured: true,
+		repoVisibility: 'private',
 		year: '2026',
 		accent: 'accent',
 		highlights: [
 			{ text: tr('Cakupan test E2E untuk academic super app', 'E2E test coverage for the academic super app') },
 			{ text: tr('Automated regression testing dengan CypressJS', 'Automated regression testing with CypressJS') },
 			{ text: tr('Integrasi CI/CD untuk continuous testing', 'CI/CD integration for continuous testing') },
-		],
-		metrics: [
-			{ value: 'E2E',  label: lblCoverage },
-			{ value: 'Auto', label: lblTesting  },
-			{ value: '2026', label: lblYear     },
 		],
 	},
 	{
@@ -108,7 +101,7 @@ export const projects: Project[] = [
 			'A house construction cost calculator with a unit price management system for materials and workers. Helps users estimate construction costs based on the desired design.',
 		),
 		techStack: ['Laravel', 'Vue.js', 'MySQL', 'Tailwind CSS', 'REST API'],
-		githubUrl: '#',
+		repoVisibility: 'private',
 		year: '2024',
 	},
 	{
@@ -118,7 +111,7 @@ export const projects: Project[] = [
 			'A scoring application to determine the slum-level classification of an area in Lumajang Regency. Assists DPKP in deciding on aid distribution and settlement improvements.',
 		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
-		githubUrl: '#',
+		repoVisibility: 'private',
 		year: '2024',
 	},
 	{
@@ -127,10 +120,21 @@ export const projects: Project[] = [
 			'Endpoint management system untuk Mobile Legends Bang Bang data APIs menggunakan GraphQL. Termasuk dashboard admin terintegrasi untuk mengelola data hero, item, dan statistik game.',
 			'Endpoint management system for Mobile Legends Bang Bang data APIs using GraphQL. Includes an integrated admin dashboard for managing hero, item, and game statistics data.',
 		),
-		techStack: ['Nest.js', 'GraphQL', 'MongoDB', 'Node.js', 'TypeScript'],
-		githubUrl: '#',
+		techStack: ['Nest.js', 'GraphQL', 'MongoDB', 'Node.js', 'TypeScript', 'JWT'],
+		githubUrl: 'https://github.com/cicaco07/graphql-api',
 		detailSlug: 'mlbb-data-apis',
 		year: '2025',
+		accent: 'primary',
+		highlights: [
+			{ text: tr('GraphQL endpoint untuk data hero, item, dan statistik', 'GraphQL endpoints for hero, item, and stats data') },
+			{ text: tr('Skema modular dengan Nest.js dan MongoDB', 'Modular schema with Nest.js and MongoDB') },
+			{ text: tr('Dokumentasi API otomatis via GraphQL Playground', 'Auto-generated API docs via GraphQL Playground') },
+		],
+		metrics: [
+			{ value: 'GraphQL', label: lblStack },
+			{ value: 'MLBB',    label: lblData  },
+			{ value: '2025',    label: lblYear  },
+		],
 	},
 	{
 		title: 'MLBB Admin Dashboard',
@@ -138,10 +142,21 @@ export const projects: Project[] = [
 			'Web admin panel berbasis Vue.js untuk mengelola data API Mobile Legends. Terhubung dengan backend GraphQL untuk CRUD hero, item, dan konfigurasi lainnya.',
 			'A Vue.js-based admin web panel for managing Mobile Legends API data. Connected to the GraphQL backend for CRUD operations on heroes, items, and other configurations.',
 		),
-		techStack: ['Vue.js', 'GraphQL', 'Tailwind CSS', 'TypeScript'],
-		githubUrl: '#',
+		techStack: ['Vue.js', 'GraphQL', 'Bootstrap', 'TypeScript'],
+		githubUrl: 'https://github.com/cicaco07/web-admin',
 		detailSlug: 'mlbb-admin-dashboard',
 		year: '2025',
+		accent: 'secondary',
+		highlights: [
+			{ text: tr('Panel admin reaktif berbasis Vue.js', 'Reactive admin panel built with Vue.js') },
+			{ text: tr('CRUD lengkap untuk hero, item, dan konfigurasi', 'Full CRUD for heroes, items, and configurations') },
+			{ text: tr('Integrasi langsung dengan backend GraphQL', 'Direct integration with the GraphQL backend') },
+		],
+		metrics: [
+			{ value: 'Vue',   label: lblFramework },
+			{ value: 'Admin', label: lblPanel     },
+			{ value: '2025',  label: lblYear      },
+		],
 	},
 	{
 		title: 'Decision Support System (WASPAS)',
@@ -150,7 +165,7 @@ export const projects: Project[] = [
 			'A web application that implements the WASPAS method for a multi-criteria decision support system.',
 		),
 		techStack: ['Laravel', 'PHP', 'MySQL', 'Bootstrap'],
-		githubUrl: '#',
+		githubUrl: 'https://github.com/cicaco07/spk_waspas',
 		year: '2023',
 	},
 	{
@@ -159,8 +174,8 @@ export const projects: Project[] = [
 			'Aplikasi mobile yang dapat memindai dan mendeteksi kartu identitas mahasiswa menggunakan teknologi OCR.',
 			'A mobile application that can scan and detect student ID cards using OCR technology.',
 		),
-		techStack: ['Flutter', 'OCR', 'Dart', 'REST API'],
-		githubUrl: '#',
+		techStack: ['Flutter', 'OCR', 'Dart', 'REST API', 'C++', 'Phyton'],
+		githubUrl: 'https://github.com/cicaco07/ocr_app',
 		year: '2023',
 	},
 	{
@@ -169,9 +184,9 @@ export const projects: Project[] = [
 			'Sistem informasi antrian servis untuk meningkatkan proses bisnis dealer servis. Mencakup fitur antrian, notifikasi, dan laporan harian.',
 			'A service queue information system to improve a service dealer\'s business processes. Includes queue management, notifications, and daily reports.',
 		),
-		techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
-		githubUrl: '#',
-		year: '2022',
+		techStack: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'Tailwind'],
+		githubUrl: 'https://github.com/cicaco07/MyBengkel',
+		year: '2023',
 	},
 	{
 		title: 'Niagahoster Landing Page',
@@ -180,10 +195,10 @@ export const projects: Project[] = [
 			'My first project — slicing the Niagahoster landing page using HTML, CSS, and vanilla JavaScript.',
 		),
 		techStack: ['HTML', 'CSS', 'JavaScript'],
-		githubUrl: '#',
+		githubUrl: 'https://github.com/cicaco07/wri-phyton-landing-page',
 		year: '2021',
 	},
 ];
 
-export const featuredProjects = projects.filter((p) => p.featured);
-export const otherProjects    = projects.filter((p) => !p.featured);
+export const featuredProjects = projects.filter((p) => p.detailSlug);
+export const otherProjects    = projects.filter((p) => !p.detailSlug);

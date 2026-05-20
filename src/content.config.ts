@@ -13,6 +13,7 @@ const projects = defineCollection({
 		techStack: z.array(z.string()),
 		liveUrl: z.string().optional(),
 		githubUrl: z.string().optional(),
+		repoVisibility: z.enum(['public', 'private']).optional(),
 		accent: z.enum(['primary', 'secondary', 'accent']),
 		duration: z.string().optional(),
 		teamSize: z.string().optional(),
