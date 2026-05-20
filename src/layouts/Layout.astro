@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { SITE, NAV_LINKS } from '../config/site';
 import { UI } from '../i18n';
 import T from '../components/ui/T.astro';
+import aiUsage from '../data/ai-usage.json';
 
 interface Props {
 	title?: string;
@@ -12,6 +13,12 @@ interface Props {
 const { title = SITE.title, description } = Astro.props;
 const descId = description ?? SITE.description.id;
 const descEn = description ?? SITE.description.en;
+const STALE_DAYS = 7;
+const isAiUsageAvailable =
+	aiUsage.available === true &&
+	aiUsage.fetchedAt !== null &&
+	Date.now() - new Date(aiUsage.fetchedAt).getTime() < STALE_DAYS * 24 * 60 * 60 * 1000;
+const navLinks = NAV_LINKS.filter((link) => link.href !== '#ai-usage' || isAiUsageAvailable);
 ---
 
 <!doctype html>
@@ -71,7 +78,7 @@ const descEn = description ?? SITE.description.en;
 
 				<div class="flex items-center gap-2">
 					<ul class="hidden items-center gap-1 md:flex">
-						{NAV_LINKS.map((link) => (
+						{navLinks.map((link) => (
 							<li>
 								<a
 									href={link.href}
@@ -135,7 +142,7 @@ const descEn = description ?? SITE.description.en;
 				style="background: color-mix(in oklch, var(--color-base-100) 95%, transparent); backdrop-filter: blur(24px);"
 			>
 				<ul class="flex flex-col items-center gap-6">
-					{NAV_LINKS.map((link, i) => (
+					{navLinks.map((link, i) => (
 						<li>
 							<a
 								href={link.href}

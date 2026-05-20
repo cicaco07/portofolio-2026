@@ -1,0 +1,222 @@
+---
+import aiUsage from '../data/ai-usage.json';
+import { UI } from '../i18n';
+import SectionHeader from './ui/SectionHeader.astro';
+import T from './ui/T.astro';
+
+const STALE_DAYS = 7;
+const isAvailable =
+	aiUsage.available === true &&
+	aiUsage.fetchedAt !== null &&
+	Date.now() - new Date(aiUsage.fetchedAt).getTime() < STALE_DAYS * 24 * 60 * 60 * 1000;
+
+function fmtTokens(n: number) {
+	return n.toLocaleString('en-US');
+}
+function fmtCompactTokens(n: number) {
+	return new Intl.NumberFormat('en-US', {
+		notation: 'compact',
+		maximumFractionDigits: 1,
+	}).format(n);
+}
+function fmtCost(n: number) {
+	return '$' + n.toFixed(2);
+}
+
+const { totals, stats, activity, models, clients } = aiUsage;
+const usageYear = aiUsage.fetchedAt ? new Date(aiUsage.fetchedAt).getFullYear() : new Date().getFullYear();
+const modelRows = models
+	.map((model) => ({
+		...model,
+		cost: Number(model.cost ?? 0),
+		percentage:
+			Number(model.percentage ?? 0) > 0
+				? Number(model.percentage)
+				: totals.cost > 0
+					? (Number(model.cost ?? 0) / totals.cost) * 100
+					: totals.tokens > 0
+						? (Number(model.tokens ?? 0) / totals.tokens) * 100
+						: 0,
+	}))
+	.filter((model) => model.name && Number(model.tokens) > 0);
+const filterPills = clients.length > 0 ? clients : [
+	{ name: 'Claude Code', tokens: 0, percentage: 0 },
+	{ name: 'OpenCode', tokens: 0, percentage: 0 },
+	{ name: 'Codex CLI', tokens: 0, percentage: 0 },
+];
+const modelColor = (name: string) => (name.toLowerCase().includes('gpt') ? 'bg-accent' : 'bg-secondary');
+
+const statCards = [
+	{ label: UI.section.aiUsage.totalTokens,   value: totals.tokens    > 0 ? fmtTokens(totals.tokens)    : null },
+	{ label: UI.section.aiUsage.totalCost,     value: totals.cost      > 0 ? '$' + totals.cost.toFixed(4) : null },
+	{ label: UI.section.aiUsage.totalRequests, value: totals.requests  > 0 ? fmtTokens(totals.requests)  : null },
+	{ label: UI.section.aiUsage.activeDays,    value: totals.activeDays > 0 ? String(totals.activeDays)  : null },
+	{ label: UI.section.aiUsage.streak,        value: stats.streak     > 0 ? stats.streak + ' days'      : null },
+	{ label: UI.section.aiUsage.bestDay,       value: stats.bestDay ?? null },
+].filter((c): c is { label: typeof c.label; value: string } => c.value !== null);
+
+const chartData = JSON.stringify({ activity, models });
+---
+
+{isAvailable && (
+	<section id="ai-usage" class="relative py-24 px-6">
+		<div class="mx-auto max-w-6xl">
+			<SectionHeader
+				number={UI.section.aiUsage.number}
+				title={UI.section.aiUsage.title}
+				subtitle={UI.section.aiUsage.subtitle}
+			/>
+
+			{statCards.length > 0 && (
+				<div class="reveal grid grid-cols-2 gap-4 sm:grid-cols-3 mb-12">
+					{statCards.map((card) => (
+						<div class="glass rounded-2xl p-5 flex flex-col gap-1">
+							<span class="text-2xl font-extrabold text-primary">{card.value}</span>
+							<span class="font-mono text-xs opacity-50 uppercase tracking-wider">
+								<T tr={card.label} />
+							</span>
+						</div>
+					))}
+				</div>
+			)}
+
+			<div class="reveal glass rounded-2xl overflow-hidden mb-12">
+				<div class="p-5 sm:p-7">
+					<div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+						<h3 class="text-lg font-extrabold sm:text-xl">
+							<span class="text-primary">{fmtCompactTokens(totals.tokens)}</span>{' '}
+							tokens used in {usageYear}
+						</h3>
+						<div class="flex flex-wrap items-center gap-3">
+							<label class="sr-only" for="ai-usage-heatmap-theme">Heatmap color</label>
+							<select
+								id="ai-usage-heatmap-theme"
+								data-ai-usage-palette
+								class="h-9 rounded-xl border border-base-content/10 bg-base-200 px-4 pr-9 text-xs font-bold text-base-content outline-none transition focus:border-primary"
+							>
+								<option value="green">Green</option>
+								<option value="blue">Blue</option>
+								<option value="amber">Amber</option>
+							</select>
+							<div class="inline-grid h-9 grid-cols-2 overflow-hidden rounded-full bg-base-200 p-1 text-xs font-bold">
+								<button
+									type="button"
+									data-ai-usage-mode="2d"
+									aria-pressed="true"
+									class="rounded-full bg-primary px-4 text-primary-content transition"
+								>
+									2D
+								</button>
+								<button
+									type="button"
+									data-ai-usage-mode="3d"
+									aria-pressed="false"
+									class="rounded-full px-4 text-base-content transition hover:bg-base-content/10"
+								>
+									3D
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt-6 flex flex-wrap items-center gap-2 text-xs sm:gap-3">
+						<span class="font-mono text-info">Filter:</span>
+						{filterPills.map((client) => (
+							<span class="inline-flex items-center gap-2 rounded-full border border-primary/45 bg-primary/10 px-3 py-1.5 text-xs font-bold text-base-content">
+								<span class="grid h-5 w-5 place-items-center rounded-full bg-primary/20 text-[10px] text-primary">
+									{client.name.split(' ').map((part) => part[0]).join('').slice(0, 2)}
+								</span>
+								{client.name}
+							</span>
+						))}
+					</div>
+
+					<div class="mt-8 overflow-x-auto pb-1">
+						<canvas
+							id="ai-usage-activity-heatmap"
+							data-ai-usage-heatmap
+							class="block h-[178px] w-full min-w-[680px] max-w-none"
+							aria-label="Token activity heatmap"
+						></canvas>
+					</div>
+				</div>
+
+				<div class="border-t border-base-content/10">
+					<div class="flex flex-wrap gap-2 bg-base-200/50 p-2">
+						<span class="rounded-full px-5 py-3 text-sm font-bold text-base-content/55">Activity</span>
+						<span class="rounded-full px-5 py-3 text-sm font-bold text-base-content/55">Token Breakdown</span>
+						<span class="rounded-full bg-primary px-5 py-3 text-sm font-extrabold text-primary-content">
+							<T tr={UI.section.aiUsage.modelsUsed} />
+						</span>
+					</div>
+
+					<div class="overflow-x-auto">
+						{modelRows.length > 0 ? (
+							<table class="w-full min-w-[680px] border-collapse text-sm">
+								<thead>
+									<tr class="border-y border-base-content/10 bg-base-200/70 text-left font-mono text-xs uppercase tracking-widest text-info">
+										<th class="px-6 py-4 font-medium">Model</th>
+										<th class="px-6 py-4 text-right font-medium">Tokens</th>
+										<th class="px-6 py-4 text-right font-medium">Cost</th>
+										<th class="px-6 py-4 text-right font-medium">%</th>
+									</tr>
+								</thead>
+								<tbody>
+									{modelRows.map((model) => (
+										<tr class="border-b border-base-content/10 odd:bg-base-100/20 even:bg-base-200/45 transition hover:bg-primary/5">
+											<td class="px-6 py-4 font-bold">
+												<span class="inline-flex items-center gap-2">
+													<span class={`h-2 w-2 rounded-full ${modelColor(model.name)}`}></span>
+													{model.name}
+												</span>
+											</td>
+											<td class="px-6 py-4 text-right font-bold text-base-content">
+												{fmtCompactTokens(Number(model.tokens))}
+											</td>
+											<td class="px-6 py-4 text-right font-bold text-info">
+												{fmtCost(Number(model.cost))}
+											</td>
+											<td class="px-6 py-4 text-right text-info/80">
+												{model.percentage.toFixed(1)}%
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						) : (
+							<div class="px-6 py-10 text-center font-mono text-sm text-base-content/45">
+								No model data available
+							</div>
+						)}
+					</div>
+				</div>
+			</div>
+
+			<div class="reveal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+				<p class="font-mono text-xs opacity-40">
+					<T tr={UI.section.aiUsage.updatedAt} />:{' '}
+					{aiUsage.fetchedAt
+						? new Date(aiUsage.fetchedAt).toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'short',
+								day: 'numeric',
+							})
+						: '—'}
+				</p>
+				<a
+					href="https://tokscale.ai/u/cicaco07"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-2 rounded-xl bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition-all hover:bg-primary/20 hover:scale-105"
+				>
+					<T tr={UI.section.aiUsage.viewOnTokscale} />
+					<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+					</svg>
+				</a>
+			</div>
+		</div>
+
+		<script id="ai-usage-data" type="application/json" set:html={chartData}></script>
+	</section>
+)}

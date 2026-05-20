@@ -1,0 +1,287 @@
+{
+  "username": "cicaco07",
+  "profileUrl": "https://tokscale.ai/u/cicaco07",
+  "available": true,
+  "fetchedAt": "2026-05-20T06:43:28.640Z",
+  "lastSuccessfulFetch": "2026-05-20T06:43:28.640Z",
+  "stale": false,
+  "error": null,
+  "totals": {
+    "tokens": 282700366,
+    "cost": 951.2874,
+    "requests": 3,
+    "activeDays": 20
+  },
+  "activity": [
+    {
+      "date": "2026-04-26",
+      "tokens": 7750,
+      "cost": 0.1163,
+      "requests": 0
+    },
+    {
+      "date": "2026-04-27",
+      "tokens": 318,
+      "cost": 0.0048,
+      "requests": 0
+    },
+    {
+      "date": "2026-04-28",
+      "tokens": 155,
+      "cost": 0.0023,
+      "requests": 0
+    },
+    {
+      "date": "2026-04-30",
+      "tokens": 537028,
+      "cost": 0.4599,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-03",
+      "tokens": 950,
+      "cost": 0.0143,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-04",
+      "tokens": 1045809,
+      "cost": 5.7699,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-05",
+      "tokens": 20722440,
+      "cost": 111.2264,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-06",
+      "tokens": 12103,
+      "cost": 0.1815,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-07",
+      "tokens": 1548,
+      "cost": 0.0232,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-08",
+      "tokens": 9336450,
+      "cost": 45.8806,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-10",
+      "tokens": 38866,
+      "cost": 0.053,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-11",
+      "tokens": 21917041,
+      "cost": 18.1485,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-12",
+      "tokens": 42800543,
+      "cost": 104.1767,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-13",
+      "tokens": 30439956,
+      "cost": 252.6277,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-14",
+      "tokens": 10553848,
+      "cost": 16.4576,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-15",
+      "tokens": 24586015,
+      "cost": 51.5874,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-16",
+      "tokens": 23431130,
+      "cost": 28.9363,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-17",
+      "tokens": 10684829,
+      "cost": 85.5796,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-18",
+      "tokens": 27228919,
+      "cost": 103.4395,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-19",
+      "tokens": 59354668,
+      "cost": 126.6019,
+      "requests": 0
+    }
+  ],
+  "models": [
+    {
+      "name": "kr/claude-opus-4-7",
+      "tokens": 43407764,
+      "cost": 655.66896,
+      "percentage": 68.92438160386601
+    },
+    {
+      "name": "claude-opus-4-6",
+      "tokens": 30088628,
+      "cost": 159.05606000000003,
+      "percentage": 16.720084744971626
+    },
+    {
+      "name": "kr/claude-sonnet-4-6",
+      "tokens": 26689541,
+      "cost": 80.755515,
+      "percentage": 8.489076457846542
+    },
+    {
+      "name": "gpt-5.5",
+      "tokens": 39319185,
+      "cost": 38.630707,
+      "percentage": 4.060887053270202
+    },
+    {
+      "name": "ag/claude-opus-4-6-thinking",
+      "tokens": 12896727,
+      "cost": 11.224402,
+      "percentage": 1.1799170220337971
+    },
+    {
+      "name": "gpt-5.4",
+      "tokens": 909229,
+      "cost": 2.427635,
+      "percentage": 0.25519469632190805
+    },
+    {
+      "name": "claude-sonnet-4-5-thinking",
+      "tokens": 85096,
+      "cost": 1.27644,
+      "percentage": 0.1341802693457362
+    },
+    {
+      "name": "kr/claude-opus-4-6",
+      "tokens": 209236,
+      "cost": 1.06414,
+      "percentage": 0.11186314423049398
+    },
+    {
+      "name": "gpt-5.2-codex",
+      "tokens": 537028,
+      "cost": 0.45994165000000004,
+      "percentage": 0.04834938930174731
+    },
+    {
+      "name": "claude-sonnet-4-5",
+      "tokens": 20015,
+      "cost": 0.300225,
+      "percentage": 0.03155986287199058
+    },
+    {
+      "name": "claude-sonnet-4",
+      "tokens": 8401,
+      "cost": 0.126015,
+      "percentage": 0.013246785310396842
+    },
+    {
+      "name": "cx/gpt-5.3-codex",
+      "tokens": 142613,
+      "cost": 0.11528755,
+      "percentage": 0.012119108231652118
+    },
+    {
+      "name": "claude-opus-4-7",
+      "tokens": 10668,
+      "cost": 0.05374,
+      "percentage": 0.005649186545893159
+    },
+    {
+      "name": "kr/claude-sonnet-4-5",
+      "tokens": 17259,
+      "cost": 0.05268900000000001,
+      "percentage": 0.005538704687691937
+    },
+    {
+      "name": "codex-auto-review",
+      "tokens": 231480,
+      "cost": 0.0348539,
+      "percentage": 0.0036638664486770664
+    },
+    {
+      "name": "claude-haiku-4-5",
+      "tokens": 3598,
+      "cost": 0.017990000000000006,
+      "percentage": 0.0018911214358135085
+    },
+    {
+      "name": "minimax-m2.5",
+      "tokens": 12574,
+      "cost": 0.0150888,
+      "percentage": 0.001586145254069086
+    },
+    {
+      "name": "kr/claude-haiku-4-5",
+      "tokens": 5419,
+      "cost": 0.006059,
+      "percentage": 0.0006369263357195134
+    },
+    {
+      "name": "glm-5",
+      "tokens": 517,
+      "cost": 0.0016544,
+      "percentage": 0.00017391169001722444
+    },
+    {
+      "name": "cx/gpt-5.5",
+      "tokens": 106670477,
+      "cost": 0,
+      "percentage": 0
+    },
+    {
+      "name": "cx/gpt-5.4",
+      "tokens": 21434911,
+      "cost": 0,
+      "percentage": 0
+    }
+  ],
+  "clients": [
+    {
+      "name": "opencode",
+      "tokens": 243130624,
+      "percentage": 86.00293923920849
+    },
+    {
+      "name": "codex",
+      "tokens": 39550665,
+      "percentage": 13.990312626620371
+    },
+    {
+      "name": "claude",
+      "tokens": 19077,
+      "percentage": 0.006748134171145714
+    }
+  ],
+  "stats": {
+    "streak": 0,
+    "bestDay": "2026-05-19",
+    "avgDailyTokens": 14135018
+  }
+}

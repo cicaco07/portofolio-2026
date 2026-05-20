@@ -13,14 +13,15 @@ export function tr(id: string, en: string): Tr {
 }
 
 export const UI = {
-	nav: {
-		home:       tr('Beranda',     'Home'),
-		education:  tr('Pendidikan',  'Education'),
-		experience: tr('Pengalaman',  'Experience'),
-		projects:   tr('Proyek',      'Projects'),
-		skills:     tr('Keahlian',    'Skills'),
-		contact:    tr('Kontak',      'Contact'),
-	},
+		nav: {
+			home:       tr('Beranda',     'Home'),
+			education:  tr('Pendidikan',  'Education'),
+			experience: tr('Pengalaman',  'Experience'),
+			projects:   tr('Proyek',      'Projects'),
+			aiUsage:    tr('Penggunaan AI', 'AI Usage'),
+			skills:     tr('Keahlian',    'Skills'),
+			contact:    tr('Kontak',      'Contact'),
+		},
 	a11y: {
 		toggleTheme:    tr('Ubah tema',     'Toggle theme'),
 		toggleMenu:     tr('Buka menu',     'Toggle menu'),
@@ -66,8 +67,25 @@ export const UI = {
 				"Other projects I've worked on.",
 			),
 		},
+		aiUsage: {
+			number:   '04. AI Usage',
+			title:    tr('Penggunaan AI', 'AI Usage'),
+			subtitle: tr('Statistik penggunaan token AI saya dari Tokscale.', 'My AI token usage statistics from Tokscale.'),
+			totalTokens: tr('Total Token', 'Total Tokens'),
+			totalCost: tr('Total Biaya', 'Total Cost'),
+			totalRequests: tr('Total Permintaan', 'Total Requests'),
+			activeDays: tr('Hari Aktif', 'Active Days'),
+			modelsUsed: tr('Model Digunakan', 'Models Used'),
+			streak: tr('Streak', 'Streak'),
+			bestDay: tr('Hari Terbaik', 'Best Day'),
+			avgDaily: tr('Rata-rata Harian', 'Daily Average'),
+			viewOnTokscale: tr('Lihat di Tokscale', 'View on Tokscale'),
+			unavailable: tr('Data tidak tersedia saat ini.', 'Data is currently unavailable.'),
+			stale: tr('Data mungkin sudah usang.', 'Data may be outdated.'),
+			updatedAt: tr('Diperbarui', 'Updated'),
+		},
 		skills: {
-			number:   '04. Skills',
+			number:   '05. Skills',
 			title:    tr('Tech Universe',      'Tech Universe'),
 			subtitle: tr(
 				'Ekosistem teknologi yang saya kuasai — arahkan kursor untuk jeda dan lihat detail.',
@@ -75,7 +93,7 @@ export const UI = {
 			),
 		},
 		contact: {
-			number:   '05. Contact',
+			number:   '06. Contact',
 			title:    tr('Hubungi Saya',       'Contact Me'),
 			subtitle: tr(
 				'Tertarik untuk berkolaborasi atau punya pertanyaan? Jangan ragu untuk menghubungi saya.',

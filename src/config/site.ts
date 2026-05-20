@@ -26,6 +26,7 @@ export const NAV_LINKS: readonly NavLink[] = [
 	{ label: UI.nav.education,  href: '#education'  },
 	{ label: UI.nav.experience, href: '#experience' },
 	{ label: UI.nav.projects,   href: '#projects'   },
+	{ label: UI.nav.aiUsage,    href: '#ai-usage'   },
 	{ label: UI.nav.skills,     href: '#skills'     },
 	{ label: UI.nav.contact,    href: '#contact'    },
 ];

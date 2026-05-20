@@ -2,8 +2,15 @@
 import { SITE, FOOTER_LINKS } from '../config/site';
 import { UI } from '../i18n';
 import T from './ui/T.astro';
+import aiUsage from '../data/ai-usage.json';
 
 const currentYear = new Date().getFullYear();
+const STALE_DAYS = 7;
+const isAiUsageAvailable =
+	aiUsage.available === true &&
+	aiUsage.fetchedAt !== null &&
+	Date.now() - new Date(aiUsage.fetchedAt).getTime() < STALE_DAYS * 24 * 60 * 60 * 1000;
+const footerLinks = FOOTER_LINKS.filter((link) => link.href !== '#ai-usage' || isAiUsageAvailable);
 ---
 
 <footer class="relative border-t border-base-content/10 py-12 px-6">
@@ -22,7 +29,7 @@ const currentYear = new Date().getFullYear();
 			</div>
 
 			<nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-				{FOOTER_LINKS.map((link) => (
+				{footerLinks.map((link) => (
 					<a href={link.href} class="text-sm opacity-60 transition-colors hover:text-primary">
 						<T tr={link.label} />
 					</a>
@@ -41,4 +48,3 @@ const currentYear = new Date().getFullYear();
 		</div>
 	</div>
 </footer>
-
