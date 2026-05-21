@@ -39,6 +39,8 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 | `npm run refresh:ai-usage` | Refresh Tokscale AI usage snapshot              |
 
+AI Usage data is refreshed from the public Tokscale profile at https://tokscale.ai/u/cicaco07. The included GitHub Actions workflow runs daily at 00:00 WIB when Actions are enabled; production servers do not rerun the script unless deployed from that committed snapshot or configured with their own cron.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

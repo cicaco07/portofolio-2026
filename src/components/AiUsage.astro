@@ -25,6 +25,7 @@ function fmtCost(n: number) {
 
 const { totals, stats, activity, models, clients } = aiUsage;
 const usageYear = aiUsage.fetchedAt ? new Date(aiUsage.fetchedAt).getFullYear() : new Date().getFullYear();
+const tokscaleEmbedUrl = `https://tokscale.ai/api/embed/${aiUsage.username}/svg?theme=dark&sort=tokens&compact=1`;
 const modelRows = models
 	.map((model) => ({
 		...model,
@@ -81,6 +82,31 @@ const chartData = JSON.stringify({ activity, models });
 			)}
 
 			<div class="reveal glass rounded-2xl overflow-hidden mb-12">
+				<div class="border-b border-base-content/10 bg-base-200/40 p-5 sm:p-7">
+					<div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+						<div>
+							<p class="font-mono text-xs uppercase tracking-widest text-info">Official Tokscale embed</p>
+							<p class="mt-2 max-w-2xl text-sm text-base-content/60">
+								Live SVG card from Tokscale's public embed endpoint, paired with the local canvas below for portfolio styling.
+							</p>
+						</div>
+						<a
+							href="https://tokscale.ai/u/cicaco07"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex justify-center rounded-xl border border-primary/30 px-4 py-2 text-sm font-bold text-primary transition hover:bg-primary/10"
+						>
+							Open profile
+						</a>
+					</div>
+					<img
+						src={tokscaleEmbedUrl}
+						alt={`Tokscale profile stats for @${aiUsage.username}`}
+						loading="lazy"
+						decoding="async"
+						class="mt-5 h-auto w-full max-w-[460px] rounded-2xl border border-base-content/10 bg-base-300"
+					/>
+				</div>
 				<div class="p-5 sm:p-7">
 					<div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 						<h3 class="text-lg font-extrabold sm:text-xl">
@@ -131,39 +157,66 @@ const chartData = JSON.stringify({ activity, models });
 						))}
 					</div>
 
-					<div class="mt-8 overflow-x-auto pb-1">
-						<canvas
-							id="ai-usage-activity-heatmap"
-							data-ai-usage-heatmap
-							class="block h-[178px] w-full min-w-[680px] max-w-none"
-							aria-label="Token activity heatmap"
-						></canvas>
-					</div>
 				</div>
 
 				<div class="border-t border-base-content/10">
-					<div class="flex flex-wrap gap-2 bg-base-200/50 p-2">
-						<span class="rounded-full px-5 py-3 text-sm font-bold text-base-content/55">Activity</span>
-						<span class="rounded-full px-5 py-3 text-sm font-bold text-base-content/55">Token Breakdown</span>
-						<span class="rounded-full bg-primary px-5 py-3 text-sm font-extrabold text-primary-content">
+					<div class="flex flex-wrap gap-2 bg-base-200/50 p-2" role="tablist" aria-label="AI usage views">
+						<button type="button" data-ai-usage-tab="activity" aria-selected="true" class="rounded-full bg-primary px-5 py-3 text-sm font-extrabold text-primary-content transition">
+							Activity
+						</button>
+						<button type="button" data-ai-usage-tab="breakdown" aria-selected="false" class="rounded-full px-5 py-3 text-sm font-bold text-base-content/55 transition hover:bg-base-content/10">
+							Token Breakdown
+						</button>
+						<button type="button" data-ai-usage-tab="models" aria-selected="false" class="rounded-full px-5 py-3 text-sm font-bold text-base-content/55 transition hover:bg-base-content/10">
 							<T tr={UI.section.aiUsage.modelsUsed} />
-						</span>
+						</button>
 					</div>
 
-					<div class="overflow-x-auto">
+					<div data-ai-usage-panel="activity" class="p-5 sm:p-7">
+						<div class="overflow-x-auto pb-1">
+							<canvas
+								id="ai-usage-activity-heatmap"
+								data-ai-usage-heatmap
+								class="block h-[178px] w-full min-w-[680px] max-w-none"
+								aria-label="Token activity heatmap"
+							></canvas>
+						</div>
+					</div>
+
+					<div data-ai-usage-panel="breakdown" class="hidden p-5 sm:p-7">
+						<div class="grid gap-4 sm:grid-cols-3">
+							<div class="rounded-2xl bg-base-200/60 p-5">
+								<p class="font-mono text-xs uppercase tracking-widest opacity-50">Tokens</p>
+								<p class="mt-2 text-2xl font-extrabold text-primary">{fmtTokens(totals.tokens)}</p>
+							</div>
+							<div class="rounded-2xl bg-base-200/60 p-5">
+								<p class="font-mono text-xs uppercase tracking-widest opacity-50">Cost</p>
+								<p class="mt-2 text-2xl font-extrabold text-info">{'$' + totals.cost.toFixed(4)}</p>
+							</div>
+							<div class="rounded-2xl bg-base-200/60 p-5">
+								<p class="font-mono text-xs uppercase tracking-widest opacity-50">Submissions</p>
+								<p class="mt-2 text-2xl font-extrabold text-secondary">{fmtTokens(totals.requests)}</p>
+							</div>
+						</div>
+						<p class="mt-4 font-mono text-xs text-base-content/45">
+							Detailed token breakdown depends on Tokscale public data availability. Current snapshot is built from the public leaderboard summary.
+						</p>
+					</div>
+
+					<div data-ai-usage-panel="models" class="hidden overflow-x-auto">
 						{modelRows.length > 0 ? (
-							<table class="w-full min-w-[680px] border-collapse text-sm">
+							<table class="w-full min-w-[680px] border-collapse text-sm" data-ai-usage-model-table>
 								<thead>
 									<tr class="border-y border-base-content/10 bg-base-200/70 text-left font-mono text-xs uppercase tracking-widest text-info">
-										<th class="px-6 py-4 font-medium">Model</th>
-										<th class="px-6 py-4 text-right font-medium">Tokens</th>
-										<th class="px-6 py-4 text-right font-medium">Cost</th>
-										<th class="px-6 py-4 text-right font-medium">%</th>
+										<th class="px-6 py-4 font-medium"><button type="button" data-ai-usage-sort="name">Model</button></th>
+										<th class="px-6 py-4 text-right font-medium"><button type="button" data-ai-usage-sort="tokens">Tokens</button></th>
+										<th class="px-6 py-4 text-right font-medium"><button type="button" data-ai-usage-sort="cost">Cost</button></th>
+										<th class="px-6 py-4 text-right font-medium"><button type="button" data-ai-usage-sort="percentage">%</button></th>
 									</tr>
 								</thead>
 								<tbody>
 									{modelRows.map((model) => (
-										<tr class="border-b border-base-content/10 odd:bg-base-100/20 even:bg-base-200/45 transition hover:bg-primary/5">
+										<tr class="border-b border-base-content/10 odd:bg-base-100/20 even:bg-base-200/45 transition hover:bg-primary/5" data-model-name={model.name} data-model-tokens={Number(model.tokens)} data-model-cost={Number(model.cost)} data-model-percentage={model.percentage}>
 											<td class="px-6 py-4 font-bold">
 												<span class="inline-flex items-center gap-2">
 													<span class={`h-2 w-2 rounded-full ${modelColor(model.name)}`}></span>

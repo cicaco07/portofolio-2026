@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AiUsage from '../components/AiUsage.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+	<main class="pt-20">
+		<AiUsage />
+	</main>
+	<Footer />
+</Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', async () => {
+		const { initAiUsageCharts } = await import('../scripts/ai-usage-charts');
+		initAiUsageCharts();
+	});
+</script>

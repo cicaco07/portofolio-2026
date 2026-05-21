@@ -18,7 +18,7 @@ const isAiUsageAvailable =
 	aiUsage.available === true &&
 	aiUsage.fetchedAt !== null &&
 	Date.now() - new Date(aiUsage.fetchedAt).getTime() < STALE_DAYS * 24 * 60 * 60 * 1000;
-const navLinks = NAV_LINKS.filter((link) => link.href !== '#ai-usage' || isAiUsageAvailable);
+const navLinks = NAV_LINKS.filter((link) => link.href !== '/ai-usage/' || isAiUsageAvailable);
 ---
 
 <!doctype html>
@@ -72,7 +72,7 @@ const navLinks = NAV_LINKS.filter((link) => link.href !== '#ai-usage' || isAiUsa
 	<body class="min-h-screen antialiased">
 		<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
 			<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-				<a href="#hero" class="text-xl font-bold tracking-tight text-gradient">
+				<a href="/" class="text-xl font-bold tracking-tight text-gradient">
 					AD<span class="opacity-60">.</span>
 				</a>
 
@@ -83,7 +83,7 @@ const navLinks = NAV_LINKS.filter((link) => link.href !== '#ai-usage' || isAiUsa
 								<a
 									href={link.href}
 									class="nav-link relative px-3 py-2 text-sm font-medium opacity-60 transition-opacity hover:opacity-100"
-									data-section={link.href.slice(1)}
+									data-section={link.href.startsWith('#') ? link.href.slice(1) : undefined}
 								>
 									<T tr={link.label} />
 								</a>
@@ -148,7 +148,7 @@ const navLinks = NAV_LINKS.filter((link) => link.href !== '#ai-usage' || isAiUsa
 								href={link.href}
 								class="mobile-nav-link text-2xl font-semibold opacity-80 transition-opacity hover:opacity-100"
 								style={`transition-delay: ${i * 60}ms;`}
-								data-section={link.href.slice(1)}
+								data-section={link.href.startsWith('#') ? link.href.slice(1) : undefined}
 							>
 								<T tr={link.label} />
 							</a>

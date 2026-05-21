@@ -4,7 +4,6 @@ import Hero from '../components/Hero.astro';
 import Education from '../components/Education.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
-import AiUsage from '../components/AiUsage.astro';
 import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
@@ -15,15 +14,7 @@ import Footer from '../components/Footer.astro';
 	<Education />
 	<Experience />
 	<Projects />
-	<AiUsage />
 	<Skills />
 	<Contact />
 	<Footer />
 </Layout>
-
-<script>
-	document.addEventListener('DOMContentLoaded', async () => {
-		const { initAiUsageCharts } = await import('../scripts/ai-usage-charts');
-		initAiUsageCharts();
-	});
-</script>

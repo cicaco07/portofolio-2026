@@ -245,10 +245,83 @@ function initHeatmap(activity: ActivityDataPoint[]) {
 	);
 }
 
+function initTabs(): void {
+	const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-ai-usage-tab]'));
+	const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-ai-usage-panel]'));
+	if (tabs.length === 0 || panels.length === 0) return;
+
+	const activate = (name: string) => {
+		for (const tab of tabs) {
+			const isActive = tab.dataset.aiUsageTab === name;
+			tab.setAttribute('aria-selected', String(isActive));
+			tab.classList.toggle('bg-primary', isActive);
+			tab.classList.toggle('text-primary-content', isActive);
+			tab.classList.toggle('font-extrabold', isActive);
+			tab.classList.toggle('text-base-content/55', !isActive);
+			tab.classList.toggle('font-bold', !isActive);
+			tab.classList.toggle('hover:bg-base-content/10', !isActive);
+		}
+
+		for (const panel of panels) {
+			panel.classList.toggle('hidden', panel.dataset.aiUsagePanel !== name);
+		}
+	};
+
+	for (const tab of tabs) {
+		tab.addEventListener('click', () => activate(tab.dataset.aiUsageTab ?? 'activity'));
+	}
+}
+
+function getSortValue(row: HTMLTableRowElement, key: string): string | number {
+	if (key === 'name') return row.dataset.modelName?.toLowerCase() ?? '';
+	const value = row.dataset[`model${key.charAt(0).toUpperCase()}${key.slice(1)}`];
+	return Number(value ?? 0);
+}
+
+function initModelSorting(): void {
+	const table = document.querySelector<HTMLTableElement>('[data-ai-usage-model-table]');
+	if (!table) return;
+	const body = table.tBodies.item(0);
+	if (!body) return;
+
+	let activeKey = 'tokens';
+	let direction: 'asc' | 'desc' = 'desc';
+
+	for (const button of table.querySelectorAll<HTMLButtonElement>('[data-ai-usage-sort]')) {
+		button.addEventListener('click', () => {
+			const key = button.dataset.aiUsageSort ?? 'tokens';
+			if (activeKey === key) {
+				direction = direction === 'asc' ? 'desc' : 'asc';
+			} else {
+				activeKey = key;
+				direction = key === 'name' ? 'asc' : 'desc';
+			}
+
+			const rows = Array.from(body.rows);
+			rows.sort((a, b) => {
+				const left = getSortValue(a, activeKey);
+				const right = getSortValue(b, activeKey);
+				const result = typeof left === 'string' && typeof right === 'string'
+					? left.localeCompare(right)
+					: Number(left) - Number(right);
+				return direction === 'asc' ? result : -result;
+			});
+
+			body.append(...rows);
+			for (const sortButton of table.querySelectorAll<HTMLButtonElement>('[data-ai-usage-sort]')) {
+				const isActive = sortButton.dataset.aiUsageSort === activeKey;
+				sortButton.setAttribute('aria-sort', isActive ? direction : 'none');
+			}
+		});
+	}
+}
+
 export function initAiUsageCharts(): void {
 	if (typeof window === 'undefined') return;
 	if (!document.getElementById(AI_USAGE_SECTION_ID)) return;
 
 	const { activity } = parseAiUsageData();
+	initTabs();
+	initModelSorting();
 	initHeatmap(activity);
 }

@@ -10,14 +10,14 @@ const isAiUsageAvailable =
 	aiUsage.available === true &&
 	aiUsage.fetchedAt !== null &&
 	Date.now() - new Date(aiUsage.fetchedAt).getTime() < STALE_DAYS * 24 * 60 * 60 * 1000;
-const footerLinks = FOOTER_LINKS.filter((link) => link.href !== '#ai-usage' || isAiUsageAvailable);
+const footerLinks = FOOTER_LINKS.filter((link) => link.href !== '/ai-usage/' || isAiUsageAvailable);
 ---
 
 <footer class="relative border-t border-base-content/10 py-12 px-6">
 	<div class="mx-auto max-w-6xl">
 		<div class="flex flex-col items-center gap-8 md:flex-row md:justify-between">
 			<div class="text-center md:text-left">
-				<a href="#hero" class="text-xl font-bold tracking-tight text-gradient">
+				<a href="/" class="text-xl font-bold tracking-tight text-gradient">
 					AD<span class="opacity-70">.</span>
 				</a>
 				<p class="mt-2 text-sm opacity-60">
