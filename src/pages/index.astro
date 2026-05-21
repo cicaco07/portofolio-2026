@@ -5,7 +5,6 @@ import Education from '../components/Education.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
-import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -13,8 +12,7 @@ import Footer from '../components/Footer.astro';
 	<Hero />
 	<Education />
 	<Experience />
-	<Projects />
+	<Projects showOthers={false} showViewAllCta={true} />
 	<Skills />
-	<Contact />
 	<Footer />
 </Layout>

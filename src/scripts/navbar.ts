@@ -11,29 +11,29 @@ export function initNavScroll(navbarId = 'navbar'): void {
 	});
 }
 
-export function initNavActiveLink(
-	sectionSelector = 'section[id]',
-	linkSelector    = '.nav-link',
-): void {
-	const sections = document.querySelectorAll<HTMLElement>(sectionSelector);
-	const navLinks = document.querySelectorAll<HTMLElement>(linkSelector);
+export function initNavActiveLink(linkSelector = '.nav-link'): void {
+	const links = document.querySelectorAll<HTMLAnchorElement>(linkSelector);
+	if (links.length === 0) return;
 
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					navLinks.forEach((l) => l.classList.remove('nav-active'));
-					const active = document.querySelector<HTMLElement>(
-						`${linkSelector}[data-section="${entry.target.id}"]`,
-					);
-					active?.classList.add('nav-active');
-				}
-			});
-		},
-		{ rootMargin: '-30% 0px -60% 0px' },
-	);
+	const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
 
-	sections.forEach((s) => observer.observe(s));
+	links.forEach((link) => {
+		const href = link.getAttribute('href');
+		if (!href) return;
+
+		const linkPath = href.replace(/\/+$/, '') || '/';
+
+		const isActive =
+			linkPath === '/'
+				? currentPath === '/'
+				: currentPath === linkPath || currentPath.startsWith(linkPath + '/');
+
+		if (isActive) {
+			link.classList.add('nav-active');
+		} else {
+			link.classList.remove('nav-active');
+		}
+	});
 }
 
 export function initMobileMenu(

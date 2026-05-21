@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # omo-opencode
 .sisyphus
+
+# playwright-mcp
+.playwright-mcp

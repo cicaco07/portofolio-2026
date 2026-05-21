@@ -110,6 +110,7 @@ export const UI = {
 		viewCase:    tr('Lihat Studi Kasus',  'View Case Study'),
 		viewCaseS:   tr('Lihat studi kasus',  'View case study'),
 		viewMore:    tr('Lihat Selengkapnya', 'View More'),
+		viewAll:     tr('Lihat Semua Proyek', 'View All Projects'),
 		privateRepo: tr('Repo Privat',        'Private Repo'),
 		privateHint: tr(
 			'Kode sumber tidak tersedia secara publik karena dimiliki klien.',
