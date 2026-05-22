@@ -2,15 +2,15 @@
   "username": "cicaco07",
   "profileUrl": "https://tokscale.ai/u/cicaco07",
   "available": true,
-  "fetchedAt": "2026-05-20T19:20:35.106Z",
-  "lastSuccessfulFetch": "2026-05-20T19:20:35.106Z",
+  "fetchedAt": "2026-05-22T02:20:24.570Z",
+  "lastSuccessfulFetch": "2026-05-22T02:20:24.570Z",
   "stale": false,
   "error": null,
   "totals": {
-    "tokens": 301727045,
-    "cost": 991.405,
-    "requests": 4,
-    "activeDays": 21
+    "tokens": 325332298,
+    "cost": 1032.1151,
+    "requests": 5,
+    "activeDays": 23
   },
   "activity": [
     {
@@ -70,7 +70,7 @@
     {
       "date": "2026-05-08",
       "tokens": 9336450,
-      "cost": 45.8957,
+      "cost": 45.8806,
       "requests": 0
     },
     {
@@ -135,135 +135,147 @@
     },
     {
       "date": "2026-05-20",
-      "tokens": 19026679,
-      "cost": 40.1025,
+      "tokens": 31365830,
+      "cost": 44.9945,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-21",
+      "tokens": 6904600,
+      "cost": 31.2548,
+      "requests": 0
+    },
+    {
+      "date": "2026-05-22",
+      "tokens": 4361502,
+      "cost": 4.5784,
       "requests": 0
     }
   ],
   "models": [
     {
       "name": "kr/claude-opus-4-7",
-      "tokens": 45212174,
-      "cost": 683.04687,
-      "percentage": 68.89685604959013
+      "tokens": 46745503,
+      "cost": 706.905465,
+      "percentage": 68.49095609577638
     },
     {
       "name": "claude-opus-4-6",
       "tokens": 30088628,
       "cost": 159.05606000000003,
-      "percentage": 16.043500015796823
+      "percentage": 15.410690907909697
     },
     {
       "name": "kr/claude-sonnet-4-6",
-      "tokens": 28926821,
-      "cost": 87.519003,
-      "percentage": 8.827775100257243
+      "tokens": 29841054,
+      "cost": 90.274914,
+      "percentage": 8.746594102683854
     },
     {
       "name": "gpt-5.5",
-      "tokens": 45409366,
-      "cost": 44.54748,
-      "percentage": 4.493368539895359
+      "tokens": 57783724,
+      "cost": 57.594485,
+      "percentage": 5.580238856257606
     },
     {
       "name": "ag/claude-opus-4-6-thinking",
       "tokens": 12896727,
-      "cost": 11.224402,
-      "percentage": 1.1321712210418757
+      "cost": 11.224402000000001,
+      "percentage": 1.0875146149610608
     },
     {
       "name": "gpt-5.4",
       "tokens": 909229,
-      "cost": 2.4276349999999995,
-      "percentage": 0.2448681437277455
+      "cost": 2.427635,
+      "percentage": 0.23520972808092536
+    },
+    {
+      "name": "kr/claude-opus-4-6",
+      "tokens": 390155,
+      "cost": 2.127775,
+      "percentage": 0.20615676539817188
     },
     {
       "name": "claude-sonnet-4-5-thinking",
       "tokens": 85096,
       "cost": 1.27644,
-      "percentage": 0.12875061258378773
-    },
-    {
-      "name": "kr/claude-opus-4-6",
-      "tokens": 209236,
-      "cost": 1.06414,
-      "percentage": 0.10733655861216498
+      "percentage": 0.12367225934360657
     },
     {
       "name": "gpt-5.2-codex",
       "tokens": 537028,
       "cost": 0.45994165000000004,
-      "percentage": 0.04639291246772124
+      "percentage": 0.044563021388961746
     },
     {
       "name": "claude-sonnet-4-5",
       "tokens": 20015,
-      "cost": 0.30022499999999996,
-      "percentage": 0.030282780751909735
+      "cost": 0.300225,
+      "percentage": 0.029088326957345652
     },
     {
       "name": "claude-sonnet-4",
       "tokens": 8401,
       "cost": 0.126015,
-      "percentage": 0.012710748993094864
+      "percentage": 0.012209394692413729
     },
     {
       "name": "cx/gpt-5.3-codex",
       "tokens": 142613,
       "cost": 0.11528755,
-      "percentage": 0.011628703805728478
+      "percentage": 0.011170028973307801
     },
     {
       "name": "codex-auto-review",
       "tokens": 808922,
       "cost": 0.07918249999999999,
-      "percentage": 0.007986897449872904
+      "percentage": 0.007671867596969013
     },
     {
       "name": "claude-opus-4-7",
       "tokens": 10668,
       "cost": 0.05374,
-      "percentage": 0.005420590016179964
+      "percentage": 0.005206783881048399
     },
     {
       "name": "kr/claude-sonnet-4-5",
       "tokens": 17259,
       "cost": 0.05268900000000001,
-      "percentage": 0.005314578849320918
-    },
-    {
-      "name": "minimax-m2.5",
-      "tokens": 12574,
-      "cost": 0.0301776,
-      "percentage": 0.0030439225394914863
+      "percentage": 0.005104954147907687
     },
     {
       "name": "claude-haiku-4-5",
       "tokens": 3598,
       "cost": 0.017990000000000003,
-      "percentage": 0.0018145964717357194
+      "percentage": 0.0017430227394875455
+    },
+    {
+      "name": "minimax-m2.5",
+      "tokens": 12574,
+      "cost": 0.0150888,
+      "percentage": 0.0014619300451128223
     },
     {
       "name": "kr/claude-haiku-4-5",
       "tokens": 5419,
       "cost": 0.006059,
-      "percentage": 0.0006111528639381168
+      "percentage": 0.0005870469582298519
     },
     {
       "name": "glm-5",
       "tokens": 517,
       "cost": 0.0016544,
-      "percentage": 0.0001668742858721275
+      "percentage": 0.00016029220790484685
     },
     {
       "name": "cx/gpt-5.5",
-      "tokens": 112275099,
+      "tokens": 118870572,
       "cost": 0,
       "percentage": 0
     },
     {
       "name": "cx/gpt-5.4",
-      "tokens": 24147655,
+      "tokens": 26154596,
       "cost": 0,
       "percentage": 0
     }
@@ -271,23 +283,23 @@
   "clients": [
     {
       "name": "opencode",
-      "tokens": 255489680,
-      "percentage": 84.675763818255
+      "tokens": 266720575,
+      "percentage": 81.984044203321
     },
     {
       "name": "codex",
-      "tokens": 46218288,
-      "percentage": 15.317913579805218
+      "tokens": 58592646,
+      "percentage": 18.010091946050803
     },
     {
       "name": "claude",
       "tokens": 19077,
-      "percentage": 0.006322601939776396
+      "percentage": 0.0058638506281967736
     }
   ],
   "stats": {
     "streak": 0,
     "bestDay": "2026-05-19",
-    "avgDailyTokens": 14367955
+    "avgDailyTokens": 14144883
   }
 }
