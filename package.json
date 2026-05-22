@@ -11,7 +11,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "refresh:ai-usage": "node scripts/fetch-ai-usage.mjs",
-    "refresh:commits": "node scripts/fetch-commits.mjs"
+    "refresh:commits": "node scripts/fetch-commits.mjs",
+    "compare:gitlab-commits": "node scripts/fetch-commits.mjs --gitlab-mode=commits --dry-run",
+    "compare:gitlab-activity": "node scripts/fetch-commits.mjs --gitlab-mode=activity --dry-run"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",

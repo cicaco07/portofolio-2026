@@ -43,11 +43,11 @@ export const UI = {
 	},
 	section: {
 		education: {
-			number:   '01. Education',
+			number:   'Education',
 			title:    tr('Riwayat Pendidikan', 'Education History'),
 		},
 		experience: {
-			number:   '02. Experience',
+			number:   'Experience',
 			title:    tr('Pengalaman Kerja',   'Work Experience'),
 			subtitle: tr(
 				'Perjalanan profesional saya sebagai developer, dari miniclass hingga internship di perusahaan teknologi.',
@@ -55,7 +55,7 @@ export const UI = {
 			),
 		},
 		projects: {
-			number:   '03. Projects',
+			number:   'Projects',
 			title:    tr('Project Unggulan',   'Featured Projects'),
 			subtitle: tr(
 				'Tiga project unggulan yang merepresentasikan keahlian teknis dan proses pengembangan saya.',
@@ -68,7 +68,7 @@ export const UI = {
 			),
 		},
 		aiUsage: {
-			number:   '04. AI Usage',
+			number:   'AI Usage',
 			title:    tr('Penggunaan AI', 'AI Usage'),
 			subtitle: tr('Statistik penggunaan token AI saya dari Tokscale.', 'My AI token usage statistics from Tokscale.'),
 			totalTokens: tr('Total Token', 'Total Tokens'),
@@ -85,7 +85,7 @@ export const UI = {
 			updatedAt: tr('Diperbarui', 'Updated'),
 		},
 		skills: {
-			number:   '05. Skills',
+			number:   'Skills',
 			title:    tr('Tech Universe',      'Tech Universe'),
 			subtitle: tr(
 				'Ekosistem teknologi yang saya kuasai — arahkan kursor untuk jeda dan lihat detail.',
@@ -93,7 +93,7 @@ export const UI = {
 			),
 		},
 		contact: {
-			number:   '06. Contact',
+			number:   'Contact',
 			title:    tr('Hubungi Saya',       'Contact Me'),
 			subtitle: tr(
 				'Tertarik untuk berkolaborasi atau punya pertanyaan? Jangan ragu untuk menghubungi saya.',
@@ -101,7 +101,7 @@ export const UI = {
 			),
 		},
 		commitActivity: {
-			number:   '03. Commits',
+			number:   'Commits',
 			title:    tr('Aktivitas Commit',   'Commit Activity'),
 			subtitle: tr(
 				'Kontribusi harian saya di GitHub dan GitLab — gabungan dari semua repositori.',

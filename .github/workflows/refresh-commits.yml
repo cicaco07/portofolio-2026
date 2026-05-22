@@ -33,6 +33,7 @@ jobs:
           # including private contribution counts when enabled on the token.
           GH_PAT: ${{ secrets.GH_PAT }}
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GITLAB_FETCH_MODE: activity
           GITLAB_USER_ID: ${{ secrets.GITLAB_USER_ID }}
           GITLAB_AUTHOR: ${{ secrets.GITLAB_AUTHOR }}
           GITLAB_REF_NAME: ${{ secrets.GITLAB_REF_NAME }}

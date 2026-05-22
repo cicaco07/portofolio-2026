@@ -135,7 +135,7 @@ function drawRoundedRect(
 	ctx.fill();
 }
 
-type CellMap = Map<string, { x: number; y: number; size: number; point: CommitDataPoint | undefined; inYear: boolean }>;
+type CellMap = Map<string, { x: number; y: number; size: number; point: CommitDataPoint | undefined; inRange: boolean }>;
 
 function drawHeatmap(
 	canvas: HTMLCanvasElement,
@@ -186,15 +186,19 @@ function drawHeatmap(
 	ctx.textAlign = 'left';
 	ctx.textBaseline = 'alphabetic';
 	ctx.font = `${compact ? '600 10px' : '600 12px'} "Fira Code", monospace`;
-	const monthLabels = new Set<number>();
+	const monthLabels = new Set<string>();
 	for (let i = 0; i < totalDays; i++) {
 		const current = new Date(start);
 		current.setDate(start.getDate() + i);
-		if (current.getFullYear() !== year || current.getDate() !== 1 || monthLabels.has(current.getMonth())) continue;
-		monthLabels.add(current.getMonth());
+		const monthKey = `${current.getFullYear()}-${current.getMonth()}`;
+		if (current.getDate() !== 1 || monthLabels.has(monthKey)) continue;
+		const isFirstMonthLabel = monthLabels.size === 0;
+		monthLabels.add(monthKey);
 		const week = Math.floor(i / 7);
+		const month = current.toLocaleString('en-US', { month: 'short' });
+		const label = isFirstMonthLabel || current.getMonth() === 0 ? `${month} ${current.getFullYear()}` : month;
 		ctx.fillStyle = muted;
-		ctx.fillText(current.toLocaleString('en-US', { month: 'short' }), left + week * (cell + cellGap), top - 10);
+		ctx.fillText(label, left + week * (cell + cellGap), top - 10);
 	}
 
 	for (let i = 0; i < totalDays; i++) {
@@ -204,15 +208,15 @@ function drawHeatmap(
 		const day = current.getDay();
 		const x = left + week * (cell + cellGap);
 		const y = top + day * (cell + cellGap);
-		const inYear = current.getFullYear() === year;
-		const point = inYear ? activityByDate.get(toDateKey(current)) : undefined;
+		const dateKey = toDateKey(current);
+		const point = activityByDate.get(dateKey);
 		const intensity = point ? getIntensity(point.count) : 0;
 
 		const colors = [palette.empty, palette.level1, palette.level2, palette.level3, palette.level4];
-		ctx.fillStyle = inYear ? colors[intensity] : 'rgba(148, 163, 184, 0.04)';
+		ctx.fillStyle = colors[intensity];
 		drawRoundedRect(ctx, x, y, cell, cell, 2);
 
-		cellMap.set(toDateKey(current), { x, y, size: cell, point, inYear });
+		cellMap.set(dateKey, { x, y, size: cell, point, inRange: true });
 	}
 
 	if (activity.length === 0) {
@@ -257,7 +261,7 @@ function formatDate(dateStr: string): string {
 	return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
-function setupTooltip(canvas: HTMLCanvasElement, cellMap: CellMap): void {
+function setupTooltip(canvas: HTMLCanvasElement, getCellMap: () => CellMap): void {
 	let tooltip = document.getElementById('commit-heatmap-tooltip');
 	if (!tooltip) {
 		tooltip = document.createElement('div');
@@ -282,15 +286,15 @@ function setupTooltip(canvas: HTMLCanvasElement, cellMap: CellMap): void {
 		document.body.appendChild(tooltip);
 	}
 
-	const dpr = window.devicePixelRatio || 1;
-
 	canvas.addEventListener('mousemove', (e) => {
+		const dpr = window.devicePixelRatio || 1;
 		const rect = canvas.getBoundingClientRect();
 		const scaleX = (canvas.width / dpr) / rect.width;
 		const scaleY = (canvas.height / dpr) / rect.height;
 		const mx = (e.clientX - rect.left) * scaleX;
 		const my = (e.clientY - rect.top) * scaleY;
 
+		const cellMap = getCellMap();
 		let found: { dateKey: string; cell: CellMap extends Map<string, infer V> ? V : never } | null = null;
 		for (const [dateKey, cell] of cellMap) {
 			if (
@@ -298,14 +302,17 @@ function setupTooltip(canvas: HTMLCanvasElement, cellMap: CellMap): void {
 				mx <= cell.x + cell.size &&
 				my >= cell.y &&
 				my <= cell.y + cell.size &&
-				cell.inYear
+				cell.inRange
 			) {
 				found = { dateKey, cell };
 				break;
 			}
 		}
 
-		if (!found || !tooltip) return;
+		if (!found || !tooltip) {
+			if (tooltip) tooltip.style.opacity = '0';
+			return;
+		}
 
 		const { dateKey, cell } = found;
 		const point = cell.point;
@@ -349,7 +356,7 @@ export function initCommitHeatmap(): void {
 	};
 
 	let cellMap = render();
-	setupTooltip(canvas, cellMap);
+	setupTooltip(canvas, () => cellMap);
 
 	const resizeObserver = new ResizeObserver(() => {
 		cellMap = render();

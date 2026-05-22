@@ -1,6 +1,6 @@
 /**
  * fetch-commits.mjs
- * Fetches commit activity for cicaco07 from GitHub (GraphQL) and GitLab (REST),
+ * Fetches commit activity for cicaco07 from GitHub (GraphQL) and GitLab,
  * aggregates per-date counts, and writes to src/data/commit-activity.json.
  *
  * Usage:
@@ -15,6 +15,7 @@
  *   GITLAB_REF_NAME Branch/ref to count, for example "develop"; defaults to each project's default branch
  *   GITLAB_ALL_REFS Set to "true" to scan every branch/tag instead of default branch only
  *   GITLAB_REBASE   Set to "true" once to replace old GitLab counts after fixing overcount rules
+ *   GITLAB_FETCH_MODE "activity" for profile-style events, "commits" for repository commits
  *   GITHUB_START_DATE Start date for GitHub activity, defaults to 2025-07-01
  */
 
@@ -29,6 +30,15 @@ const OUTPUT_PATH = resolve(ROOT, 'src/data/commit-activity.json');
 const USERNAME = 'cicaco07';
 const DRY_RUN = process.argv.includes('--dry-run');
 
+function getArgValue(name) {
+  const prefix = `${name}=`;
+  const inline = process.argv.find((arg) => arg.startsWith(prefix));
+  if (inline) return inline.slice(prefix.length);
+
+  const index = process.argv.indexOf(name);
+  return index >= 0 ? process.argv[index + 1] : undefined;
+}
+
 const GH_PAT = process.env.GH_PAT ?? '';
 const GITLAB_TOKEN = process.env.GITLAB_TOKEN ?? '';
 const GITLAB_USER_ID = process.env.GITLAB_USER_ID ?? '';
@@ -36,10 +46,16 @@ const GITLAB_AUTHOR = process.env.GITLAB_AUTHOR ?? USERNAME;
 const GITLAB_REF_NAME = process.env.GITLAB_REF_NAME ?? '';
 const GITLAB_ALL_REFS = process.env.GITLAB_ALL_REFS === 'true';
 const GITLAB_REBASE = process.env.GITLAB_REBASE === 'true';
+const GITLAB_FETCH_MODE = getArgValue('--gitlab-mode') ?? process.env.GITLAB_FETCH_MODE ?? 'activity';
 const GITHUB_START_DATE = process.env.GITHUB_START_DATE ?? process.env.COMMIT_START_DATE ?? '2025-07-01';
 
 const GITHUB_GRAPHQL = 'https://api.github.com/graphql';
 const GITLAB_REST = 'https://gitlab.com/api/v4';
+const GITLAB_WEB = 'https://gitlab.com';
+
+if (!['commits', 'activity'].includes(GITLAB_FETCH_MODE)) {
+  throw new Error(`Invalid GitLab fetch mode '${GITLAB_FETCH_MODE}', expected "commits" or "activity"`);
+}
 
 function getGitHubStartDate() {
   const date = new Date(`${GITHUB_START_DATE}T00:00:00.000Z`);
@@ -136,6 +152,71 @@ function toDateStr(d) {
 
 function isOnOrAfterGitHubStart(dateStr) {
   return dateStr >= GITHUB_START_DATE;
+}
+
+function addCalendarEntry(counts, date, count) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+
+  const rawCount =
+    count && typeof count === 'object'
+      ? count.count ?? count.contribution_count ?? count.contributions ?? count.value
+      : count;
+  const numericCount = Number(rawCount);
+  if (!Number.isFinite(numericCount) || numericCount <= 0) return;
+
+  counts.set(date, (counts.get(date) ?? 0) + numericCount);
+}
+
+function parseGitLabCalendarPayload(payload) {
+  /** @type {Map<string, number>} */
+  const counts = new Map();
+
+  if (Array.isArray(payload)) {
+    for (const item of payload) {
+      if (Array.isArray(item)) {
+        addCalendarEntry(counts, String(item[0]), item[1]);
+        continue;
+      }
+
+      if (item && typeof item === 'object') {
+        addCalendarEntry(
+          counts,
+          String(item.date ?? item.day ?? item.created_at ?? ''),
+          item.count ?? item.contribution_count ?? item.contributions ?? item.value,
+        );
+      }
+    }
+
+    return counts;
+  }
+
+  if (!payload || typeof payload !== 'object') return counts;
+
+  const nested =
+    payload.contributions ??
+    payload.calendar ??
+    payload.days ??
+    payload.activity ??
+    payload.data;
+
+  if (nested && nested !== payload) {
+    const nestedCounts = parseGitLabCalendarPayload(nested);
+    for (const [date, count] of nestedCounts) {
+      counts.set(date, (counts.get(date) ?? 0) + count);
+    }
+  }
+
+  for (const [date, count] of Object.entries(payload)) {
+    addCalendarEntry(counts, date, count);
+  }
+
+  return counts;
+}
+
+function getGitLabEventContributionCount(event) {
+  const commitCount = Number(event?.push_data?.commit_count ?? 0);
+  if (commitCount > 0) return commitCount;
+  return 1;
 }
 
 // ─── GitHub source ───────────────────────────────────────────────────────────
@@ -310,6 +391,117 @@ async function fetchGitLabEvents(headers) {
   return counts;
 }
 
+async function fetchGitLabCalendarActivity() {
+  const url = `${GITLAB_WEB}/users/${encodeURIComponent(USERNAME)}/calendar.json`;
+  const res = await fetchWithTimeout(url, {
+    headers: {
+      'User-Agent': 'portfolio-bot/1.0',
+      Accept: 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`GitLab calendar HTTP ${res.status}`);
+  }
+
+  const json = await res.json();
+  const counts = parseGitLabCalendarPayload(json);
+
+  if (counts.size === 0) {
+    throw new Error('GitLab calendar returned no activity rows');
+  }
+
+  return counts;
+}
+
+/**
+ * Fetches GitLab profile-style activity events.
+ * This is intentionally not commit-only: it counts visible profile events such
+ * as pushes, merge requests, issues, comments, and other activity that GitLab
+ * may show in the contribution graph.
+ *
+ * Returns a Map<dateStr, activityEventCount>.
+ */
+async function fetchGitLabActivityEvents(headers) {
+  const userId = await resolveGitLabUserId(headers);
+  const cutoff = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000);
+  const endpoint = GITLAB_TOKEN ? `${GITLAB_REST}/events` : `${GITLAB_REST}/users/${userId}/events`;
+
+  /** @type {Map<string, number>} */
+  const counts = new Map();
+  let page = 1;
+  let done = false;
+
+  while (!done) {
+    const url = `${endpoint}?per_page=100&page=${page}`;
+
+    const res = await fetchWithTimeout(url, { headers });
+    if (!res.ok) throw new Error(`GitLab activity events HTTP ${res.status} (page ${page})`);
+
+    const events = await res.json();
+    if (!Array.isArray(events) || events.length === 0) break;
+
+    for (const event of events) {
+      const createdAt = event.created_at ? new Date(event.created_at) : null;
+      if (!createdAt) continue;
+
+      if (createdAt < cutoff) {
+        done = true;
+        break;
+      }
+
+      const dateStr = toDateStr(createdAt);
+      counts.set(dateStr, (counts.get(dateStr) ?? 0) + 1);
+    }
+
+    if (!done && events.length === 100) {
+      page += 1;
+    } else {
+      done = true;
+    }
+  }
+
+  return counts;
+}
+
+async function fetchGitLabActivity(headers) {
+  const failures = [];
+
+  try {
+    const counts = await fetchGitLabCalendarActivity();
+    console.log('[fetch-commits] GitLab activity source: contribution calendar');
+    return counts;
+  } catch (calendarErr) {
+    failures.push(calendarErr.message);
+  }
+
+  try {
+    const counts = await fetchGitLabActivityEvents(headers);
+    console.log('[fetch-commits] GitLab activity source: user events API');
+    return counts;
+  } catch (eventsErr) {
+    failures.push(eventsErr.message);
+  }
+
+  try {
+    const counts = await fetchGitLabProjectActivityEvents(headers);
+    console.log('[fetch-commits] GitLab activity source: project events API');
+    return counts;
+  } catch (projectEventsErr) {
+    failures.push(projectEventsErr.message);
+  }
+
+  try {
+    const counts = await fetchGitLabProjectCommits(headers);
+    console.log('[fetch-commits] GitLab activity source: repository commits fallback');
+    return counts;
+  } catch (projectCommitsErr) {
+    failures.push(projectCommitsErr.message);
+  }
+
+  throw new Error(failures.join(' | '));
+}
+
 function createGitLabHeaders() {
   const headers = {
     'User-Agent': 'portfolio-bot/1.0',
@@ -427,8 +619,80 @@ async function fetchGitLabProjectCommits(headers) {
   return counts;
 }
 
+async function fetchGitLabProjectActivityEvents(headers) {
+  const userId = await resolveGitLabUserId(headers);
+  const projects = await fetchGitLabProjects(headers);
+  const after = toDateStr(new Date(Date.now() - 365 * 24 * 60 * 60 * 1000));
+
+  /** @type {Map<string, number>} */
+  const counts = new Map();
+  const seenEventIds = new Set();
+  let scannedProjects = 0;
+  let matchingEvents = 0;
+
+  for (const project of projects) {
+    if (!project?.id) continue;
+
+    let page = 1;
+    let projectHadEvents = false;
+
+    while (page > 0) {
+      const params = new URLSearchParams({
+        after,
+        per_page: '100',
+        page: String(page),
+      });
+      const url = `${GITLAB_REST}/projects/${encodeURIComponent(project.id)}/events?${params}`;
+
+      const res = await fetchWithTimeout(url, { headers });
+      if (res.status === 403 || res.status === 404) break;
+      if (!res.ok) {
+        throw new Error(
+          `GitLab project activity HTTP ${res.status} (${project.path_with_namespace ?? project.id}, page ${page})`,
+        );
+      }
+
+      const events = await res.json();
+      if (!Array.isArray(events)) {
+        throw new Error(`GitLab project activity response is not an array (${project.path_with_namespace ?? project.id})`);
+      }
+
+      for (const event of events) {
+        const eventId = event.id ? `${project.id}:${event.id}` : null;
+        if (eventId) {
+          if (seenEventIds.has(eventId)) continue;
+          seenEventIds.add(eventId);
+        }
+
+        const authorId = Number(event.author_id ?? event.author?.id ?? 0);
+        const authorUsername = String(event.author_username ?? event.author?.username ?? '').toLowerCase();
+        if (authorId !== userId && authorUsername !== USERNAME.toLowerCase()) continue;
+
+        const createdAt = event.created_at ? new Date(event.created_at) : null;
+        if (!createdAt) continue;
+
+        const dateStr = toDateStr(createdAt);
+        counts.set(dateStr, (counts.get(dateStr) ?? 0) + getGitLabEventContributionCount(event));
+        matchingEvents += 1;
+        projectHadEvents = true;
+      }
+
+      page = getNextPage(res);
+    }
+
+    if (projectHadEvents) scannedProjects += 1;
+  }
+
+  console.log(
+    `[fetch-commits] GitLab scanned ${projects.length} visible projects for activity, ${scannedProjects} with matching events, ${matchingEvents} matching events counted`,
+  );
+
+  return counts;
+}
+
 async function fetchGitLab() {
   const headers = createGitLabHeaders();
+  if (GITLAB_FETCH_MODE === 'activity') return fetchGitLabActivity(headers);
   if (GITLAB_TOKEN) return fetchGitLabProjectCommits(headers);
   return fetchGitLabEvents(headers);
 }
@@ -650,6 +914,7 @@ async function main() {
   console.log(`  total commits: ${snapshot.totals.all}`);
   console.log(`  github:        ${snapshot.totals.github} commits (available: ${snapshot.github.available})`);
   console.log(`  gitlab:        ${snapshot.totals.gitlab} commits (available: ${snapshot.gitlab.available})`);
+  console.log(`  gitlab mode:   ${GITLAB_FETCH_MODE}`);
   console.log(`  active days:   ${snapshot.activity.length}`);
   console.log(`  error:         ${snapshot.error ?? 'none'}`);
   console.log('──────────────────────────────────────────────────\n');
