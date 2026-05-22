@@ -14,8 +14,7 @@ export function initGsapScroll(): void {
 					const panels      = track.children;
 					const panelCount  = panels.length;
 					const distance    = track.scrollWidth - window.innerWidth;
-					const isProjects  = section.id === 'projects';
-					const progressCls = isProjects ? 'projects-progress' : 'experience-progress';
+					const progressCls = 'experience-progress';
 
 					const tween = gsap.to(track, {
 						x: () => -distance,

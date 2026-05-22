@@ -1,4 +1,4 @@
-﻿---
+---
 import { featuredProjects, otherProjects } from '../data/projects';
 import { UI } from '../i18n';
 import SectionHeader from './ui/SectionHeader.astro';
@@ -13,153 +13,169 @@ interface Props {
 const { showOthers = true, showViewAllCta = false } = Astro.props;
 ---
 
-<section id="projects" class="relative" data-horizontal-section>
-	<div class="horizontal-pin relative h-screen overflow-hidden">
-		<div class="horizontal-track flex h-full items-center">
+<section id="projects" class="relative py-24 px-6">
+	<div class="mx-auto max-w-5xl">
+		<SectionHeader
+			number={UI.section.projects.number}
+			title={UI.section.projects.title}
+			subtitle={UI.section.projects.subtitle}
+		/>
 
-			<div class="shrink-0 w-screen px-6 flex flex-col justify-center">
-				<div class="mx-auto max-w-4xl w-full">
-					<SectionHeader
-						number={UI.section.projects.number}
-						title={UI.section.projects.title}
-						subtitle={UI.section.projects.subtitle}
-					/>
-					<div class="mt-4 flex items-center gap-3 opacity-50">
-						<span class="text-xs font-mono uppercase tracking-widest"><T tr={UI.hero.scroll} /></span>
-						<svg class="h-5 w-5 animate-bounce-x" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-						</svg>
-					</div>
-				</div>
-			</div>
-
+		<div class="mt-12 divide-y divide-base-content/10" data-projects-list>
 			{featuredProjects.map((project, i) => (
-				<article class="shrink-0 w-screen px-6 flex items-center" data-panel={i}>
-					<div class="mx-auto max-w-5xl w-full grid gap-8 lg:grid-cols-[1fr_1.4fr] items-center">
-						<div class="flex flex-col gap-5">
-							<div class="flex items-center gap-3">
-								<span class="font-mono text-xs opacity-50"><T tr={UI.projects.featured} /> · {project.year}</span>
-								<span class={`inline-block rounded-full bg-${project.accent}/10 px-2.5 py-0.5 font-mono text-xs font-medium text-${project.accent}`}>
-									{String(i + 1).padStart(2, '0')}
-								</span>
-							</div>
-							<h3 class={`text-3xl font-extrabold tracking-tight sm:text-4xl text-${project.accent}`}>
-								{project.title}
-							</h3>
-							<p class="opacity-70 leading-relaxed"><T tr={project.description} /></p>
-
-							{project.metrics && (
-								<div class="flex gap-5">
-									{project.metrics.map((m) => (
-										<div class="flex flex-col">
-											<span class={`text-xl font-extrabold text-${project.accent}`}>{m.value}</span>
-											<span class="font-mono text-xs opacity-50 uppercase tracking-wider"><T tr={m.label} /></span>
-										</div>
-									))}
-								</div>
+				<article class="project-list-item reveal" data-project-item>
+					<button
+						type="button"
+						class="project-list-row group grid w-full grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg px-2 py-5 text-left transition-colors hover:bg-base-content/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:grid-cols-[auto_auto_1fr_auto_auto]"
+						aria-expanded="false"
+						aria-controls={`project-detail-${i}`}
+					>
+						<span class="font-mono text-xs opacity-40 sm:w-7">{String(i + 1).padStart(2, '0')}</span>
+						<span class="hidden h-2.5 w-2.5 rounded-full sm:block" style={`background: var(--color-${project.accent});`}></span>
+						<span class="min-w-0">
+							<span class="flex flex-wrap items-center gap-x-3 gap-y-1">
+								<span class="text-lg font-bold transition-colors group-hover:text-primary">{project.title}</span>
+								{project.year && <span class="font-mono text-xs opacity-40">{project.year}</span>}
+							</span>
+							<span class="mt-1 block max-w-2xl truncate text-sm opacity-60"><T tr={project.description} /></span>
+						</span>
+						<span class="hidden max-w-[260px] flex-wrap justify-end gap-1.5 lg:flex">
+							{project.techStack.slice(0, 4).map((tech) => (
+								<span class="tech-badge text-[0.62rem]">{tech}</span>
+							))}
+							{project.techStack.length > 4 && (
+								<span class="tech-badge text-[0.62rem]">+{project.techStack.length - 4}</span>
 							)}
+						</span>
+						<svg class="project-chevron h-4 w-4 opacity-40 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+						</svg>
+					</button>
 
-							<div class="flex items-center gap-3">
-								{project.detailSlug && (
-									<a href={`/projects/${project.detailSlug}`} class={`group inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-primary-content transition-all hover:scale-105`} style={`background: linear-gradient(135deg, var(--color-${project.accent}), var(--color-secondary)); box-shadow: 0 8px 20px color-mix(in oklch, var(--color-${project.accent}) 25%, transparent);`}>
-										<T tr={UI.projects.viewCase} />
-										<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-										</svg>
-									</a>
-								)}
-								{project.repoVisibility === 'private' ? (
-									<span class="inline-flex items-center gap-1.5 rounded-xl border border-base-content/20 px-3 h-10 text-xs font-mono uppercase tracking-wider opacity-70" title={UI.projects.privateHint.id}>
-										<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v3M5 11h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z" />
-										</svg>
-										<T tr={UI.projects.privateRepo} />
-									</span>
-								) : project.githubUrl && (
-									<a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-xl border border-base-content/20 opacity-70 transition-all hover:border-primary/40 hover:text-primary hover:bg-primary/5 hover:opacity-100" aria-label="GitHub">
-										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-											<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-										</svg>
-									</a>
-								)}
-								{project.liveUrl && (
-									<a href={project.liveUrl} class="flex h-10 w-10 items-center justify-center rounded-xl border border-base-content/20 opacity-70 transition-all hover:border-primary/40 hover:text-primary hover:bg-primary/5 hover:opacity-100" aria-label="Live">
-										<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-										</svg>
-									</a>
-								)}
-							</div>
-						</div>
-
-						<BrowserMockup url={`${project.title.toLowerCase().replace(/\s+/g, '-')}.app`}>
-							<div class="relative overflow-hidden" style={`background: color-mix(in oklch, var(--color-${project.accent}) 5%, var(--color-base-200));`}>
-								<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--color-base-content) 1px, transparent 1px); background-size: 20px 20px;"></div>
-								<div class="relative p-6 flex flex-col gap-4">
-									<div class="flex items-center gap-3">
-										<div class="h-10 w-10 rounded-xl flex items-center justify-center text-sm font-bold" style={`background: var(--color-${project.accent}); color: white;`}>
-											{project.title.slice(0, 2).toUpperCase()}
-										</div>
-										<div>
-											<div class="h-2.5 w-24 rounded-full bg-base-content/20"></div>
-											<div class="mt-1.5 h-2 w-16 rounded-full bg-base-content/10"></div>
-										</div>
+					<div id={`project-detail-${i}`} class="project-detail overflow-hidden" hidden>
+						<div class="project-detail-inner px-2 pb-10 pt-3">
+							<div class="grid gap-8 lg:grid-cols-[0.9fr_1.35fr] lg:items-center">
+								<div class="flex flex-col gap-5">
+									<div class="flex flex-wrap items-center gap-3">
+										<span class="font-mono text-xs opacity-50"><T tr={UI.projects.featured} /> · {project.year}</span>
+										<span class={`inline-block rounded-full bg-${project.accent}/10 px-2.5 py-0.5 font-mono text-xs font-medium text-${project.accent}`}>
+											{String(i + 1).padStart(2, '0')}
+										</span>
 									</div>
+									<h3 class={`text-3xl font-extrabold tracking-tight sm:text-4xl text-${project.accent}`}>
+										{project.title}
+									</h3>
+									<p class="leading-relaxed opacity-70"><T tr={project.description} /></p>
+
 									{project.metrics && (
-										<div class="grid grid-cols-3 gap-3">
+										<div class="grid grid-cols-3 gap-4">
 											{project.metrics.map((m) => (
-												<div class="rounded-xl p-3" style="background: color-mix(in oklch, var(--color-base-100) 60%, transparent); border: 1px solid color-mix(in oklch, var(--color-base-content) 8%, transparent);">
-													<div class={`text-lg font-bold text-${project.accent}`}>{m.value}</div>
-													<div class="text-xs opacity-50 mt-0.5"><T tr={m.label} /></div>
+												<div>
+													<span class={`block text-xl font-extrabold text-${project.accent}`}>{m.value}</span>
+													<span class="font-mono text-xs uppercase tracking-wider opacity-50"><T tr={m.label} /></span>
 												</div>
 											))}
 										</div>
 									)}
-									{project.highlights && (
-										<div class="space-y-2">
-											{project.highlights.map((h) => (
-												<div class="flex items-center gap-2 rounded-lg px-3 py-2" style="background: color-mix(in oklch, var(--color-base-100) 40%, transparent);">
-													<svg class={`h-3.5 w-3.5 shrink-0 text-${project.accent}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-														<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-													</svg>
-													<span class="text-xs opacity-70"><T tr={h.text} /></span>
-												</div>
-											))}
-										</div>
-									)}
-									<div class="flex flex-wrap gap-1.5 mt-1">
+
+									<div class="flex flex-wrap gap-1.5">
 										{project.techStack.map((tech) => (
-											<span class="tech-badge text-[0.6rem]">{tech}</span>
+											<span class="tech-badge text-[0.68rem]">{tech}</span>
 										))}
 									</div>
+
+									<div class="flex items-center gap-3">
+										{project.detailSlug && (
+											<a href={`/projects/${project.detailSlug}`} class="group inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-primary-content transition-all hover:scale-105" style={`background: linear-gradient(135deg, var(--color-${project.accent}), var(--color-secondary)); box-shadow: 0 8px 20px color-mix(in oklch, var(--color-${project.accent}) 25%, transparent);`}>
+												<T tr={UI.projects.viewCase} />
+												<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+													<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+												</svg>
+											</a>
+										)}
+										{project.repoVisibility === 'private' ? (
+											<span class="inline-flex h-10 items-center gap-1.5 rounded-lg border border-base-content/20 px-3 font-mono text-xs uppercase tracking-wider opacity-70" title={UI.projects.privateHint.id}>
+												<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+													<path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v3M5 11h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z" />
+												</svg>
+												<T tr={UI.projects.privateRepo} />
+											</span>
+										) : project.githubUrl && (
+											<a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-lg border border-base-content/20 opacity-70 transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary hover:opacity-100" aria-label="GitHub">
+												<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+													<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+												</svg>
+											</a>
+										)}
+										{project.liveUrl && (
+											<a href={project.liveUrl} class="flex h-10 w-10 items-center justify-center rounded-lg border border-base-content/20 opacity-70 transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary hover:opacity-100" aria-label="Live">
+												<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+													<path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+												</svg>
+											</a>
+										)}
+									</div>
 								</div>
+
+								<BrowserMockup url={`${project.title.toLowerCase().replace(/\s+/g, '-')}.app`}>
+									<div class="relative overflow-hidden" style={`background: color-mix(in oklch, var(--color-${project.accent}) 5%, var(--color-base-200));`}>
+										<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--color-base-content) 1px, transparent 1px); background-size: 20px 20px;"></div>
+										<div class="relative flex flex-col gap-4 p-6">
+											<div class="flex items-center gap-3">
+												<div class="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-bold" style={`background: var(--color-${project.accent}); color: white;`}>
+													{project.title.slice(0, 2).toUpperCase()}
+												</div>
+												<div>
+													<div class="h-2.5 w-24 rounded-full bg-base-content/20"></div>
+													<div class="mt-1.5 h-2 w-16 rounded-full bg-base-content/10"></div>
+												</div>
+											</div>
+											{project.metrics && (
+												<div class="grid grid-cols-3 gap-3">
+													{project.metrics.map((m) => (
+														<div class="rounded-lg p-3" style="background: color-mix(in oklch, var(--color-base-100) 60%, transparent); border: 1px solid color-mix(in oklch, var(--color-base-content) 8%, transparent);">
+															<div class={`text-lg font-bold text-${project.accent}`}>{m.value}</div>
+															<div class="mt-0.5 text-xs opacity-50"><T tr={m.label} /></div>
+														</div>
+													))}
+												</div>
+											)}
+											{project.highlights && (
+												<div class="space-y-2">
+													{project.highlights.map((h) => (
+														<div class="flex items-center gap-2 rounded-lg px-3 py-2" style="background: color-mix(in oklch, var(--color-base-100) 40%, transparent);">
+															<svg class={`h-3.5 w-3.5 shrink-0 text-${project.accent}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+																<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+															</svg>
+															<span class="text-xs opacity-70"><T tr={h.text} /></span>
+														</div>
+													))}
+												</div>
+											)}
+										</div>
+									</div>
+								</BrowserMockup>
 							</div>
-						</BrowserMockup>
+						</div>
 					</div>
 				</article>
-			))}
-		</div>
-
-		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-none z-10">
-			{featuredProjects.map((_, i) => (
-				<span class={`h-1 rounded-full bg-base-content/15 transition-all duration-500 projects-progress-${i}`} style={`width: ${i === 0 ? '2.5rem' : '0.75rem'};`}></span>
 			))}
 		</div>
 	</div>
 
 	{showViewAllCta && (
-		<div class="py-16 px-6">
-			<div class="mx-auto max-w-4xl flex flex-col items-center text-center gap-4">
-				<p class="opacity-60 text-sm sm:text-base">
+		<div class="px-6 py-16">
+			<div class="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
+				<p class="text-sm opacity-60 sm:text-base">
 					<T tr={UI.section.projects.otherSubtitle} />
 				</p>
 				<a
 					href="/projects/"
-					class="group inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-semibold text-primary-content shadow-lg transition-all duration-300 hover:scale-105"
+					class="group inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold text-primary-content shadow-lg transition-all duration-300 hover:scale-105"
 					style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); box-shadow: 0 10px 30px color-mix(in oklch, var(--color-primary) 30%, transparent);"
 				>
 					<T tr={UI.projects.viewAll} />
-					<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					<svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 					</svg>
 				</a>
@@ -168,79 +184,166 @@ const { showOthers = true, showViewAllCta = false } = Astro.props;
 	)}
 
 	{showOthers && (
-	<div class="py-24 px-6">
-		<div class="mx-auto max-w-6xl">
-			<div class="reveal mb-12">
-				<h3 class="text-2xl font-semibold"><T tr={UI.section.projects.otherTitle} /></h3>
-				<p class="mt-2 opacity-60"><T tr={UI.section.projects.otherSubtitle} /></p>
-			</div>
-			<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-				{otherProjects.map((project) => (
-					<div class="reveal glass glass-hover rounded-2xl p-6 flex flex-col">
-						<div class="flex items-start justify-between mb-4">
-							<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-								<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-								</svg>
+		<div class="px-6 py-24">
+			<div class="mx-auto max-w-6xl">
+				<div class="reveal mb-12">
+					<h3 class="text-2xl font-semibold"><T tr={UI.section.projects.otherTitle} /></h3>
+					<p class="mt-2 opacity-60"><T tr={UI.section.projects.otherSubtitle} /></p>
+				</div>
+				<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{otherProjects.map((project) => (
+						<div class="reveal glass glass-hover flex flex-col rounded-lg p-6">
+							<div class="mb-4 flex items-start justify-between">
+								<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+									<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+									</svg>
+								</div>
+								<div class="flex items-center gap-2">
+									{project.year && <span class="font-mono text-xs opacity-50">{project.year}</span>}
+									{project.repoVisibility === 'private' ? (
+										<span class="opacity-60" title={UI.projects.privateHint.id} aria-label="Private repository">
+											<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+												<path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v3M5 11h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z" />
+											</svg>
+										</span>
+									) : project.githubUrl && (
+										<a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="opacity-60 transition-opacity hover:text-primary hover:opacity-100" aria-label="GitHub">
+											<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+												<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+											</svg>
+										</a>
+									)}
+								</div>
 							</div>
-							<div class="flex items-center gap-2">
-								{project.year && <span class="font-mono text-xs opacity-50">{project.year}</span>}
-								{project.repoVisibility === 'private' ? (
-									<span class="opacity-60" title={UI.projects.privateHint.id} aria-label="Private repository">
-										<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v3M5 11h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z" />
-										</svg>
-									</span>
-								) : project.githubUrl && (
-									<a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="opacity-60 transition-opacity hover:opacity-100 hover:text-primary" aria-label="GitHub">
-										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-											<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-										</svg>
-									</a>
-								)}
+							<h4 class="mb-2 text-lg font-bold">{project.title}</h4>
+							<p class="mb-4 flex-1 text-sm leading-relaxed opacity-70"><T tr={project.description} /></p>
+							<div class="mb-4 flex flex-wrap gap-1.5">
+								{project.techStack.map((tech) => (
+									<span class="tech-badge text-[0.65rem]">{tech}</span>
+								))}
 							</div>
+							{project.detailSlug ? (
+								<a href={`/projects/${project.detailSlug}`} class="group inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 transition-opacity hover:opacity-100">
+									<T tr={UI.projects.viewCaseS} />
+									<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+									</svg>
+								</a>
+							) : project.repoVisibility === 'private' ? (
+								<span class="inline-flex items-center gap-1.5 text-xs font-medium opacity-50" title={UI.projects.privateHint.id}>
+									<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v3M5 11h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z" />
+									</svg>
+									<T tr={UI.projects.privateRepo} />
+								</span>
+							) : project.githubUrl && (
+								<a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 transition-opacity hover:opacity-100">
+									<T tr={UI.projects.viewMore} />
+									<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+									</svg>
+								</a>
+							)}
 						</div>
-						<h4 class="text-lg font-bold mb-2">{project.title}</h4>
-						<p class="text-sm opacity-70 leading-relaxed mb-4 flex-1"><T tr={project.description} /></p>
-						<div class="flex flex-wrap gap-1.5 mb-4">
-							{project.techStack.map((tech) => (
-								<span class="tech-badge text-[0.65rem]">{tech}</span>
-							))}
-						</div>
-						{project.detailSlug ? (
-							<a href={`/projects/${project.detailSlug}`} class="group inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 hover:opacity-100 transition-opacity">
-								<T tr={UI.projects.viewCaseS} />
-								<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-								</svg>
-							</a>
-						) : project.repoVisibility === 'private' ? (
-							<span class="inline-flex items-center gap-1.5 text-xs font-medium opacity-50" title={UI.projects.privateHint.id}>
-								<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-1.657 1.343-3 3-3s3 1.343 3 3v3M5 11h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z" />
-								</svg>
-								<T tr={UI.projects.privateRepo} />
-							</span>
-						) : project.githubUrl && (
-							<a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 hover:opacity-100 transition-opacity">
-								<T tr={UI.projects.viewMore} />
-								<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-								</svg>
-							</a>
-						)}
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		</div>
-	</div>
 	)}
 </section>
 
-<style>
-	@keyframes bounce-x {
-		0%, 100% { transform: translateX(0); }
-		50%       { transform: translateX(0.5rem); }
+<script>
+	import { gsap } from 'gsap';
+
+	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	function setExpanded(item: HTMLElement, expanded: boolean) {
+		const button = item.querySelector<HTMLButtonElement>('.project-list-row');
+		const detail = item.querySelector<HTMLElement>('.project-detail');
+		const chevron = item.querySelector<HTMLElement>('.project-chevron');
+		if (!button || !detail) return;
+
+		button.setAttribute('aria-expanded', String(expanded));
+		item.dataset.open = String(expanded);
+		chevron?.classList.toggle('rotate-180', expanded);
 	}
-	.animate-bounce-x { animation: bounce-x 1.5s ease-in-out infinite; }
-</style>
+
+	function openItem(item: HTMLElement) {
+		const detail = item.querySelector<HTMLElement>('.project-detail');
+		if (!detail) return;
+
+		detail.hidden = false;
+		setExpanded(item, true);
+
+		if (prefersReducedMotion) {
+			detail.style.height = 'auto';
+			detail.style.opacity = '1';
+			return;
+		}
+
+		gsap.killTweensOf(detail);
+		gsap.fromTo(
+			detail,
+			{ height: 0, opacity: 0 },
+			{
+				height: detail.scrollHeight,
+				opacity: 1,
+				duration: 0.36,
+				ease: 'power2.out',
+				onComplete: () => {
+					detail.style.height = 'auto';
+				},
+			},
+		);
+	}
+
+	function closeItem(item: HTMLElement) {
+		const detail = item.querySelector<HTMLElement>('.project-detail');
+		if (!detail) return;
+
+		setExpanded(item, false);
+
+		if (prefersReducedMotion) {
+			detail.hidden = true;
+			detail.style.height = '0px';
+			detail.style.opacity = '0';
+			return;
+		}
+
+		gsap.killTweensOf(detail);
+		gsap.to(detail, {
+			height: 0,
+			opacity: 0,
+			duration: 0.26,
+			ease: 'power2.inOut',
+			onStart: () => {
+				detail.style.height = `${detail.scrollHeight}px`;
+			},
+			onComplete: () => {
+				detail.hidden = true;
+			},
+		});
+	}
+
+	document.querySelectorAll<HTMLElement>('[data-projects-list]').forEach((list) => {
+		const items = Array.from(list.querySelectorAll<HTMLElement>('[data-project-item]'));
+
+		items.forEach((item) => {
+			const button = item.querySelector<HTMLButtonElement>('.project-list-row');
+			if (!button) return;
+
+			button.addEventListener('click', () => {
+				const isOpen = item.dataset.open === 'true';
+				items.forEach((candidate) => {
+					if (candidate !== item && candidate.dataset.open === 'true') closeItem(candidate);
+				});
+				if (isOpen) {
+					closeItem(item);
+				} else {
+					openItem(item);
+				}
+			});
+		});
+	});
+</script>

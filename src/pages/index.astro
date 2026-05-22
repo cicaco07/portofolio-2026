@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Education from '../components/Education.astro';
 import Experience from '../components/Experience.astro';
-import Projects from '../components/Projects.astro';
-import Skills from '../components/Skills.astro';
+import CommitActivity from '../components/CommitActivity.astro';
+// import Skills from '../components/Skills.astro'; // Hidden - not needed for now
 import Footer from '../components/Footer.astro';
 ---
 
@@ -12,7 +12,7 @@ import Footer from '../components/Footer.astro';
 	<Hero />
 	<Education />
 	<Experience />
-	<Projects showOthers={false} showViewAllCta={true} />
-	<Skills />
+	<CommitActivity />
+	<!-- <Skills /> -->
 	<Footer />
 </Layout>

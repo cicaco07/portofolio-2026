@@ -1,0 +1,48 @@
+name: Refresh Commit Activity Snapshot
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # Every 12 hours
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh commit snapshot
+        run: npm run refresh:commits
+        env:
+          # GH_PAT is needed for GitHub GraphQL contribution data,
+          # including private contribution counts when enabled on the token.
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GITLAB_USER_ID: ${{ secrets.GITLAB_USER_ID }}
+          GITLAB_AUTHOR: ${{ secrets.GITLAB_AUTHOR }}
+          GITLAB_REF_NAME: ${{ secrets.GITLAB_REF_NAME }}
+          GITLAB_ALL_REFS: ${{ secrets.GITLAB_ALL_REFS }}
+          GITLAB_REBASE: ${{ secrets.GITLAB_REBASE }}
+
+      - name: Commit snapshot if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/commit-activity.json
+          git diff --cached --quiet || git commit -m "chore(commits): refresh activity snapshot [skip ci]"
+          git push

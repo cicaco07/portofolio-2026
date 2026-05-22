@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "refresh:ai-usage": "node scripts/fetch-ai-usage.mjs"
+    "refresh:ai-usage": "node scripts/fetch-ai-usage.mjs",
+    "refresh:commits": "node scripts/fetch-commits.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
