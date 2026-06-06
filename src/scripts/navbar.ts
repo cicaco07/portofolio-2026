@@ -37,16 +37,16 @@ export function initNavActiveLink(linkSelector = '.nav-link'): void {
 }
 
 export function initMobileMenu(
-	toggleId   = 'menu-toggle',
-	menuId     = 'mobile-menu',
-	linkClass  = 'mobile-nav-link',
+	toggleId = 'menu-toggle',
+	menuId = 'mobile-menu',
+	linkClass = 'mobile-nav-link',
 ): void {
 	const toggle = document.getElementById(toggleId);
-	const menu   = document.getElementById(menuId);
+	const menu = document.getElementById(menuId);
 	if (!toggle || !menu) return;
 
 	const spans = toggle.querySelectorAll<HTMLElement>('.hamburger-lines span');
-	let open    = false;
+	let open = false;
 
 	function close(): void {
 		open = false;
@@ -55,6 +55,7 @@ export function initMobileMenu(
 		spans[0]?.classList.remove('rotate-45', 'translate-y-2');
 		spans[1]?.classList.remove('opacity-0', 'scale-0');
 		spans[2]?.classList.remove('-rotate-45', '-translate-y-2');
+		document.body.classList.remove('overflow-hidden');
 	}
 
 	toggle.addEventListener('click', () => {
@@ -65,6 +66,7 @@ export function initMobileMenu(
 			spans[0]?.classList.add('rotate-45', 'translate-y-2');
 			spans[1]?.classList.add('opacity-0', 'scale-0');
 			spans[2]?.classList.add('-rotate-45', '-translate-y-2');
+			document.body.classList.add('overflow-hidden');
 		} else {
 			close();
 		}
