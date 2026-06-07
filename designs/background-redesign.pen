@@ -1,0 +1,2638 @@
+{
+  "version": "2.13",
+  "children": [
+    {
+      "type": "frame",
+      "id": "G28u5l",
+      "x": 0,
+      "y": -4,
+      "name": "Education BG Redesign",
+      "clip": true,
+      "width": 1280,
+      "height": 900,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "$bg-base-top",
+            "position": 0
+          },
+          {
+            "color": "$bg-base",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "RfWZI",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "Grid Overlay",
+          "opacity": 0.5,
+          "width": 1280,
+          "height": 900,
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "zunS0",
+              "layoutPosition": "absolute",
+              "x": 64,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "HeNuC",
+              "layoutPosition": "absolute",
+              "x": 128,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "whD0u",
+              "layoutPosition": "absolute",
+              "x": 192,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "CCKlQ",
+              "layoutPosition": "absolute",
+              "x": 256,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "P4ECC",
+              "layoutPosition": "absolute",
+              "x": 320,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "ww2Zd",
+              "layoutPosition": "absolute",
+              "x": 384,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "qzfOE",
+              "layoutPosition": "absolute",
+              "x": 448,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "vktJQ",
+              "layoutPosition": "absolute",
+              "x": 512,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "gofsd",
+              "layoutPosition": "absolute",
+              "x": 576,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "owsx0",
+              "layoutPosition": "absolute",
+              "x": 640,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "cgmzZ",
+              "layoutPosition": "absolute",
+              "x": 704,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "Nalpx",
+              "layoutPosition": "absolute",
+              "x": 768,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "Z48Nh6",
+              "layoutPosition": "absolute",
+              "x": 832,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "IRNJn",
+              "layoutPosition": "absolute",
+              "x": 896,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "d1548",
+              "layoutPosition": "absolute",
+              "x": 960,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "OTGfl",
+              "layoutPosition": "absolute",
+              "x": 1024,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "Bw04b",
+              "layoutPosition": "absolute",
+              "x": 1088,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "TlmKp",
+              "layoutPosition": "absolute",
+              "x": 1152,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "qhgCk",
+              "layoutPosition": "absolute",
+              "x": 1216,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
+              "id": "iTCMo",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 64,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "idZCN",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 128,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "bDSzE",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 192,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "d8kul",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 256,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "VHXaE",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 320,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "ap801",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 384,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "x7sJr",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 448,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "y9u5X",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 512,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "i1SwM",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 576,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "V9MgP",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 640,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "iX4ar",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 704,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "VDRsI",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 768,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "LYAbF",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 832,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "ellipse",
+          "id": "CSK8m",
+          "layoutPosition": "absolute",
+          "x": -180,
+          "y": -160,
+          "name": "Glow Orb Primary",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#ff784955",
+                "position": 0
+              },
+              {
+                "color": "#ff784900",
+                "position": 1
+              }
+            ]
+          },
+          "width": 560,
+          "height": 560
+        },
+        {
+          "type": "ellipse",
+          "id": "S8evnZ",
+          "layoutPosition": "absolute",
+          "x": 900,
+          "y": 480,
+          "name": "Glow Orb Secondary",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#f43f6e44",
+                "position": 0
+              },
+              {
+                "color": "#f43f6e00",
+                "position": 1
+              }
+            ]
+          },
+          "width": 620,
+          "height": 620
+        },
+        {
+          "type": "ellipse",
+          "id": "W0Xin4",
+          "layoutPosition": "absolute",
+          "x": 760,
+          "y": -220,
+          "name": "Glow Orb Purple",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#7c5cff3a",
+                "position": 0
+              },
+              {
+                "color": "#7c5cff00",
+                "position": 1
+              }
+            ]
+          },
+          "width": 480,
+          "height": 480
+        },
+        {
+          "type": "frame",
+          "id": "XHmmU",
+          "layoutPosition": "absolute",
+          "x": 160,
+          "y": 90,
+          "name": "Section Header",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "text",
+              "id": "Vkhr1",
+              "name": "Eyebrow",
+              "fill": "$primary",
+              "content": "// EDUCATION",
+              "fontFamily": "Fira Code",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "letterSpacing": 3
+            },
+            {
+              "type": "text",
+              "id": "Ia88W",
+              "name": "Title",
+              "fill": "$text-strong",
+              "content": "Riwayat Pendidikan",
+              "fontFamily": "Sora",
+              "fontSize": 44,
+              "fontWeight": "800"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 2,
+              "id": "UEhP0",
+              "name": "Underline",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 0,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "$primary",
+                    "position": 0
+                  },
+                  {
+                    "color": "#ff784900",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 64,
+              "height": 4
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "cIj0l",
+          "layoutPosition": "absolute",
+          "x": 639,
+          "y": 240,
+          "name": "Timeline Axis",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 90,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "$primary",
+                "position": 0
+              },
+              {
+                "color": "#ffffff20",
+                "position": 0.6
+              },
+              {
+                "color": "#ffffff00",
+                "position": 1
+              }
+            ]
+          },
+          "width": 2,
+          "height": 560
+        },
+        {
+          "id": "pIlUG",
+          "type": "ref",
+          "ref": "W7KO6",
+          "name": "Card - Diploma",
+          "x": 170,
+          "y": 270,
+          "width": 420,
+          "descendants": {
+            "GsP0F": {
+              "content": "Aug 2021 — Jul 2025"
+            },
+            "I2Y3bV": {
+              "content": "Diploma (D4) — Teknik Informatika"
+            },
+            "s3SqX": {
+              "content": "State Polytechnic of Malang (Polinema)"
+            },
+            "OPzxp": {
+              "content": "Lulus dengan IPK 3.83/4.00. Fokus pada rekayasa perangkat lunak, pengembangan web, dan sistem informasi. Aktif di organisasi Workshop Riset Informatika (WRI)."
+            }
+          }
+        },
+        {
+          "id": "sgg5G",
+          "type": "ref",
+          "ref": "W7KO6",
+          "name": "Card - SMA",
+          "x": 690,
+          "y": 480,
+          "width": 420,
+          "descendants": {
+            "GsP0F": {
+              "content": "Jun 2017 — May 2020"
+            },
+            "I2Y3bV": {
+              "content": "SMA — Matematika & Ilmu Pengetahuan Alam"
+            },
+            "s3SqX": {
+              "content": "SMAN 01 Batu"
+            },
+            "OPzxp": {
+              "content": "Jurusan IPA. Menumbuhkan dasar logika dan problem solving yang menjadi fondasi dalam dunia pengembangan perangkat lunak."
+            }
+          }
+        },
+        {
+          "type": "ellipse",
+          "id": "f6yxo",
+          "layoutPosition": "absolute",
+          "x": 632,
+          "y": 286,
+          "name": "Dot 1",
+          "fill": "$primary",
+          "width": 16,
+          "height": 16,
+          "stroke": "$bg-base",
+          "strokeWidth": 4,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#ff7849aa",
+            "blur": 14
+          }
+        },
+        {
+          "type": "ellipse",
+          "id": "e7cCZH",
+          "layoutPosition": "absolute",
+          "x": 632,
+          "y": 496,
+          "name": "Dot 2",
+          "fill": "$secondary",
+          "width": 16,
+          "height": 16,
+          "stroke": "$bg-base",
+          "strokeWidth": 4,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#f43f6eaa",
+            "blur": 14
+          }
+        },
+        {
+          "type": "rectangle",
+          "id": "VOJNT",
+          "layoutPosition": "absolute",
+          "x": 590,
+          "y": 293,
+          "name": "Connector 1",
+          "fill": "#ff784966",
+          "width": 42,
+          "height": 2
+        },
+        {
+          "type": "rectangle",
+          "id": "mq7Wd",
+          "layoutPosition": "absolute",
+          "x": 648,
+          "y": 503,
+          "name": "Connector 2",
+          "fill": "#f43f6e66",
+          "width": 42,
+          "height": 2
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "W7KO6",
+      "x": 0,
+      "y": -320,
+      "name": "Timeline Card",
+      "reusable": true,
+      "clip": true,
+      "width": 430,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 120,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "#242850e0",
+            "position": 0
+          },
+          {
+            "color": "#1a1d3ae0",
+            "position": 1
+          }
+        ]
+      },
+      "cornerRadius": 20,
+      "stroke": "$surface-border",
+      "strokeWidth": 1,
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#00000055",
+        "offset": {
+          "x": 0,
+          "y": 20
+        },
+        "blur": 40,
+        "spread": -8
+      },
+      "layout": "vertical",
+      "gap": 14,
+      "padding": 28,
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "EOgE5",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "Top Sheen",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#ff784900",
+                "position": 0
+              },
+              {
+                "color": "$primary",
+                "position": 0.5
+              },
+              {
+                "color": "#ff784900",
+                "position": 1
+              }
+            ]
+          },
+          "width": 430,
+          "height": 2
+        },
+        {
+          "type": "frame",
+          "id": "BoARg",
+          "name": "Period Badge",
+          "fill": "$primary-soft",
+          "cornerRadius": 999,
+          "padding": [
+            6,
+            12
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "GsP0F",
+              "name": "Period",
+              "fill": "$primary",
+              "content": "Aug 2021 — Jul 2025",
+              "fontFamily": "Fira Code",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "I2Y3bV",
+          "name": "Degree",
+          "fill": "$text-strong",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Diploma (D4) — Teknik Informatika",
+          "fontFamily": "Sora",
+          "fontSize": 20,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "s3SqX",
+          "name": "Institution",
+          "fill": "$primary",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "State Polytechnic of Malang (Polinema)",
+          "fontFamily": "Sora",
+          "fontSize": 15,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "OPzxp",
+          "name": "Description",
+          "fill": "$text-muted",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Lulus dengan IPK 3.83/4.00. Fokus pada rekayasa perangkat lunak, pengembangan web, dan sistem informasi.",
+          "lineHeight": 1.6,
+          "fontFamily": "Sora",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "xtzLN",
+      "x": 0,
+      "y": -360,
+      "name": "Component Label",
+      "fill": "#7c83a8",
+      "content": "COMPONENTS",
+      "fontFamily": "Fira Code",
+      "fontSize": 14,
+      "fontWeight": "500"
+    },
+    {
+      "type": "frame",
+      "id": "M0mffN",
+      "x": 0,
+      "y": 1112,
+      "name": "Experience BG Redesign",
+      "clip": true,
+      "width": 1280,
+      "height": 820,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "$bg-base-top",
+            "position": 0
+          },
+          {
+            "color": "$bg-base",
+            "position": 1
+          }
+        ]
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "S0z8e",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "Grid Overlay",
+          "opacity": 0.5,
+          "width": 1280,
+          "height": 820,
+          "layout": "none",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "hgWmd",
+              "layoutPosition": "absolute",
+              "x": 64,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "q4gXsG",
+              "layoutPosition": "absolute",
+              "x": 128,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "coKlC",
+              "layoutPosition": "absolute",
+              "x": 192,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "GELGG",
+              "layoutPosition": "absolute",
+              "x": 256,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "X86cT",
+              "layoutPosition": "absolute",
+              "x": 320,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "IunGm",
+              "layoutPosition": "absolute",
+              "x": 384,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "yTuDC",
+              "layoutPosition": "absolute",
+              "x": 448,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "O01DNN",
+              "layoutPosition": "absolute",
+              "x": 512,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "m0Wb4",
+              "layoutPosition": "absolute",
+              "x": 576,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "jRM8N",
+              "layoutPosition": "absolute",
+              "x": 640,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "VOQUg",
+              "layoutPosition": "absolute",
+              "x": 704,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "xOMXR",
+              "layoutPosition": "absolute",
+              "x": 768,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "fs291",
+              "layoutPosition": "absolute",
+              "x": 832,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "mVRPY",
+              "layoutPosition": "absolute",
+              "x": 896,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "UgFAe",
+              "layoutPosition": "absolute",
+              "x": 960,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "P93KP5",
+              "layoutPosition": "absolute",
+              "x": 1024,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "RtQlu",
+              "layoutPosition": "absolute",
+              "x": 1088,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "q2T23",
+              "layoutPosition": "absolute",
+              "x": 1152,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "WcEW8",
+              "layoutPosition": "absolute",
+              "x": 1216,
+              "y": 0,
+              "name": "vline",
+              "fill": "$grid-line",
+              "width": 1,
+              "height": 820
+            },
+            {
+              "type": "rectangle",
+              "id": "imOlx",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 64,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "jIe7p",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 128,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "f2teis",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 192,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "TowQh",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 256,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "dDc5k",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 320,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "sEIvh",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 384,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "rthlf",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 448,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "TW025",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 512,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "uw8LE",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 576,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "f0q6Yy",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 640,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "MlBAR",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 704,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "xbdIc",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 768,
+              "name": "hline",
+              "fill": "$grid-line",
+              "width": 1280,
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "ellipse",
+          "id": "OzGqK",
+          "layoutPosition": "absolute",
+          "x": -220,
+          "y": -180,
+          "name": "Glow Orb Secondary",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#f43f6e4d",
+                "position": 0
+              },
+              {
+                "color": "#f43f6e00",
+                "position": 1
+              }
+            ]
+          },
+          "width": 600,
+          "height": 600
+        },
+        {
+          "type": "ellipse",
+          "id": "n0ukLp",
+          "layoutPosition": "absolute",
+          "x": 880,
+          "y": 400,
+          "name": "Glow Orb Primary",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#ff784944",
+                "position": 0
+              },
+              {
+                "color": "#ff784900",
+                "position": 1
+              }
+            ]
+          },
+          "width": 640,
+          "height": 640
+        },
+        {
+          "type": "ellipse",
+          "id": "DD5h4",
+          "layoutPosition": "absolute",
+          "x": 540,
+          "y": -260,
+          "name": "Glow Orb Purple",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#7c5cff33",
+                "position": 0
+              },
+              {
+                "color": "#7c5cff00",
+                "position": 1
+              }
+            ]
+          },
+          "width": 520,
+          "height": 520
+        },
+        {
+          "type": "frame",
+          "id": "cwuA9",
+          "layoutPosition": "absolute",
+          "x": 80,
+          "y": 64,
+          "name": "Section Header",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "text",
+              "id": "vFsPV",
+              "name": "Eyebrow",
+              "fill": "$secondary",
+              "content": "// EXPERIENCE",
+              "fontFamily": "Fira Code",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "letterSpacing": 3
+            },
+            {
+              "type": "text",
+              "id": "KlIEY",
+              "name": "Title",
+              "fill": "$text-strong",
+              "content": "Pengalaman Kerja",
+              "fontFamily": "Sora",
+              "fontSize": 44,
+              "fontWeight": "800"
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 2,
+              "id": "uP1k2",
+              "name": "Underline",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 0,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "$secondary",
+                    "position": 0
+                  },
+                  {
+                    "color": "#f43f6e00",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 64,
+              "height": 4
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OJTBP",
+          "layoutPosition": "absolute",
+          "x": 80,
+          "y": 220,
+          "name": "Experience Panel",
+          "width": 1120,
+          "gap": 48,
+          "children": [
+            {
+              "type": "frame",
+              "id": "FmHgX",
+              "name": "Left Column",
+              "width": 280,
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tmpnC",
+                  "name": "Brand Mark",
+                  "width": 72,
+                  "height": 72,
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 135,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "$secondary",
+                        "position": 0
+                      },
+                      {
+                        "color": "#b3284f",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "cornerRadius": 20,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#f43f6e66",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20,
+                    "spread": -4
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "A2KPq",
+                      "name": "Initials",
+                      "fill": "#ffffff",
+                      "content": "AM",
+                      "fontFamily": "Sora",
+                      "fontSize": 26,
+                      "fontWeight": "800"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DqNE2",
+                  "name": "Meta",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "K0wo1Q",
+                      "name": "Tag Row",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "j671d5",
+                          "name": "Period Badge",
+                          "fill": "#f43f6e24",
+                          "cornerRadius": 999,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "LxalP",
+                              "name": "Period",
+                              "fill": "$secondary",
+                              "content": "Nov 2025 — May 2026",
+                              "fontFamily": "Fira Code",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gKZvH",
+                          "name": "Type Badge",
+                          "cornerRadius": 999,
+                          "stroke": "$surface-border",
+                          "strokeWidth": 1,
+                          "padding": [
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "LpYJp",
+                              "name": "Type",
+                              "fill": "$text-faint",
+                              "content": "Penuh Waktu",
+                              "fontFamily": "Sora",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "aAVjR",
+                      "name": "Role",
+                      "fill": "$secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Fullstack Laravel Developer",
+                      "fontFamily": "Sora",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vS23N",
+                      "name": "Company",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "PT AMD Academy Indonesia",
+                      "fontFamily": "Sora",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MGihY",
+                  "name": "Metrics",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Y9dth9",
+                      "name": "Metric BULAN",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "anWHP",
+                          "name": "Value",
+                          "fill": "$secondary",
+                          "content": "7",
+                          "fontFamily": "Sora",
+                          "fontSize": 26,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "OaJez",
+                          "name": "Label",
+                          "fill": "$text-faint",
+                          "content": "BULAN",
+                          "fontFamily": "Fira Code",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NajW0",
+                      "name": "Metric APLIKASI",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "k5KjCT",
+                          "name": "Value",
+                          "fill": "$secondary",
+                          "content": "3+",
+                          "fontFamily": "Sora",
+                          "fontSize": 26,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "srH0i",
+                          "name": "Label",
+                          "fill": "$text-faint",
+                          "content": "APLIKASI",
+                          "fontFamily": "Fira Code",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "U35deo",
+                      "name": "Metric KLIEN",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "mjDbH",
+                          "name": "Value",
+                          "fill": "$secondary",
+                          "content": "Gov",
+                          "fontFamily": "Sora",
+                          "fontSize": 26,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "w6AQ7t",
+                          "name": "Label",
+                          "fill": "$text-faint",
+                          "content": "KLIEN",
+                          "fontFamily": "Fira Code",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "CMzn2",
+              "name": "Content Card",
+              "clip": true,
+              "width": "fill_container",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 120,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#242850e0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#1a1d3ae0",
+                    "position": 1
+                  }
+                ]
+              },
+              "cornerRadius": 24,
+              "stroke": "$surface-border",
+              "strokeWidth": 1,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000055",
+                "offset": {
+                  "x": 0,
+                  "y": 20
+                },
+                "blur": 40,
+                "spread": -8
+              },
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 32,
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "eKRkn",
+                  "layoutPosition": "absolute",
+                  "x": 680,
+                  "y": -60,
+                  "name": "Card Glow",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "radial",
+                    "enabled": true,
+                    "rotation": 0,
+                    "size": {
+                      "width": 1,
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#f43f6e33",
+                        "position": 0
+                      },
+                      {
+                        "color": "#f43f6e00",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 220,
+                  "height": 220
+                },
+                {
+                  "type": "text",
+                  "id": "Snn6w",
+                  "name": "Description",
+                  "fill": "#c4c9e4",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Membangun, mengembangkan, dan menguji aplikasi untuk sistem akademik, penerimaan mahasiswa baru, diseminasi informasi pertanian, dan kebutuhan lainnya berupa admin panel website serta REST API.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Sora",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "JXB3Q",
+                  "name": "Achievements",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jDfm7",
+                      "name": "Ach Label",
+                      "fill": "$text-faint",
+                      "content": "KEY ACHIEVEMENTS",
+                      "fontFamily": "Fira Code",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "V2JF3p",
+                      "name": "Ach Row",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "sbAdE",
+                          "name": "Check",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "HHvjO",
+                          "name": "Ach Text",
+                          "fill": "#c4c9e4",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Membangun OBE Academic System super app dengan Laravel",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Sora",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "G75BVv",
+                      "name": "Ach Row",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "VTJ1J",
+                          "name": "Check",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "s9Mlt0",
+                          "name": "Ach Text",
+                          "fill": "#c4c9e4",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Mengembangkan Agromodern untuk Kementerian Pertanian RI",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Sora",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DugFs",
+                      "name": "Ach Row",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "gxpzj",
+                          "name": "Check",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ZJOar",
+                          "name": "Ach Text",
+                          "fill": "#c4c9e4",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Automated testing CypressJS untuk academic super app",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Sora",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iil53",
+                  "name": "Tech Stack",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QFss8",
+                      "name": "Tech Label",
+                      "fill": "$text-faint",
+                      "content": "TECH STACK",
+                      "fontFamily": "Fira Code",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HUoFy",
+                      "name": "Tech Row",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Uot0k",
+                          "name": "Tech Laravel",
+                          "fill": "#f43f6e1f",
+                          "cornerRadius": 999,
+                          "stroke": "#f43f6e33",
+                          "strokeWidth": 1,
+                          "padding": [
+                            5,
+                            11
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "F6m9u",
+                              "name": "T",
+                              "fill": "$secondary",
+                              "content": "Laravel",
+                              "fontFamily": "Fira Code",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "u4eRiZ",
+                          "name": "Tech PHP",
+                          "fill": "#f43f6e1f",
+                          "cornerRadius": 999,
+                          "stroke": "#f43f6e33",
+                          "strokeWidth": 1,
+                          "padding": [
+                            5,
+                            11
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Z0acp",
+                              "name": "T",
+                              "fill": "$secondary",
+                              "content": "PHP",
+                              "fontFamily": "Fira Code",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "oU1XL",
+                          "name": "Tech MySQL",
+                          "fill": "#f43f6e1f",
+                          "cornerRadius": 999,
+                          "stroke": "#f43f6e33",
+                          "strokeWidth": 1,
+                          "padding": [
+                            5,
+                            11
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "gfUM7",
+                              "name": "T",
+                              "fill": "$secondary",
+                              "content": "MySQL",
+                              "fontFamily": "Fira Code",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "IsYaX",
+                          "name": "Tech REST API",
+                          "fill": "#f43f6e1f",
+                          "cornerRadius": 999,
+                          "stroke": "#f43f6e33",
+                          "strokeWidth": 1,
+                          "padding": [
+                            5,
+                            11
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "a28F8H",
+                              "name": "T",
+                              "fill": "$secondary",
+                              "content": "REST API",
+                              "fontFamily": "Fira Code",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "FmDb0",
+                          "name": "Tech CypressJS",
+                          "fill": "#f43f6e1f",
+                          "cornerRadius": 999,
+                          "stroke": "#f43f6e33",
+                          "strokeWidth": 1,
+                          "padding": [
+                            5,
+                            11
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "E9IunP",
+                              "name": "T",
+                              "fill": "$secondary",
+                              "content": "CypressJS",
+                              "fontFamily": "Fira Code",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "DKuYH",
+                          "name": "Tech Tailwind CSS",
+                          "fill": "#f43f6e1f",
+                          "cornerRadius": 999,
+                          "stroke": "#f43f6e33",
+                          "strokeWidth": 1,
+                          "padding": [
+                            5,
+                            11
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "hU6IJ",
+                              "name": "T",
+                              "fill": "$secondary",
+                              "content": "Tailwind CSS",
+                              "fontFamily": "Fira Code",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ij5Aw",
+          "layoutPosition": "absolute",
+          "x": 560,
+          "y": 760,
+          "name": "Progress Dots",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "VwDXV",
+              "name": "Active",
+              "fill": "$secondary",
+              "width": 36,
+              "height": 5
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "a4cwO",
+              "name": "Inactive",
+              "fill": "#ffffff26",
+              "width": 12,
+              "height": 5
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "QIrds",
+              "name": "Inactive",
+              "fill": "#ffffff26",
+              "width": 12,
+              "height": 5
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 999,
+              "id": "Wb7UL",
+              "name": "Inactive",
+              "fill": "#ffffff26",
+              "width": 12,
+              "height": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "themes": {
+    "Mode": [
+      "Light",
+      "Dark"
+    ]
+  },
+  "variables": {
+    "--sidebar": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E7E8E5"
+        },
+        {
+          "value": "#18181b",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#666666"
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-primary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#18181b"
+        },
+        {
+          "value": "#18181b",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-primary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fafafa"
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-border": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#ffffff1a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-accent": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#2a2a30",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-accent-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#18181b"
+        },
+        {
+          "value": "#fafafa",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--sidebar-ring": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#71717a"
+        },
+        {
+          "value": "#71717a",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--background": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#F2F3F0"
+        },
+        {
+          "value": "#111111",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--card": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#FFFFFF"
+        },
+        {
+          "value": "#1A1A1A",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--card-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--popover": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#FFFFFF"
+        },
+        {
+          "value": "#1A1A1A",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--popover-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--primary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#FF8400"
+        },
+        {
+          "value": "#FF8400",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--primary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#111111",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--secondary": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E7E8E5"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--secondary-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#FFFFFF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--muted": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#F2F3F0"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--muted-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#666666"
+        },
+        {
+          "value": "#B8B9B6",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--accent": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#F2F3F0"
+        },
+        {
+          "value": "#111111",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--accent-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#111111"
+        },
+        {
+          "value": "#F2F3F0",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--destructive": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#D93C15"
+        },
+        {
+          "value": "#FF5C33",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--border": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--input": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#CBCCC9"
+        },
+        {
+          "value": "#2E2E2E",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--ring": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#666666"
+        },
+        {
+          "value": "#666666",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "--black": {
+      "type": "color",
+      "value": "#000000"
+    },
+    "--font-primary": {
+      "type": "string",
+      "value": "JetBrains Mono"
+    },
+    "--font-secondary": {
+      "type": "string",
+      "value": "Geist"
+    },
+    "--radius-none": {
+      "type": "number",
+      "value": 0
+    },
+    "--radius-pill": {
+      "type": "number",
+      "value": 999
+    },
+    "--color-success": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#DFE6E1"
+        },
+        {
+          "value": "#222924",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-success-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#004D1A"
+        },
+        {
+          "value": "#B6FFCE",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-warning": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E9E3D8"
+        },
+        {
+          "value": "#291C0F",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-warning-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#804200"
+        },
+        {
+          "value": "#FF8400",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-error": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#E5DCDA"
+        },
+        {
+          "value": "#24100B",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-error-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#8C1C00"
+        },
+        {
+          "value": "#FF5C33",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-info": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#DFDFE6"
+        },
+        {
+          "value": "#222229",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--color-info-foreground": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#000066"
+        },
+        {
+          "value": "#B2B2FF",
+          "theme": {
+            "Mode": "Dark"
+          }
+        }
+      ]
+    },
+    "--radius-m": {
+      "type": "number",
+      "value": 16
+    },
+    "accent-purple": {
+      "type": "color",
+      "value": "#7c5cff"
+    },
+    "bg-base": {
+      "type": "color",
+      "value": "#13142a"
+    },
+    "bg-base-top": {
+      "type": "color",
+      "value": "#1a1c38"
+    },
+    "grid-line": {
+      "type": "color",
+      "value": "#ffffff0a"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#ff7849"
+    },
+    "primary-soft": {
+      "type": "color",
+      "value": "#ff784924"
+    },
+    "secondary": {
+      "type": "color",
+      "value": "#f43f6e"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#1e2142"
+    },
+    "surface-border": {
+      "type": "color",
+      "value": "#ffffff14"
+    },
+    "text-faint": {
+      "type": "color",
+      "value": "#7c83a8"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#aab0d0"
+    },
+    "text-strong": {
+      "type": "color",
+      "value": "#eef0fa"
+    }
+  }
+}
