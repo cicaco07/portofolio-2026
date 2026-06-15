@@ -13,7 +13,7 @@ export const SITE = {
 	phone: '+62 895-3312-76986',
 	location: tr('Batu, Jawa Timur, Indonesia', 'Batu, East Java, Indonesia') satisfies Tr,
 	linkedin: 'https://www.linkedin.com/in/aryo-deva-saputra-6394722a2/',
-	github: 'https://github.com/',
+	github: 'https://github.com/cicaco07',
 } as const;
 
 export interface NavLink {
@@ -31,7 +31,7 @@ export const NAV_LINKS: readonly NavLink[] = [
 export const SOCIAL_LINKS = [
 	{
 		label: 'GitHub',
-		href: 'https://github.com/',
+		href: 'https://github.com/cicaco07',
 		icon: 'github',
 	},
 	{
