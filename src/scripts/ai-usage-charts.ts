@@ -18,7 +18,14 @@ type AiUsagePayload = {
 };
 
 type PaletteName = 'green' | 'blue' | 'amber';
-type RenderMode = '2d' | '3d';
+
+interface CellInfo {
+	x: number;
+	y: number;
+	size: number;
+	date: string;
+	point: ActivityDataPoint | undefined;
+}
 
 const AI_USAGE_SECTION_ID = 'ai-usage';
 const AI_USAGE_DATA_ID = 'ai-usage-data';
@@ -50,27 +57,6 @@ function getThemeTextColor(): string {
 	return document.documentElement.getAttribute('data-theme') === 'acid' ? '#475569' : '#8aa0bd';
 }
 
-function getYear(activity: ActivityDataPoint[]): number {
-	const dated = activity
-		.map((point) => new Date(point.date))
-		.filter((date) => !Number.isNaN(date.getTime()))
-		.sort((a, b) => b.getTime() - a.getTime());
-
-	return (dated[0] ?? new Date()).getFullYear();
-}
-
-function startOfCalendar(year: number): Date {
-	const date = new Date(year, 0, 1);
-	date.setDate(date.getDate() - date.getDay());
-	return date;
-}
-
-function endOfCalendar(year: number): Date {
-	const date = new Date(year, 11, 31);
-	date.setDate(date.getDate() + (6 - date.getDay()));
-	return date;
-}
-
 function toDateKey(date: Date): string {
 	const year = date.getFullYear();
 	const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -97,64 +83,71 @@ function drawRoundedRect(
 	ctx.fill();
 }
 
+function fmtNum(n: number): string {
+	return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
+}
+
 function drawHeatmap(
 	canvas: HTMLCanvasElement,
 	activity: ActivityDataPoint[],
 	paletteName: PaletteName,
-	mode: RenderMode,
-) {
+): CellInfo[] {
 	const rect = canvas.getBoundingClientRect();
-	const width = Math.max(680, rect.width);
-	const height = Math.max(168, rect.height);
+	const width = Math.max(300, rect.width);
 	const dpr = window.devicePixelRatio || 1;
 	const ctx = canvas.getContext('2d');
-	if (!ctx) return;
+	if (!ctx) return [];
 
-	canvas.width = Math.round(width * dpr);
-	canvas.height = Math.round(height * dpr);
-	ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-	ctx.clearRect(0, 0, width, height);
+	const now = new Date();
+	const end = new Date(now);
+	end.setDate(end.getDate() + (6 - end.getDay()));
+	const start = new Date(end);
+	start.setFullYear(start.getFullYear() - 1);
+	start.setDate(start.getDate() - start.getDay());
 
-	const year = getYear(activity);
-	const activityByDate = new Map(activity.map((point) => [point.date, point]));
-	const maxTokens = Math.max(...activity.map((point) => Number(point.tokens) || 0), 0);
-	const start = startOfCalendar(year);
-	const end = endOfCalendar(year);
 	const totalDays = Math.round((end.getTime() - start.getTime()) / 86400000) + 1;
 	const totalWeeks = Math.ceil(totalDays / 7);
-	const left = 48;
-	const top = 48;
-	const labelGap = 12;
-	const gridWidth = width - left - 10;
-	const cellGap = width < 760 ? 2 : 3;
-	const cell = Math.max(7, Math.min(12, Math.floor((gridWidth - (totalWeeks - 1) * cellGap) / totalWeeks)));
-	const radius = mode === '3d' ? 3 : 2;
+
+	const activityByDate = new Map(activity.map((point) => [point.date, point]));
+	const maxTokens = Math.max(...activity.map((point) => Number(point.tokens) || 0), 0);
+
+	const left = 36;
+	const top = 28;
+	const right = 8;
+	const gridWidth = width - left - right;
+	const cellGap = Math.max(2, Math.min(3, Math.floor(gridWidth / totalWeeks * 0.2)));
+	const cell = Math.max(4, Math.floor((gridWidth - (totalWeeks - 1) * cellGap) / totalWeeks));
+	const height = top + 7 * (cell + cellGap) + 4;
+	const radius = Math.max(1, Math.round(cell * 0.2));
 	const palette = palettes[paletteName] ?? palettes.green;
 	const muted = getThemeTextColor();
 
-	ctx.font = '600 10px "Fira Code", monospace';
-	ctx.textAlign = 'right';
-	ctx.textBaseline = 'middle';
-	ctx.fillStyle = muted;
-	for (const [label, row] of [
-		['Mon', 1],
-		['Wed', 3],
-		['Fri', 5],
-	] as const) {
-		ctx.fillText(label, left - labelGap, top + row * (cell + cellGap) + cell / 2);
-	}
+	canvas.width = Math.round(width * dpr);
+	canvas.height = Math.round(height * dpr);
+	canvas.style.height = height + 'px';
+	ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+	ctx.clearRect(0, 0, width, height);
 
+	ctx.font = '600 10px "Fira Code", monospace';
 	ctx.textAlign = 'left';
 	ctx.textBaseline = 'alphabetic';
-	const monthLabels = new Set<number>();
+	ctx.fillStyle = muted;
+	const drawnMonths = new Set<string>();
 	for (let index = 0; index < totalDays; index += 1) {
 		const current = new Date(start);
 		current.setDate(start.getDate() + index);
-		if (current.getFullYear() !== year || current.getDate() !== 1 || monthLabels.has(current.getMonth())) continue;
-		monthLabels.add(current.getMonth());
+		if (current.getDate() !== 1) continue;
+		const key = current.getFullYear() + '-' + current.getMonth();
+		if (drawnMonths.has(key)) continue;
+		drawnMonths.add(key);
 		const week = Math.floor(index / 7);
-		ctx.fillText(current.toLocaleString('en-US', { month: 'short' }), left + week * (cell + cellGap), top - 30);
+		const x = left + week * (cell + cellGap);
+		if (x + 30 < width - right) {
+			ctx.fillText(current.toLocaleString('en-US', { month: 'short' }).toUpperCase(), x, top - 12);
+		}
 	}
+
+	const cells: CellInfo[] = [];
 
 	for (let index = 0; index < totalDays; index += 1) {
 		const current = new Date(start);
@@ -163,21 +156,14 @@ function drawHeatmap(
 		const day = current.getDay();
 		const x = left + week * (cell + cellGap);
 		const y = top + day * (cell + cellGap);
-		const inYear = current.getFullYear() === year;
-		const point = inYear ? activityByDate.get(toDateKey(current)) : undefined;
+		const dateKey = toDateKey(current);
+		const point = activityByDate.get(dateKey);
 		const intensity = point ? getIntensity(point.tokens, maxTokens) : 0;
 
-		ctx.fillStyle = inYear ? palette[intensity] : 'rgba(148, 163, 184, 0.05)';
-		if (mode === '3d' && intensity > 0) {
-			ctx.shadowColor = palette[intensity];
-			ctx.shadowBlur = 8;
-			drawRoundedRect(ctx, x, y + 1, cell, cell, radius);
-			ctx.shadowBlur = 0;
-			ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
-			ctx.fillRect(x + 2, y + 2, Math.max(2, cell - 4), 1);
-		} else {
-			drawRoundedRect(ctx, x, y, cell, cell, radius);
-		}
+		ctx.fillStyle = palette[intensity];
+		drawRoundedRect(ctx, x, y, cell, cell, radius);
+
+		cells.push({ x, y, size: cell, date: dateKey, point });
 	}
 
 	if (activity.length === 0) {
@@ -187,42 +173,144 @@ function drawHeatmap(
 		ctx.font = '600 11px "Fira Code", monospace';
 		ctx.fillText('No activity data available', width / 2, top + 3.5 * (cell + cellGap));
 	}
+
+	return cells;
+}
+
+function createTooltip(): HTMLDivElement {
+	let tooltip = document.getElementById('ai-usage-tooltip') as HTMLDivElement | null;
+	if (tooltip) return tooltip;
+
+	tooltip = document.createElement('div');
+	tooltip.id = 'ai-usage-tooltip';
+	tooltip.style.cssText = `
+		position: fixed;
+		z-index: 9999;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.15s ease;
+		padding: 10px 14px;
+		border-radius: 12px;
+		background: oklch(0.2 0.02 260 / 0.95);
+		backdrop-filter: blur(8px);
+		border: 1px solid oklch(0.4 0.02 260 / 0.3);
+		box-shadow: 0 8px 24px oklch(0 0 0 / 0.4);
+		font-family: "Fira Code", monospace;
+		font-size: 12px;
+		color: oklch(0.9 0 0);
+		white-space: nowrap;
+		max-width: 280px;
+	`;
+	document.body.appendChild(tooltip);
+	return tooltip;
+}
+
+function showTooltip(tooltip: HTMLDivElement, cellInfo: CellInfo, canvasRect: DOMRect) {
+	const date = new Date(cellInfo.date + 'T00:00:00');
+	const dateStr = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+
+	let content = `<div style="font-weight:700;margin-bottom:4px;color:oklch(0.85 0.15 160)">${dateStr}</div>`;
+	if (cellInfo.point && cellInfo.point.tokens > 0) {
+		content += `<div style="display:flex;flex-direction:column;gap:2px">`;
+		content += `<span><span style="color:oklch(0.7 0 0)">Tokens:</span> <strong>${fmtNum(cellInfo.point.tokens)}</strong></span>`;
+		if (cellInfo.point.cost > 0) {
+			content += `<span><span style="color:oklch(0.7 0 0)">Cost:</span> <strong>$${cellInfo.point.cost.toFixed(2)}</strong></span>`;
+		}
+		if (cellInfo.point.requests > 0) {
+			content += `<span><span style="color:oklch(0.7 0 0)">Submissions:</span> <strong>${cellInfo.point.requests}</strong></span>`;
+		}
+		content += `</div>`;
+	} else {
+		content += `<div style="color:oklch(0.6 0 0)">No activity</div>`;
+	}
+
+	tooltip.innerHTML = content;
+	tooltip.style.opacity = '1';
+
+	const cellCenterX = canvasRect.left + cellInfo.x + cellInfo.size / 2;
+	const cellTopY = canvasRect.top + cellInfo.y;
+
+	const tooltipRect = tooltip.getBoundingClientRect();
+	let tooltipX = cellCenterX - tooltipRect.width / 2;
+	let tooltipY = cellTopY - tooltipRect.height - 8;
+
+	if (tooltipY < 4) {
+		tooltipY = canvasRect.top + cellInfo.y + cellInfo.size + 8;
+	}
+	if (tooltipX < 4) tooltipX = 4;
+	if (tooltipX + tooltipRect.width > window.innerWidth - 4) {
+		tooltipX = window.innerWidth - tooltipRect.width - 4;
+	}
+
+	tooltip.style.left = tooltipX + 'px';
+	tooltip.style.top = tooltipY + 'px';
+}
+
+function hideTooltip(tooltip: HTMLDivElement) {
+	tooltip.style.opacity = '0';
+}
+
+function findCell(cells: CellInfo[], mouseX: number, mouseY: number): CellInfo | null {
+	for (const cell of cells) {
+		if (
+			mouseX >= cell.x &&
+			mouseX <= cell.x + cell.size &&
+			mouseY >= cell.y &&
+			mouseY <= cell.y + cell.size
+		) {
+			return cell;
+		}
+	}
+	return null;
 }
 
 function initHeatmap(activity: ActivityDataPoint[]) {
 	const canvas = document.querySelector<HTMLCanvasElement>('[data-ai-usage-heatmap]');
 	if (!canvas) return;
 
-	const paletteSelect = document.querySelector<HTMLSelectElement>('[data-ai-usage-palette]');
-	const modeButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-ai-usage-mode]'));
-	let palette = (paletteSelect?.value as PaletteName | undefined) ?? 'green';
-	let mode: RenderMode = '2d';
+	const palette: PaletteName = 'green';
+	let cells: CellInfo[] = [];
+	const tooltip = createTooltip();
 
-	const render = () => drawHeatmap(canvas, activity, palette, mode);
-	const setMode = (nextMode: RenderMode) => {
-		mode = nextMode;
-		for (const button of modeButtons) {
-			const isActive = button.dataset.aiUsageMode === nextMode;
-			button.setAttribute('aria-pressed', String(isActive));
-			button.classList.toggle('bg-primary', isActive);
-			button.classList.toggle('text-primary-content', isActive);
-			button.classList.toggle('text-base-content', !isActive);
-			button.classList.toggle('hover:bg-base-content/10', !isActive);
-		}
-		render();
+	const render = () => {
+		cells = drawHeatmap(canvas, activity, palette);
 	};
 
-	paletteSelect?.addEventListener('change', () => {
-		palette = (paletteSelect.value as PaletteName) || 'green';
-		render();
+	canvas.style.cursor = 'pointer';
+
+	canvas.addEventListener('mousemove', (e) => {
+		const rect = canvas.getBoundingClientRect();
+		const dpr = window.devicePixelRatio || 1;
+		const scaleX = canvas.width / dpr / rect.width;
+		const scaleY = canvas.height / dpr / rect.height;
+		const mouseX = (e.clientX - rect.left) * scaleX;
+		const mouseY = (e.clientY - rect.top) * scaleY;
+		const cell = findCell(cells, mouseX, mouseY);
+
+		if (cell) {
+			showTooltip(tooltip, cell, rect);
+		} else {
+			hideTooltip(tooltip);
+		}
 	});
 
-	for (const button of modeButtons) {
-		button.addEventListener('click', () => {
-			const nextMode = button.dataset.aiUsageMode === '3d' ? '3d' : '2d';
-			setMode(nextMode);
-		});
-	}
+	canvas.addEventListener('mouseleave', () => {
+		hideTooltip(tooltip);
+	});
+
+	canvas.addEventListener('click', (e) => {
+		const rect = canvas.getBoundingClientRect();
+		const dpr = window.devicePixelRatio || 1;
+		const scaleX = canvas.width / dpr / rect.width;
+		const scaleY = canvas.height / dpr / rect.height;
+		const mouseX = (e.clientX - rect.left) * scaleX;
+		const mouseY = (e.clientY - rect.top) * scaleY;
+		const cell = findCell(cells, mouseX, mouseY);
+
+		if (cell) {
+			showTooltip(tooltip, cell, rect);
+		}
+	});
 
 	const resizeObserver = new ResizeObserver(render);
 	resizeObserver.observe(canvas);
@@ -243,33 +331,6 @@ function initHeatmap(activity: ActivityDataPoint[]) {
 		},
 		{ once: true },
 	);
-}
-
-function initTabs(): void {
-	const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-ai-usage-tab]'));
-	const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-ai-usage-panel]'));
-	if (tabs.length === 0 || panels.length === 0) return;
-
-	const activate = (name: string) => {
-		for (const tab of tabs) {
-			const isActive = tab.dataset.aiUsageTab === name;
-			tab.setAttribute('aria-selected', String(isActive));
-			tab.classList.toggle('bg-primary', isActive);
-			tab.classList.toggle('text-primary-content', isActive);
-			tab.classList.toggle('font-extrabold', isActive);
-			tab.classList.toggle('text-base-content/55', !isActive);
-			tab.classList.toggle('font-bold', !isActive);
-			tab.classList.toggle('hover:bg-base-content/10', !isActive);
-		}
-
-		for (const panel of panels) {
-			panel.classList.toggle('hidden', panel.dataset.aiUsagePanel !== name);
-		}
-	};
-
-	for (const tab of tabs) {
-		tab.addEventListener('click', () => activate(tab.dataset.aiUsageTab ?? 'activity'));
-	}
 }
 
 function getSortValue(row: HTMLTableRowElement, key: string): string | number {
@@ -321,7 +382,6 @@ export function initAiUsageCharts(): void {
 	if (!document.getElementById(AI_USAGE_SECTION_ID)) return;
 
 	const { activity } = parseAiUsageData();
-	initTabs();
-	initModelSorting();
 	initHeatmap(activity);
+	initModelSorting();
 }

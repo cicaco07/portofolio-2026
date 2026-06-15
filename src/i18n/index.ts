@@ -73,7 +73,7 @@ export const UI = {
 			subtitle: tr('Statistik penggunaan token AI saya dari Tokscale.', 'My AI token usage statistics from Tokscale.'),
 			totalTokens: tr('Total Token', 'Total Tokens'),
 			totalCost: tr('Total Biaya', 'Total Cost'),
-			totalRequests: tr('Total Permintaan', 'Total Requests'),
+			totalRequests: tr('Total Submit', 'Total Submit'),
 			activeDays: tr('Hari Aktif', 'Active Days'),
 			modelsUsed: tr('Model Digunakan', 'Models Used'),
 			streak: tr('Streak', 'Streak'),

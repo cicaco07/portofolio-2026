@@ -39,12 +39,12 @@ const footerLinks = FOOTER_LINKS.filter((link) => link.href !== '/ai-usage/' || 
 
 		<div class="mt-8 flex flex-col items-center gap-4 border-t border-base-content/10 pt-8 sm:flex-row sm:justify-between">
 			<p class="text-xs opacity-50">&copy; {currentYear} {SITE.author}. <T tr={UI.footer.rights} /></p>
-			<a href="#hero" class="group flex items-center gap-1.5 text-xs opacity-50 transition-colors hover:text-primary">
+			<button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="group flex items-center gap-1.5 text-xs opacity-50 transition-colors hover:text-primary cursor-pointer">
 				<T tr={UI.footer.toTop} />
 				<svg class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
 				</svg>
-			</a>
+			</button>
 		</div>
 	</div>
 </footer>
