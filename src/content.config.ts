@@ -18,6 +18,11 @@ const projects = defineCollection({
 		duration: z.string().optional(),
 		teamSize: z.string().optional(),
 		status: z.enum(['live', 'in-development', 'archived']).optional(),
+		coverImage: z.string().optional(),
+		screenshots: z.array(z.object({
+			src: z.string(),
+			alt: z.string(),
+		})).optional(),
 	}),
 });
 

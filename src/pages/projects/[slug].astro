@@ -94,18 +94,51 @@ const statusLabel =
 					</div>
 				</div>
 				<div class="browser-mockup__content relative overflow-hidden" style={`background: color-mix(in oklch, var(--color-${data.accent}) 5%, var(--color-base-200)); min-height: 320px;`}>
-					<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--color-base-content) 1px, transparent 1px); background-size: 20px 20px;"></div>
-					<div class="relative h-full min-h-[320px] flex flex-col items-center justify-center p-12 gap-4">
-						<div class={`h-20 w-20 rounded-2xl flex items-center justify-center text-2xl font-bold`} style={`background: linear-gradient(135deg, var(--color-${data.accent}), color-mix(in oklch, var(--color-${data.accent}) 60%, var(--color-secondary))); color: white;`}>
-							{data.title.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()}
-						</div>
-						<div class="text-center">
-							<p class={`text-sm font-mono opacity-60`}><T tr={UI.projectDetail.preview} /></p>
-							<p class="text-xs opacity-40 mt-1"><T tr={UI.projectDetail.previewHint} /></p>
-						</div>
-					</div>
+					{data.coverImage ? (
+						<img
+							src={data.coverImage}
+							alt={`${data.title} preview`}
+							class="w-full h-auto object-cover"
+							loading="eager"
+						/>
+					) : (
+						<>
+							<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--color-base-content) 1px, transparent 1px); background-size: 20px 20px;"></div>
+							<div class="relative h-full min-h-[320px] flex flex-col items-center justify-center p-12 gap-4">
+								<div class={`h-20 w-20 rounded-2xl flex items-center justify-center text-2xl font-bold`} style={`background: linear-gradient(135deg, var(--color-${data.accent}), color-mix(in oklch, var(--color-${data.accent}) 60%, var(--color-secondary))); color: white;`}>
+									{data.title.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()}
+								</div>
+								<div class="text-center">
+									<p class={`text-sm font-mono opacity-60`}><T tr={UI.projectDetail.preview} /></p>
+									<p class="text-xs opacity-40 mt-1"><T tr={UI.projectDetail.previewHint} /></p>
+								</div>
+							</div>
+						</>
+					)}
 				</div>
 			</div>
+
+			{data.screenshots && data.screenshots.length > 0 && (
+				<div class="mb-12">
+					<p class="font-mono text-xs uppercase tracking-widest opacity-50 mb-4">Screenshots</p>
+					<div class="grid gap-4 sm:grid-cols-2">
+						{data.screenshots.map((shot) => (
+							<div class="group relative overflow-hidden rounded-xl border border-base-content/10 bg-base-200/50 transition hover:border-primary/30">
+								<img
+									src={shot.src}
+									alt={shot.alt}
+									class="w-full h-auto object-cover transition group-hover:scale-[1.02]"
+									loading="lazy"
+									decoding="async"
+								/>
+								<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-base-300/90 to-transparent p-3 pt-8">
+									<p class="text-xs font-medium text-base-content/80">{shot.alt}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			)}
 
 			<div class="mb-12">
 				<p class="font-mono text-xs uppercase tracking-widest opacity-50 mb-3"><T tr={UI.projectDetail.techStack} /></p>
