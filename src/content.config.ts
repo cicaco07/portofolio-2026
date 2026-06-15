@@ -10,6 +10,7 @@ const projects = defineCollection({
 		role: z.string(),
 		client: z.string().optional(),
 		description: z.string(),
+		descriptionEn: z.string().optional(),
 		techStack: z.array(z.string()),
 		liveUrl: z.string().optional(),
 		githubUrl: z.string().optional(),

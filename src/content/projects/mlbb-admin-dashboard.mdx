@@ -4,6 +4,7 @@ slug: 'mlbb-admin-dashboard'
 year: '2025'
 role: 'Frontend Developer'
 description: 'Web admin panel berbasis Vue.js untuk mengelola data API Mobile Legends. Dashboard terintegrasi dengan backend GraphQL untuk operasi CRUD hero, item, build, dan konfigurasi meta game.'
+descriptionEn: 'A Vue.js-based admin web panel for managing Mobile Legends API data. Integrated with the GraphQL backend for CRUD operations on heroes, items, builds, and meta game configurations.'
 techStack:
   - 'Vue.js'
   - 'GraphQL'
@@ -28,11 +29,13 @@ screenshots:
     alt: 'Tournament Page'
 ---
 
+<div data-lang="id">
+
 ## Overview
 
 **MLBB Admin Dashboard** adalah companion frontend untuk MLBB Data APIs. Dibangun dengan Vue.js + Apollo Client, dashboard ini memberikan UI yang clean dan efisien untuk admin mengelola data game lewat operasi CRUD yang terintegrasi dengan GraphQL backend.
 
-## The Problem
+## Masalah
 
 Backend GraphQL membutuhkan UI yang bisa:
 
@@ -41,11 +44,11 @@ Backend GraphQL membutuhkan UI yang bisa:
 - Handle bulk operations untuk update massal (misal saat patch baru)
 - **Type-safe** end-to-end dari schema sampai UI
 
-## The Solution
+## Solusi
 
 Vue.js dipilih karena reactivity-nya yang clean dan ekosistemnya yang mendukung type-safety dengan TypeScript.
 
-### Key Features
+### Fitur Utama
 
 - **Hero Management** — CRUD interface dengan drag-and-drop ordering
 - **Item & Build Editor** — editor visual dengan preview
@@ -102,9 +105,9 @@ export function useHeroes() {
 }
 ```
 
-## Technical Stack
+## Tech Stack
 
-| Layer | Technology |
+| Layer | Teknologi |
 |---|---|
 | Framework | Vue.js 3 dengan Composition API |
 | State / Data | Apollo Client untuk GraphQL state management |
@@ -113,24 +116,137 @@ export function useHeroes() {
 | Routing | Vue Router dengan route guards |
 | Build | Vite dengan TypeScript strict mode |
 
-## Challenges & Solutions
+## Tantangan & Solusi
 
-**Challenge 1: Cache consistency setelah mutation**
-Solution: Menggunakan Apollo Client `update` callback untuk update cache manual setelah mutation, plus refetch queries strategis untuk data yang complex.
+**Tantangan 1: Cache consistency setelah mutation**
+Solusi: Menggunakan Apollo Client `update` callback untuk update cache manual setelah mutation, plus refetch queries strategis untuk data yang complex.
 
-**Challenge 2: Bulk operation UX**
-Solution: Implementasi optimistic updates dengan rollback jika server error, plus progress indicator untuk operasi panjang.
+**Tantangan 2: Bulk operation UX**
+Solusi: Implementasi optimistic updates dengan rollback jika server error, plus progress indicator untuk operasi panjang.
 
-**Challenge 3: Form validation yang complex**
-Solution: VeeValidate + Zod schema yang **shared** dengan backend. Schema validation jadi single source of truth.
+**Tantangan 3: Form validation yang complex**
+Solusi: VeeValidate + Zod schema yang **shared** dengan backend. Schema validation jadi single source of truth.
 
-## Integration with Backend
+## Integrasi dengan Backend
 
 Dashboard ini **tightly integrated** dengan [MLBB Data APIs](/projects/mlbb-data-apis) sebagai consumer utama. Setiap perubahan di admin dashboard langsung tersimpan via GraphQL mutations dan ter-reflect di public API.
 
-## Lessons Learned
+## Pelajaran yang Didapat
 
 - **Composition API** sangat clean untuk extracting logic yang reusable
 - **Apollo cache** adalah double-edged sword — powerful tapi butuh attention untuk consistency
 - **Type-safe end-to-end** (GraphQL Codegen → TypeScript types → Vue components) sangat worth it untuk DX
 - Optimistic UI butuh perencanaan careful untuk error handling
+
+</div>
+
+<div data-lang="en">
+
+## Overview
+
+**MLBB Admin Dashboard** is the companion frontend for MLBB Data APIs. Built with Vue.js + Apollo Client, this dashboard provides a clean and efficient UI for admins to manage game data through CRUD operations integrated with the GraphQL backend.
+
+## The Problem
+
+The GraphQL backend needed a UI that could:
+
+- Manage hero, item, build, and patch data **easily**
+- Provide **real-time** feedback when data changes
+- Handle bulk operations for mass updates (e.g., when a new patch drops)
+- Be **type-safe** end-to-end from schema to UI
+
+## The Solution
+
+Vue.js was chosen for its clean reactivity and ecosystem support for type-safety with TypeScript.
+
+### Key Features
+
+- **Hero Management** — CRUD interface with drag-and-drop ordering
+- **Item & Build Editor** — visual editor with preview
+- **Patch Manager** — bulk update meta stats per patch with diff view
+- **Live GraphQL Playground** — embedded GraphiQL for testing queries
+- **Optimistic UI** — instant feedback for users, syncs with server in background
+
+### Apollo Client Setup
+
+```typescript
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT,
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('mlbb_admin_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+export const apolloClient = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Hero: {
+        fields: {
+          recommendedBuilds: {
+            merge(_, incoming) { return incoming; },
+          },
+        },
+      },
+    },
+  }),
+});
+```
+
+### Composable Pattern (Vue 3)
+
+```typescript
+export function useHeroes() {
+  const { result, loading, refetch } = useQuery(HEROES_QUERY);
+
+  const heroes = computed(() => result.value?.heroes ?? []);
+  const heroesByRole = computed(() => groupBy(heroes.value, 'role'));
+
+  return { heroes, heroesByRole, loading, refetch };
+}
+```
+
+## Technical Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Vue.js 3 with Composition API |
+| State / Data | Apollo Client for GraphQL state management |
+| Styling | Tailwind CSS with custom design tokens |
+| Forms | VeeValidate + Zod schema |
+| Routing | Vue Router with route guards |
+| Build | Vite with TypeScript strict mode |
+
+## Challenges & Solutions
+
+**Challenge 1: Cache consistency after mutation**
+Solution: Using Apollo Client `update` callback for manual cache updates after mutations, plus strategic refetch queries for complex data.
+
+**Challenge 2: Bulk operation UX**
+Solution: Implementing optimistic updates with rollback on server error, plus progress indicators for long operations.
+
+**Challenge 3: Complex form validation**
+Solution: VeeValidate + Zod schema **shared** with the backend. Schema validation becomes the single source of truth.
+
+## Integration with Backend
+
+This dashboard is **tightly integrated** with [MLBB Data APIs](/projects/mlbb-data-apis) as the primary consumer. Every change in the admin dashboard is saved directly via GraphQL mutations and reflected in the public API.
+
+## Lessons Learned
+
+- **Composition API** is very clean for extracting reusable logic
+- **Apollo cache** is a double-edged sword — powerful but requires attention for consistency
+- **Type-safe end-to-end** (GraphQL Codegen → TypeScript types → Vue components) is absolutely worth it for DX
+- Optimistic UI requires careful planning for error handling
+
+</div>

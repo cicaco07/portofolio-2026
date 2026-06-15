@@ -5,6 +5,7 @@ year: '2026'
 role: 'Fullstack Laravel Developer'
 client: 'Higher Education Institution'
 description: 'Web-based academic super app berbasis Outcome-Based Education framework yang mengintegrasikan multi-modul akademik dalam satu platform terpadu.'
+descriptionEn: 'A web-based academic super app based on the Outcome-Based Education framework that integrates multiple academic modules into a single unified platform.'
 techStack:
   - 'Laravel'
   - 'PHP'
@@ -19,13 +20,15 @@ status: 'in-development'
 repoVisibility: 'private'
 ---
 
+<div data-lang="id">
+
 ## Overview
 
 OBE Academic System adalah super app berbasis web yang dikembangkan untuk institusi pendidikan tinggi dengan pendekatan **Outcome-Based Education (OBE)**. Aplikasi ini mengintegrasikan modul-modul akademik yang sebelumnya terpisah ke dalam satu platform terpadu.
 
 Sebagai fullstack Laravel developer, saya bertanggung jawab membangun admin panel, REST API, dan logika bisnis inti yang menghubungkan modul-modul tersebut.
 
-## The Problem
+## Masalah
 
 Sebelum sistem ini dibangun, institusi mengalami beberapa pain point:
 
@@ -34,11 +37,11 @@ Sebelum sistem ini dibangun, institusi mengalami beberapa pain point:
 - Kurikulum berbasis OBE sulit dilacak karena tidak ada tools yang sesuai standar
 - Dosen menghabiskan banyak waktu untuk **input ulang data** yang sama di sistem berbeda
 
-## The Solution
+## Solusi
 
 Saya merancang dan membangun super app yang menyatukan semua kebutuhan akademik dengan arsitektur modular berbasis Laravel.
 
-### Key Features
+### Fitur Utama
 
 - **Curriculum Management** — pengelolaan kurikulum berbasis CPL/CPMK (OBE framework)
 - **Penerimaan Mahasiswa Baru** — admission flow end-to-end dari registrasi hingga her-registrasi
@@ -46,10 +49,81 @@ Saya merancang dan membangun super app yang menyatukan semua kebutuhan akademik 
 - **Assessment & Outcome Tracking** — pelacakan capaian pembelajaran per mahasiswa
 - **REST API** — endpoint untuk integrasi dengan sistem eksternal (presensi, e-learning)
 
-### Architecture Highlights
+### Arsitektur
 
 ```php
 // Service layer pattern untuk business logic terpisah dari controller
+class CurriculumService
+{
+    public function calculateOutcome(Student $student): OutcomeReport
+    {
+        return $this->outcomeCalculator
+            ->forStudent($student)
+            ->withCurriculum($student->curriculum)
+            ->calculate();
+    }
+}
+```
+
+## Tech Stack
+
+| Layer | Teknologi |
+|---|---|
+| Backend | Laravel 11 dengan service layer pattern |
+| Database | MySQL dengan optimized indexing untuk query reports |
+| Frontend | Tailwind CSS + Alpine.js untuk reactive admin panel |
+| API | RESTful API dengan Laravel Sanctum auth |
+| Testing | PHPUnit + Pest untuk feature & unit test |
+
+## Tantangan & Solusi
+
+**Tantangan 1: Migrasi data dari 5+ legacy systems**
+Solusi: Saya membangun migration scripts dengan validasi data multi-stage dan rollback mechanism. Setiap migration di-test di staging environment dulu sebelum production.
+
+**Tantangan 2: Performa query report akademik**
+Solusi: Implementasi eager loading, denormalisasi strategis untuk read-heavy queries, dan caching dengan Redis untuk laporan yang jarang berubah.
+
+## Pelajaran yang Didapat
+
+- **Service layer** sangat membantu menjaga controller tetap thin dan testable
+- **OBE framework** membutuhkan modeling data yang berbeda dari sistem akademik tradisional
+- Investasi di **automated testing** sangat worth it untuk sistem yang akan terus berkembang
+
+</div>
+
+<div data-lang="en">
+
+## Overview
+
+OBE Academic System is a web-based super app developed for a higher education institution using the **Outcome-Based Education (OBE)** approach. This application integrates previously separate academic modules into a single unified platform.
+
+As a fullstack Laravel developer, I was responsible for building the admin panel, REST API, and core business logic connecting these modules.
+
+## The Problem
+
+Before this system was built, the institution faced several pain points:
+
+- Academic data scattered across **5+ separate applications** that weren't interconnected
+- Manual export-import between systems caused **data inconsistencies**
+- OBE-based curriculum was difficult to track due to lack of standard-compliant tools
+- Lecturers spent significant time **re-entering the same data** in different systems
+
+## The Solution
+
+I designed and built a super app that unifies all academic needs with a modular architecture based on Laravel.
+
+### Key Features
+
+- **Curriculum Management** — curriculum management based on CPL/CPMK (OBE framework)
+- **Student Admission** — end-to-end admission flow from registration to re-registration
+- **Regular Academics** — course registration, grade reports, automatic transcripts
+- **Assessment & Outcome Tracking** — tracking learning outcomes per student
+- **REST API** — endpoints for integration with external systems (attendance, e-learning)
+
+### Architecture
+
+```php
+// Service layer pattern to separate business logic from controllers
 class CurriculumService
 {
     public function calculateOutcome(Student $student): OutcomeReport
@@ -66,22 +140,24 @@ class CurriculumService
 
 | Layer | Technology |
 |---|---|
-| Backend | Laravel 11 dengan service layer pattern |
-| Database | MySQL dengan optimized indexing untuk query reports |
-| Frontend | Tailwind CSS + Alpine.js untuk reactive admin panel |
-| API | RESTful API dengan Laravel Sanctum auth |
-| Testing | PHPUnit + Pest untuk feature & unit test |
+| Backend | Laravel 11 with service layer pattern |
+| Database | MySQL with optimized indexing for report queries |
+| Frontend | Tailwind CSS + Alpine.js for reactive admin panel |
+| API | RESTful API with Laravel Sanctum auth |
+| Testing | PHPUnit + Pest for feature & unit tests |
 
 ## Challenges & Solutions
 
-**Challenge 1: Migrasi data dari 5+ legacy systems**
-Solution: Saya membangun migration scripts dengan validasi data multi-stage dan rollback mechanism. Setiap migration di-test di staging environment dulu sebelum production.
+**Challenge 1: Data migration from 5+ legacy systems**
+Solution: I built migration scripts with multi-stage data validation and rollback mechanisms. Each migration was tested in a staging environment before production.
 
-**Challenge 2: Performa query report akademik**
-Solution: Implementasi eager loading, denormalisasi strategis untuk read-heavy queries, dan caching dengan Redis untuk laporan yang jarang berubah.
+**Challenge 2: Academic report query performance**
+Solution: Implementing eager loading, strategic denormalization for read-heavy queries, and Redis caching for reports that rarely change.
 
 ## Lessons Learned
 
-- **Service layer** sangat membantu menjaga controller tetap thin dan testable
-- **OBE framework** membutuhkan modeling data yang berbeda dari sistem akademik tradisional
-- Investasi di **automated testing** sangat worth it untuk sistem yang akan terus berkembang
+- **Service layer** greatly helps keep controllers thin and testable
+- **OBE framework** requires data modeling that differs from traditional academic systems
+- Investing in **automated testing** is absolutely worth it for systems that will continue to grow
+
+</div>

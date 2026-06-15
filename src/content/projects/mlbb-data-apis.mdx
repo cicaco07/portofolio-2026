@@ -4,6 +4,7 @@ slug: 'mlbb-data-apis'
 year: '2025'
 role: 'Backend Developer'
 description: 'Endpoint management system untuk Mobile Legends Bang Bang data APIs menggunakan GraphQL. Backend service yang serve data hero, item, dan statistik game ke berbagai konsumen.'
+descriptionEn: 'Endpoint management system for Mobile Legends Bang Bang data APIs using GraphQL. A backend service that serves hero, item, and game statistics data to various consumers.'
 techStack:
   - 'Nest.js'
   - 'GraphQL'
@@ -26,11 +27,13 @@ screenshots:
     alt: 'Create Hero Mutation'
 ---
 
+<div data-lang="id">
+
 ## Overview
 
 **MLBB Data APIs** adalah backend service yang menyediakan endpoint untuk data game Mobile Legends Bang Bang via **GraphQL**. Service ini dibangun dengan Nest.js dan MongoDB sebagai data store, dirancang untuk menjadi single source of truth data hero, item, build, dan meta statistik.
 
-## The Problem
+## Masalah
 
 Komunitas dan analis MLBB membutuhkan akses data yang terstruktur:
 
@@ -39,17 +42,120 @@ Komunitas dan analis MLBB membutuhkan akses data yang terstruktur:
 - Tidak ada **type-safe contract** antara backend dan client
 - Data update meta game (patch) tidak terstandar
 
-## The Solution
+## Solusi
 
 GraphQL dipilih karena memberikan **flexibility** ke client untuk request hanya field yang dibutuhkan, sekaligus menyediakan **strong type system** via schema.
 
-### Key Features
+### Fitur Utama
 
 - **GraphQL Schema-first design** — schema sebagai source of truth
 - **Type-safe queries** — autocomplete + validasi di sisi client
 - **Field-level resolvers** — fetch related data on demand (no over-fetching)
 - **Real-time data sync** — endpoint untuk update meta game per patch
 - **Authentication** — JWT-based auth untuk admin operations
+
+### Contoh Schema
+
+```graphql
+type Hero {
+  id: ID!
+  name: String!
+  role: HeroRole!
+  attributes: HeroAttributes!
+  skills: [Skill!]!
+  recommendedBuilds: [Build!]!
+  winRate(patch: String): Float
+}
+
+type Query {
+  hero(id: ID!): Hero
+  heroes(role: HeroRole, search: String): [Hero!]!
+  metaStats(patch: String!): MetaStats!
+}
+```
+
+### Resolver Pattern
+
+```typescript
+@Resolver(() => Hero)
+export class HeroResolver {
+  constructor(
+    private readonly heroService: HeroService,
+    private readonly buildService: BuildService,
+  ) {}
+
+  @Query(() => [Hero])
+  async heroes(
+    @Args('role', { nullable: true }) role?: HeroRole,
+    @Args('search', { nullable: true }) search?: string,
+  ): Promise<Hero[]> {
+    return this.heroService.findAll({ role, search });
+  }
+
+  @ResolveField(() => [Build])
+  async recommendedBuilds(@Parent() hero: Hero): Promise<Build[]> {
+    return this.buildService.findByHeroId(hero.id);
+  }
+}
+```
+
+## Tech Stack
+
+| Layer | Teknologi |
+|---|---|
+| Framework | Nest.js dengan modular architecture |
+| API | GraphQL (schema-first) via @nestjs/graphql |
+| Database | MongoDB dengan Mongoose ODM |
+| Auth | JWT dengan Passport.js |
+| Validation | class-validator + class-transformer |
+| Language | TypeScript strict mode |
+
+## Tantangan & Solusi
+
+**Tantangan 1: N+1 query problem di GraphQL**
+Solusi: Implementasi **DataLoader pattern** untuk batch loading related data, mengurangi database hit signifikan.
+
+**Tantangan 2: Cache invalidation saat patch baru**
+Solusi: Tag-based cache invalidation — saat patch update di-publish, semua cache yang ter-tag dengan hero/item terkait di-flush otomatis.
+
+**Tantangan 3: Skema yang berkembang seiring update game**
+Solusi: GraphQL schema versioning dengan deprecation warnings, sehingga client lama tetap berfungsi sambil migrate.
+
+## Pelajaran yang Didapat
+
+- **GraphQL** sangat tepat untuk data yang punya banyak relasi seperti game data
+- **DataLoader** adalah keharusan untuk hindari N+1 di GraphQL
+- **Schema-first design** memudahkan kolaborasi dengan client developer (frontend & mobile)
+- MongoDB cocok untuk data game yang sifatnya **document-heavy** dengan struktur yang fleksibel
+
+</div>
+
+<div data-lang="en">
+
+## Overview
+
+**MLBB Data APIs** is a backend service that provides endpoints for Mobile Legends Bang Bang game data via **GraphQL**. Built with Nest.js and MongoDB as the data store, it's designed to be the single source of truth for hero, item, build, and meta statistics data.
+
+## The Problem
+
+The MLBB community and analysts needed structured data access:
+
+- Hero/item data scattered across **multiple sources** with different formats
+- Existing REST APIs **over-fetching** — large payloads for minimal data needs
+- No **type-safe contract** between backend and client
+- Meta game updates (patches) were not standardized
+
+## The Solution
+
+GraphQL was chosen because it gives clients the **flexibility** to request only the fields they need, while providing a **strong type system** via schema.
+
+### Key Features
+
+- **GraphQL Schema-first design** — schema as the source of truth
+- **Type-safe queries** — autocomplete + validation on the client side
+- **Field-level resolvers** — fetch related data on demand (no over-fetching)
+- **Real-time data sync** — endpoints for meta game updates per patch
+- **Authentication** — JWT-based auth for admin operations
 
 ### Schema Example
 
@@ -100,27 +206,29 @@ export class HeroResolver {
 
 | Layer | Technology |
 |---|---|
-| Framework | Nest.js dengan modular architecture |
+| Framework | Nest.js with modular architecture |
 | API | GraphQL (schema-first) via @nestjs/graphql |
-| Database | MongoDB dengan Mongoose ODM |
-| Auth | JWT dengan Passport.js |
+| Database | MongoDB with Mongoose ODM |
+| Auth | JWT with Passport.js |
 | Validation | class-validator + class-transformer |
 | Language | TypeScript strict mode |
 
 ## Challenges & Solutions
 
-**Challenge 1: N+1 query problem di GraphQL**
-Solution: Implementasi **DataLoader pattern** untuk batch loading related data, mengurangi database hit signifikan.
+**Challenge 1: N+1 query problem in GraphQL**
+Solution: Implementing the **DataLoader pattern** for batch loading related data, significantly reducing database hits.
 
-**Challenge 2: Cache invalidation saat patch baru**
-Solution: Tag-based cache invalidation — saat patch update di-publish, semua cache yang ter-tag dengan hero/item terkait di-flush otomatis.
+**Challenge 2: Cache invalidation on new patches**
+Solution: Tag-based cache invalidation — when a patch update is published, all caches tagged with related heroes/items are automatically flushed.
 
-**Challenge 3: Skema yang berkembang seiring update game**
-Solution: GraphQL schema versioning dengan deprecation warnings, sehingga client lama tetap berfungsi sambil migrate.
+**Challenge 3: Schema evolving with game updates**
+Solution: GraphQL schema versioning with deprecation warnings, so legacy clients continue to work while migrating.
 
 ## Lessons Learned
 
-- **GraphQL** sangat tepat untuk data yang punya banyak relasi seperti game data
-- **DataLoader** adalah keharusan untuk hindari N+1 di GraphQL
-- **Schema-first design** memudahkan kolaborasi dengan client developer (frontend & mobile)
-- MongoDB cocok untuk data game yang sifatnya **document-heavy** dengan struktur yang fleksibel
+- **GraphQL** is perfect for data with many relationships like game data
+- **DataLoader** is a must to avoid N+1 in GraphQL
+- **Schema-first design** facilitates collaboration with client developers (frontend & mobile)
+- MongoDB is well-suited for game data that is **document-heavy** with flexible structure
+
+</div>
