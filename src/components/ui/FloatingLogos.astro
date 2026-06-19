@@ -1,0 +1,70 @@
+---
+import {
+	siLaravel,
+	siVuedotjs,
+	siPhp,
+	siNodedotjs,
+	siMysql,
+	siDocker,
+	siGit,
+	siTypescript,
+} from "simple-icons";
+
+const floatingLogos = [
+	{ icon: siLaravel,    top: "15%", left: "8%",  size: 32, delay: "0s",   duration: "8s"    },
+	{ icon: siVuedotjs,   top: "70%", left: "5%",  size: 28, delay: "1.5s", duration: "10s"   },
+	{ icon: siPhp,        top: "25%", left: "88%", size: 36, delay: "0.8s", duration: "9s"    },
+	{ icon: siNodedotjs,  top: "75%", left: "85%", size: 30, delay: "2s",   duration: "7s"    },
+	{ icon: siMysql,      top: "50%", left: "3%",  size: 26, delay: "3s",   duration: "11s"   },
+	{ icon: siDocker,     top: "10%", left: "55%", size: 34, delay: "1s",   duration: "8.5s"  },
+	{ icon: siGit,        top: "85%", left: "45%", size: 28, delay: "2.5s", duration: "9.5s"  },
+	{ icon: siTypescript, top: "40%", left: "92%", size: 30, delay: "0.5s", duration: "7.5s"  },
+];
+---
+
+<div class="floating-logos fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+	{
+		floatingLogos.map((item) => (
+			<div
+				class="floating-logo absolute"
+				style={`top:${item.top}; left:${item.left}; animation-delay:${item.delay}; animation-duration:${item.duration};`}
+			>
+				<svg
+					viewBox="0 0 24 24"
+					width={item.size}
+					height={item.size}
+					style="fill: var(--color-base-content);"
+					aria-hidden="true"
+				>
+					<path d={item.icon.path} />
+				</svg>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.floating-logos {
+		/* Sit above .page-bg (z-index: -1) but below all content.
+		   Negative z-index keeps it behind normal-flow content everywhere. */
+		z-index: 0;
+	}
+	.floating-logo {
+		opacity: 0.06;
+		animation: float-drift var(--duration, 8s) ease-in-out infinite alternate;
+	}
+	@keyframes float-drift {
+		0% {
+			transform: translateY(0px) rotate(0deg);
+		}
+		33% {
+			transform: translateY(-12px) rotate(3deg);
+		}
+		66% {
+			transform: translateY(6px) rotate(-2deg);
+		}
+		100% {
+			transform: translateY(-8px) rotate(1deg);
+		}
+	}
+</style>

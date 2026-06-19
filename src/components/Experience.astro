@@ -1,9 +1,25 @@
-﻿---
+---
 import { experiences } from "../data/experience";
 import { UI } from "../i18n";
+import { getTechIcons } from "../data/tech-icons";
 import SectionHeader from "./ui/SectionHeader.astro";
 import BrandMark from "./ui/BrandMark.astro";
 import T from "./ui/T.astro";
+
+// Pre-compute parallax mini-icon layers per experience (drop labels with no icon,
+// cap to 3 per panel to avoid visual clutter).
+const MAX_FLOAT_ICONS = 3;
+const expIcons = experiences.map((exp) =>
+	getTechIcons(exp.techStack).slice(0, MAX_FLOAT_ICONS).map((icon, i) => ({
+		...icon,
+		top: `${20 + ((i * 28) % 55)}%`,
+		left: i % 2 === 0 ? `${6 + i * 2}%` : `${86 - i * 2}%`,
+		size: 26 + ((i * 6) % 12),
+		delay: `${(i * 0.9).toFixed(1)}s`,
+		duration: `${8 + (i % 4)}s`,
+		depth: i % 3, // 0,1,2 parallax depth tiers
+	})),
+);
 ---
 
 <section id="experience" class="relative" data-horizontal-section>
@@ -39,17 +55,40 @@ import T from "./ui/T.astro";
 			{
 				experiences.map((exp, i) => (
 					<article
-						class="shrink-0 w-screen px-6 flex items-center"
+						class="exp-panel shrink-0 w-screen px-6 flex items-center relative"
 						data-panel={i}
+						data-accent={exp.accent}
 					>
-						<div class="mx-auto max-w-5xl w-full grid gap-8 lg:grid-cols-[280px_1fr] items-start">
+						{/* ── Floating tech-stack icons (parallax mini-layer) ── */}
+						<div class="exp-techfloat pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+							{expIcons[i].map((ic) => (
+								<span
+									class="exp-techfloat__icon absolute"
+									style={`top:${ic.top}; left:${ic.left}; animation-delay:${ic.delay}; animation-duration:${ic.duration}; --depth:${ic.depth};`}
+									data-parallax={0.18 + ic.depth * 0.12}
+								>
+									<svg
+										viewBox="0 0 24 24"
+										width={ic.size}
+										height={ic.size}
+										style={`fill: var(--color-${exp.accent});`}
+									>
+										<path d={ic.path} />
+									</svg>
+								</span>
+							))}
+						</div>
+
+						<div class="relative z-10 mx-auto max-w-5xl w-full grid gap-8 lg:grid-cols-[280px_1fr] items-start">
 							<div class="flex flex-col gap-5">
-								<BrandMark
-									initials={exp.initials}
-									shape={exp.shape}
-									accent={exp.accent}
-								/>
-								<div>
+								<div data-stagger="brand">
+									<BrandMark
+										initials={exp.initials}
+										shape={exp.shape}
+										accent={exp.accent}
+									/>
+								</div>
+								<div data-stagger="meta">
 									<div class="flex flex-wrap items-center gap-2 mb-2">
 										<span
 											class={`inline-block rounded-full bg-${exp.accent}/10 px-3 py-1 font-mono text-xs font-medium text-${exp.accent}`}
@@ -65,7 +104,7 @@ import T from "./ui/T.astro";
 									</h3>
 									<p class="mt-1 font-medium opacity-70">{exp.company}</p>
 								</div>
-								<div class="flex gap-4">
+								<div class="flex gap-4" data-stagger="metrics">
 									{exp.metrics.map((m) => (
 										<div class="flex flex-col">
 											<span
@@ -88,7 +127,7 @@ import T from "./ui/T.astro";
 									class="absolute -top-12 -right-12 h-40 w-40 rounded-full blur-3xl opacity-20 pointer-events-none"
 									style={`background: var(--color-${exp.accent});`}
 								/>
-								<p class="leading-relaxed opacity-80 mb-6 relative">
+								<p class="leading-relaxed opacity-80 mb-6 relative" data-stagger="desc">
 									<T tr={exp.description} />
 								</p>
 								<div class="mb-6 relative">
@@ -97,7 +136,7 @@ import T from "./ui/T.astro";
 									</p>
 									<ul class="space-y-2">
 										{exp.achievements.map((a) => (
-											<li class="flex items-start gap-2.5 text-sm opacity-80">
+											<li class="exp-achievement flex items-start gap-2.5 text-sm opacity-80" data-stagger="achievement">
 												<svg
 													class={`h-4 w-4 shrink-0 mt-0.5 text-${exp.accent}`}
 													fill="none"
@@ -122,7 +161,7 @@ import T from "./ui/T.astro";
 									</p>
 									<div class="flex flex-wrap gap-2">
 										{exp.techStack.map((tech) => (
-											<span class="tech-badge">{tech}</span>
+											<span class="exp-badge tech-badge" data-stagger="badge">{tech}</span>
 										))}
 									</div>
 								</div>
@@ -133,17 +172,26 @@ import T from "./ui/T.astro";
 			}
 		</div>
 
+		{/* ── Enhanced timeline spine ── */}
 		<div
-			class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-none z-10"
+			class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none w-[min(80vw,28rem)]"
 		>
-			{
-				experiences.map((_, i) => (
-					<span
-						class={`h-1 rounded-full bg-base-content/15 transition-all duration-500 experience-progress-${i}`}
-						style={`width: ${i === 0 ? "2.5rem" : "0.75rem"};`}
-					/>
-				))
-			}
+			<div class="exp-timeline">
+				<div class="exp-timeline__line"></div>
+				<div class="exp-timeline__progress" data-timeline-progress></div>
+				<div class="exp-timeline__nodes">
+					{experiences.map((exp, i) => (
+					<div
+								class="exp-timeline__node"
+								data-timeline-node={i}
+							>
+							<span class="exp-timeline__dot" />
+							<span class="exp-timeline__year">{exp.period.split('—')[0].trim().split(' ').slice(-1)[0]}</span>
+						</div>
+					))}
+				</div>
+				<div class="exp-timeline__caption" data-timeline-caption></div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -160,6 +208,100 @@ import T from "./ui/T.astro";
 	}
 	.animate-bounce-x {
 		animation: bounce-x 1.5s ease-in-out infinite;
+	}
+
+	/* ── Floating tech-stack icons ── */
+	.exp-techfloat__icon {
+		opacity: 0.07;
+		animation: float-drift var(--duration, 8s) ease-in-out infinite alternate;
+		will-change: transform;
+	}
+	@keyframes float-drift {
+		0%   { transform: translateY(0px) rotate(0deg); }
+		33%  { transform: translateY(-10px) rotate(3deg); }
+		66%  { transform: translateY(6px) rotate(-2deg); }
+		100% { transform: translateY(-6px) rotate(1deg); }
+	}
+
+	/* ── Enhanced timeline ── */
+	.exp-timeline {
+		position: relative;
+		width: 100%;
+		padding-top: 2.25rem;
+	}
+	.exp-timeline__line {
+		position: absolute;
+		top: 0.3rem;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: color-mix(in oklch, var(--color-base-content) 12%, transparent);
+		border-radius: 999px;
+	}
+	.exp-timeline__progress {
+		position: absolute;
+		top: 0.3rem;
+		left: 0;
+		height: 2px;
+		width: 0%;
+		background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+		border-radius: 999px;
+		box-shadow: 0 0 10px color-mix(in oklch, var(--color-primary) 45%, transparent);
+		transition: width 0.15s linear;
+	}
+	.exp-timeline__nodes {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+	}
+	.exp-timeline__node {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.4rem;
+	}
+	.exp-timeline__dot {
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 999px;
+		background: color-mix(in oklch, var(--color-base-content) 22%, transparent);
+		border: 2px solid var(--color-base-100);
+		box-shadow: 0 0 0 0 transparent;
+		transition: all 0.3s ease;
+	}
+	.exp-timeline__node.is-active .exp-timeline__dot {
+		width: 0.85rem;
+		height: 0.85rem;
+		background: var(--color-primary);
+		box-shadow: 0 0 12px color-mix(in oklch, var(--color-primary) 55%, transparent);
+	}
+	.exp-timeline__year {
+		font-family: var(--font-mono, monospace);
+		font-size: 0.65rem;
+		font-weight: 600;
+		opacity: 0.35;
+		letter-spacing: 0.05em;
+		transition: opacity 0.3s ease;
+	}
+	.exp-timeline__node.is-active .exp-timeline__year {
+		opacity: 0.9;
+		color: var(--color-primary);
+	}
+	/* Single caption above the line, updated by JS — avoids per-node clutter. */
+	.exp-timeline__caption {
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		right: 0;
+		margin-bottom: 0.6rem;
+		text-align: center;
+		font-size: 0.7rem;
+		font-weight: 500;
+		color: var(--color-primary);
+		opacity: 0.85;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.exp-pattern--dots::before {
@@ -200,5 +342,13 @@ import T from "./ui/T.astro";
 			transparent 50%
 		);
 		background-size: 16px 16px;
+	}
+
+	/* Mobile fallback: hide parallax chrome to keep it clean.
+	   The vertical-stack fallback in global.css already handles layout here. */
+	@media (max-width: 767px) {
+		.exp-techfloat {
+			display: none !important;
+		}
 	}
 </style>

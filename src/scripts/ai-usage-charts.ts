@@ -128,7 +128,7 @@ function drawHeatmap(
 	ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 	ctx.clearRect(0, 0, width, height);
 
-	ctx.font = '600 10px "Fira Code", monospace';
+	ctx.font = '600 10px "JetBrains Mono", monospace';
 	ctx.textAlign = 'left';
 	ctx.textBaseline = 'alphabetic';
 	ctx.fillStyle = muted;
@@ -170,7 +170,7 @@ function drawHeatmap(
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
 		ctx.fillStyle = muted;
-		ctx.font = '600 11px "Fira Code", monospace';
+		ctx.font = '600 11px "JetBrains Mono", monospace';
 		ctx.fillText('No activity data available', width / 2, top + 3.5 * (cell + cellGap));
 	}
 
@@ -195,7 +195,7 @@ function createTooltip(): HTMLDivElement {
 		backdrop-filter: blur(8px);
 		border: 1px solid oklch(0.4 0.02 260 / 0.3);
 		box-shadow: 0 8px 24px oklch(0 0 0 / 0.4);
-		font-family: "Fira Code", monospace;
+		font-family: "JetBrains Mono", monospace;
 		font-size: 12px;
 		color: oklch(0.9 0 0);
 		white-space: nowrap;

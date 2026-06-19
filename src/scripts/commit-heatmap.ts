@@ -175,7 +175,7 @@ function drawHeatmap(
 
 	const muted = getThemeTextColor();
 
-	ctx.font = `${compact ? '600 9px' : '600 11px'} "Fira Code", monospace`;
+	ctx.font = `${compact ? '600 9px' : '600 11px'} "JetBrains Mono", monospace`;
 	ctx.textAlign = 'right';
 	ctx.textBaseline = 'middle';
 	ctx.fillStyle = muted;
@@ -185,7 +185,7 @@ function drawHeatmap(
 
 	ctx.textAlign = 'left';
 	ctx.textBaseline = 'alphabetic';
-	ctx.font = `${compact ? '600 10px' : '600 12px'} "Fira Code", monospace`;
+	ctx.font = `${compact ? '600 10px' : '600 12px'} "JetBrains Mono", monospace`;
 	const monthLabels = new Set<string>();
 	for (let i = 0; i < totalDays; i++) {
 		const current = new Date(start);
@@ -223,14 +223,14 @@ function drawHeatmap(
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
 		ctx.fillStyle = muted;
-		ctx.font = '600 11px "Fira Code", monospace';
+		ctx.font = '600 11px "JetBrains Mono", monospace';
 		ctx.fillText('No activity data available', width / 2, top + 3.5 * (cell + cellGap));
 	}
 
 	const legendY = top + gridHeight + 14;
 	const legendCellSize = compact ? 10 : 13;
 	const legendGap = compact ? 3 : 4;
-	ctx.font = `${compact ? '10px' : '11px'} "Fira Code", monospace`;
+	ctx.font = `${compact ? '10px' : '11px'} "JetBrains Mono", monospace`;
 	ctx.textBaseline = 'middle';
 	ctx.fillStyle = muted;
 
@@ -273,7 +273,7 @@ function setupTooltip(canvas: HTMLCanvasElement, getCellMap: () => CellMap): voi
 			'padding:8px 12px',
 			'border-radius:8px',
 			'font-size:12px',
-			'font-family:"Fira Code",monospace',
+			'font-family:"JetBrains Mono",monospace',
 			'line-height:1.6',
 			'white-space:pre',
 			'opacity:0',
