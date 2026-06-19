@@ -1,4 +1,4 @@
-﻿---
+---
 import "../styles/global.css";
 import { SITE, NAV_LINKS } from "../config/site";
 import { UI } from "../i18n";
@@ -32,6 +32,26 @@ const navLinks = NAV_LINKS.filter(
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Preconnect to Google Fonts origins to eliminate DNS+TCP+TLS latency -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+		<!-- Load Google Fonts asynchronously to prevent render-blocking -->
+		<link
+			rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+		<noscript>
+			<link
+				rel="stylesheet"
+				href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+			/>
+		</noscript>
 		<meta
 			id="meta-description"
 			name="description"
