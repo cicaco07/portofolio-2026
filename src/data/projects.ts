@@ -62,7 +62,7 @@ export const projects: Project[] = [
 			'Aplikasi diseminasi informasi pertanian untuk Kementerian Pertanian Republik Indonesia. Dibangun dengan Laravel sebagai platform penyebaran informasi pertanian modern ke pengguna di seluruh Indonesia.',
 			'An agricultural information dissemination application for the Ministry of Agriculture of the Republic of Indonesia. Built with Laravel as a platform for distributing modern agricultural information to users across Indonesia.',
 		),
-		techStack: ['Laravel', 'PHP', 'MySQL', 'REST API', 'Tailwind CSS'],
+		techStack: ['Laravel', 'PHP', 'PostgreSQL', 'REST API', 'Tailwind CSS', 'Octane'],
 		repoVisibility: 'private',
 		detailSlug: 'agromodern',
 		year: '2026',
