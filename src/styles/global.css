@@ -7,10 +7,32 @@
 
 @source inline("text-primary text-secondary text-accent text-primary-content text-secondary-content text-accent-content bg-primary/10 bg-secondary/10 bg-accent/10 bg-primary/5 bg-secondary/5 bg-accent/5");
 
+/* ── Font fallback declarations to prevent CLS during font swap ──
+   These @font-face rules define adjusted system fonts that closely match
+   Space Grotesk and JetBrains Mono metrics, preventing layout shift when
+   the web fonts load asynchronously. */
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Fallback';
+  src: local('Courier New');
+  size-adjust: 95%;
+  ascent-override: 95%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
 /* ── Typography tokens ── */
 @theme {
-  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Space Grotesk', 'Space Grotesk Fallback', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, monospace;
 }
 
 /* ── Base ── */

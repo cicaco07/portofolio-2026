@@ -255,15 +255,20 @@ const navLinks = NAV_LINKS.filter(
 				initNavActiveLink,
 			} from "../scripts/navbar";
 			import { initReveal } from "../scripts/reveal";
-			import { initGsapScroll } from "../scripts/gsap-scroll";
 
-			initGsapScroll();
+			// Critical UI scripts — these run immediately for interactivity
 			initThemeToggle();
 			initLangToggle();
 			initMobileMenu();
 			initNavScroll();
 			initNavActiveLink();
 			initReveal();
+		</script>
+
+		<!-- GSAP scroll animations loaded separately to avoid polluting the critical JS bundle -->
+		<script>
+			import { initGsapScroll } from "../scripts/gsap-scroll";
+			initGsapScroll();
 		</script>
 
 		<style is:global>

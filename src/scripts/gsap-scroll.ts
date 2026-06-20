@@ -1,5 +1,9 @@
 export function initGsapScroll(): void {
-	Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([{ gsap }, { ScrollTrigger }]) => {
+	// Defer GSAP loading — it is not needed for initial render (only for scroll animations).
+	const load = () => Promise.all([
+		import('gsap'),
+		import('gsap/ScrollTrigger'),
+	]).then(([{ gsap }, { ScrollTrigger }]) => {
 		gsap.registerPlugin(ScrollTrigger);
 
 		const mm = gsap.matchMedia();
@@ -168,4 +172,12 @@ export function initGsapScroll(): void {
 			ScrollTrigger.refresh();
 		});
 	});
+
+	// Defer GSAP loading until the browser is idle — this prevents GSAP from
+	// competing with critical resources during initial page load.
+	if ('requestIdleCallback' in window) {
+		requestIdleCallback(() => load());
+	} else {
+		setTimeout(() => load(), 200);
+	}
 }

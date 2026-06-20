@@ -1,5 +1,6 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import { UI } from '../../i18n';
 import T from '../../components/ui/T.astro';
@@ -98,7 +99,7 @@ const statusLabel =
 				</div>
 				<div class="browser-mockup__content relative overflow-hidden" style={`background: color-mix(in oklch, var(--color-${data.accent}) 5%, var(--color-base-200)); min-height: 320px;`}>
 					{data.coverImage ? (
-						<img
+						<Image
 							src={data.coverImage}
 							alt={`${data.title} preview`}
 							class="w-full h-auto object-cover"
@@ -127,7 +128,7 @@ const statusLabel =
 					<div class="grid gap-4 sm:grid-cols-2">
 						{data.screenshots.map((shot) => (
 							<div class="group relative overflow-hidden rounded-xl border border-base-content/10 bg-base-200/50 transition hover:border-primary/30">
-								<img
+								<Image
 									src={shot.src}
 									alt={shot.alt}
 									class="w-full h-auto object-cover transition group-hover:scale-[1.02]"

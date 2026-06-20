@@ -257,7 +257,7 @@ const { showOthers = true, showViewAllCta = false } = Astro.props;
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	// Lazy-load GSAP only when needed (on first interaction) to reduce critical path
-	let gsapModule: typeof import('gsap') | null = null;
+	let gsapModule: any = null;
 	async function getGsap() {
 		if (!gsapModule) {
 			gsapModule = await import('gsap');

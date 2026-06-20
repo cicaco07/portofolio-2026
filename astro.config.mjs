@@ -8,7 +8,15 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      modulePreload: {
+        resolveDependencies(url, deps) {
+          // Filter out GSAP and ScrollTrigger from eager preloading
+          return deps.filter(dep => !dep.includes('gsap') && !dep.includes('ScrollTrigger'));
+        }
+      }
+    }
   },
 
   integrations: [
