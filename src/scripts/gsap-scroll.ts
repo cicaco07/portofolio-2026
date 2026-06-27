@@ -10,13 +10,13 @@ export function initGsapScroll(): void {
 
 		mm.add('(min-width: 768px)', () => {
 			document.querySelectorAll<HTMLElement>('[data-horizontal-section]').forEach((section) => {
-				const pin   = section.querySelector<HTMLElement>('.horizontal-pin');
+				const pin = section.querySelector<HTMLElement>('.horizontal-pin');
 				const track = section.querySelector<HTMLElement>('.horizontal-track');
 				if (!pin || !track) return;
 
-				const panels      = Array.from(track.children) as HTMLElement[];
-				const panelCount  = panels.length;
-				const distance    = track.scrollWidth - window.innerWidth;
+				const panels = Array.from(track.children) as HTMLElement[];
+				const panelCount = panels.length;
+				const distance = track.scrollWidth - window.innerWidth;
 				const timelineBar = section.querySelector<HTMLElement>('[data-timeline-progress]');
 				const timelineNodes = section.querySelectorAll<HTMLElement>('[data-timeline-node]');
 				const timelineCaption = section.querySelector<HTMLElement>('[data-timeline-caption]');
@@ -100,7 +100,7 @@ export function initGsapScroll(): void {
 						scrollTrigger: {
 							trigger: panel,
 							containerAnimation: tween,
-							start: 'left 20%',   // previous panel ~80% passed
+							start: 'left 40%',   // previous panel ~60% passed
 							end: 'left 5%',      // panel settling into reading position
 							scrub: 1,
 						},
