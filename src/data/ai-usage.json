@@ -1,11 +1,11 @@
 {
   "username": "cicaco07",
   "profileUrl": "https://tokscale.ai/u/cicaco07",
-  "available": true,
-  "fetchedAt": "2026-06-24T18:47:46.803Z",
+  "available": false,
+  "fetchedAt": "2026-07-08T18:14:22.410Z",
   "lastSuccessfulFetch": "2026-06-24T18:47:46.803Z",
-  "stale": false,
-  "error": null,
+  "stale": true,
+  "error": "Primary: This operation was aborted | Fallback: This operation was aborted",
   "totals": {
     "tokens": 793580970,
     "cost": 1109.4041,
