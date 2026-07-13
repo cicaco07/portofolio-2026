@@ -2,8 +2,8 @@
   "username": "cicaco07",
   "profileUrl": "https://tokscale.ai/u/cicaco07",
   "available": true,
-  "fetchedAt": "2026-07-12T17:54:54.437Z",
-  "lastSuccessfulFetch": "2026-07-12T17:54:54.437Z",
+  "fetchedAt": "2026-07-13T11:23:21.835Z",
+  "lastSuccessfulFetch": "2026-07-13T11:23:21.835Z",
   "stale": false,
   "error": null,
   "totals": {
@@ -17,367 +17,1226 @@
       "date": "2026-04-26",
       "tokens": 35934,
       "cost": 0.2008,
-      "requests": 0
+      "requests": 18,
+      "input": 28184,
+      "output": 7750,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 35934
+        }
+      ]
     },
     {
       "date": "2026-04-27",
       "tokens": 23934,
       "cost": 0.0345,
-      "requests": 0
+      "requests": 5,
+      "input": 21335,
+      "output": 2599,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 19858
+        },
+        {
+          "name": "claude",
+          "tokens": 4076
+        }
+      ]
     },
     {
       "date": "2026-04-28",
       "tokens": 810,
       "cost": 0.0043,
-      "requests": 0
+      "requests": 2,
+      "input": 655,
+      "output": 155,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 810
+        }
+      ]
     },
     {
       "date": "2026-04-29",
       "tokens": 23961,
       "cost": 0.023,
-      "requests": 0
+      "requests": 3,
+      "input": 20181,
+      "output": 3780,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 23961
+        }
+      ]
     },
     {
       "date": "2026-04-30",
       "tokens": 582292,
       "cost": 0.5006,
-      "requests": 0
+      "requests": 23,
+      "input": 181958,
+      "output": 5006,
+      "cacheRead": 386688,
+      "cacheWrite": 0,
+      "reasoning": 8640,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 45264
+        },
+        {
+          "name": "opencode",
+          "tokens": 537028
+        }
+      ]
     },
     {
       "date": "2026-05-03",
       "tokens": 2040,
       "cost": 0.0143,
-      "requests": 0
+      "requests": 16,
+      "input": 1070,
+      "output": 970,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 1090
+        },
+        {
+          "name": "claude",
+          "tokens": 164
+        },
+        {
+          "name": "opencode",
+          "tokens": 786
+        }
+      ]
     },
     {
       "date": "2026-05-04",
       "tokens": 1045809,
       "cost": 5.7699,
-      "requests": 0
+      "requests": 839,
+      "input": 996145,
+      "output": 49664,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 1045809
+        }
+      ]
     },
     {
       "date": "2026-05-05",
       "tokens": 20968681,
       "cost": 111.4409,
-      "requests": 0
+      "requests": 761,
+      "input": 20562818,
+      "output": 405863,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 246241
+        },
+        {
+          "name": "opencode",
+          "tokens": 20722440
+        }
+      ]
     },
     {
       "date": "2026-05-06",
       "tokens": 199661,
       "cost": 0.3472,
-      "requests": 0
+      "requests": 182,
+      "input": 178599,
+      "output": 21062,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 187558
+        },
+        {
+          "name": "opencode",
+          "tokens": 12103
+        }
+      ]
     },
     {
       "date": "2026-05-07",
       "tokens": 42797,
       "cost": 0.0594,
-      "requests": 0
+      "requests": 67,
+      "input": 39618,
+      "output": 3179,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 41249
+        },
+        {
+          "name": "opencode",
+          "tokens": 1548
+        }
+      ]
     },
     {
       "date": "2026-05-08",
       "tokens": 9972647,
       "cost": 45.9749,
-      "requests": 0
+      "requests": 658,
+      "input": 9866202,
+      "output": 106445,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 110748
+        },
+        {
+          "name": "claude",
+          "tokens": 525471
+        },
+        {
+          "name": "opencode",
+          "tokens": 9336428
+        }
+      ]
     },
     {
       "date": "2026-05-10",
       "tokens": 38866,
       "cost": 0.1624,
-      "requests": 0
+      "requests": 3,
+      "input": 38714,
+      "output": 152,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 38866
+        }
+      ]
     },
     {
       "date": "2026-05-11",
       "tokens": 22117591,
       "cost": 23.8397,
-      "requests": 0
+      "requests": 248,
+      "input": 2492116,
+      "output": 92237,
+      "cacheRead": 19533238,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 211218
+        },
+        {
+          "name": "opencode",
+          "tokens": 21906373
+        }
+      ]
     },
     {
       "date": "2026-05-12",
       "tokens": 43590838,
       "cost": 72.8771,
-      "requests": 0
+      "requests": 635,
+      "input": 14150033,
+      "output": 124961,
+      "cacheRead": 29315844,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 26313
+        },
+        {
+          "name": "claude",
+          "tokens": 763982
+        },
+        {
+          "name": "opencode",
+          "tokens": 42800543
+        }
+      ]
     },
     {
       "date": "2026-05-13",
       "tokens": 31548979,
       "cost": 105.8113,
-      "requests": 0
+      "requests": 690,
+      "input": 24150838,
+      "output": 116204,
+      "cacheRead": 7273088,
+      "cacheWrite": 0,
+      "reasoning": 8849,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 5383981
+        },
+        {
+          "name": "claude",
+          "tokens": 1109023
+        },
+        {
+          "name": "opencode",
+          "tokens": 25055975
+        }
+      ]
     },
     {
       "date": "2026-05-14",
       "tokens": 10694255,
       "cost": 14.0296,
-      "requests": 0
+      "requests": 192,
+      "input": 1811696,
+      "output": 65036,
+      "cacheRead": 8814720,
+      "cacheWrite": 0,
+      "reasoning": 2803,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 1618274
+        },
+        {
+          "name": "claude",
+          "tokens": 140407
+        },
+        {
+          "name": "opencode",
+          "tokens": 8935574
+        }
+      ]
     },
     {
       "date": "2026-05-15",
       "tokens": 25005182,
       "cost": 36.7843,
-      "requests": 0
+      "requests": 451,
+      "input": 6057906,
+      "output": 93388,
+      "cacheRead": 18853888,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 419167
+        },
+        {
+          "name": "opencode",
+          "tokens": 24586015
+        }
+      ]
     },
     {
       "date": "2026-05-16",
       "tokens": 23958635,
       "cost": 28.9655,
-      "requests": 0
+      "requests": 370,
+      "input": 4004907,
+      "output": 94185,
+      "cacheRead": 19858816,
+      "cacheWrite": 0,
+      "reasoning": 727,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 153090
+        },
+        {
+          "name": "claude",
+          "tokens": 527505
+        },
+        {
+          "name": "opencode",
+          "tokens": 23278040
+        }
+      ]
     },
     {
       "date": "2026-05-17",
       "tokens": 11140939,
       "cost": 34.1425,
-      "requests": 0
+      "requests": 265,
+      "input": 6800524,
+      "output": 70851,
+      "cacheRead": 4265472,
+      "cacheWrite": 0,
+      "reasoning": 4092,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 1723486
+        },
+        {
+          "name": "claude",
+          "tokens": 456110
+        },
+        {
+          "name": "opencode",
+          "tokens": 8961343
+        }
+      ]
     },
     {
       "date": "2026-05-18",
       "tokens": 28027946,
       "cost": 63.0843,
-      "requests": 0
+      "requests": 736,
+      "input": 12993409,
+      "output": 217878,
+      "cacheRead": 14809856,
+      "cacheWrite": 0,
+      "reasoning": 6803,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 2459632
+        },
+        {
+          "name": "claude",
+          "tokens": 799027
+        },
+        {
+          "name": "opencode",
+          "tokens": 24769287
+        }
+      ]
     },
     {
       "date": "2026-05-19",
       "tokens": 60741687,
       "cost": 96.5845,
-      "requests": 0
+      "requests": 1736,
+      "input": 20125399,
+      "output": 312742,
+      "cacheRead": 40271232,
+      "cacheWrite": 0,
+      "reasoning": 32314,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 3425
+        },
+        {
+          "name": "codex",
+          "tokens": 28212202
+        },
+        {
+          "name": "claude",
+          "tokens": 1383594
+        },
+        {
+          "name": "opencode",
+          "tokens": 31142466
+        }
+      ]
     },
     {
       "date": "2026-05-20",
       "tokens": 32056836,
       "cost": 45.4351,
-      "requests": 0
+      "requests": 781,
+      "input": 8144160,
+      "output": 162718,
+      "cacheRead": 23735680,
+      "cacheWrite": 0,
+      "reasoning": 14278,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 3643
+        },
+        {
+          "name": "codex",
+          "tokens": 10404360
+        },
+        {
+          "name": "claude",
+          "tokens": 687363
+        },
+        {
+          "name": "opencode",
+          "tokens": 20961470
+        }
+      ]
     },
     {
       "date": "2026-05-21",
       "tokens": 7127450,
       "cost": 15.349,
-      "requests": 0
+      "requests": 254,
+      "input": 2872566,
+      "output": 42748,
+      "cacheRead": 4208128,
+      "cacheWrite": 0,
+      "reasoning": 4008,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 4548232
+        },
+        {
+          "name": "claude",
+          "tokens": 222850
+        },
+        {
+          "name": "opencode",
+          "tokens": 2356368
+        }
+      ]
     },
     {
       "date": "2026-05-22",
       "tokens": 36883606,
       "cost": 33.3734,
-      "requests": 0
+      "requests": 348,
+      "input": 2646590,
+      "output": 115688,
+      "cacheRead": 34090368,
+      "cacheWrite": 0,
+      "reasoning": 30960,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 36559741
+        },
+        {
+          "name": "claude",
+          "tokens": 4408
+        },
+        {
+          "name": "opencode",
+          "tokens": 319457
+        }
+      ]
     },
     {
       "date": "2026-05-28",
       "tokens": 25740479,
       "cost": 22.0584,
-      "requests": 0
+      "requests": 214,
+      "input": 1035804,
+      "output": 128431,
+      "cacheRead": 24546560,
+      "cacheWrite": 0,
+      "reasoning": 29684,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 25740479
+        }
+      ]
     },
     {
       "date": "2026-05-29",
       "tokens": 7636852,
       "cost": 7.1866,
-      "requests": 0
+      "requests": 84,
+      "input": 411871,
+      "output": 39180,
+      "cacheRead": 7173632,
+      "cacheWrite": 0,
+      "reasoning": 12169,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 7636852
+        }
+      ]
     },
     {
       "date": "2026-05-30",
       "tokens": 1486298,
       "cost": 2.7146,
-      "requests": 0
+      "requests": 50,
+      "input": 292691,
+      "output": 20890,
+      "cacheRead": 1165056,
+      "cacheWrite": 0,
+      "reasoning": 7661,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 1486298
+        }
+      ]
     },
     {
       "date": "2026-05-31",
       "tokens": 11118709,
       "cost": 12.3265,
-      "requests": 0
+      "requests": 90,
+      "input": 903049,
+      "output": 81424,
+      "cacheRead": 10119808,
+      "cacheWrite": 0,
+      "reasoning": 14428,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 22036
+        },
+        {
+          "name": "codex",
+          "tokens": 11096673
+        }
+      ]
     },
     {
       "date": "2026-06-01",
       "tokens": 31741913,
       "cost": 24.1198,
-      "requests": 0
+      "requests": 240,
+      "input": 933277,
+      "output": 104403,
+      "cacheRead": 30670464,
+      "cacheWrite": 0,
+      "reasoning": 33769,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 6511
+        },
+        {
+          "name": "codex",
+          "tokens": 31735402
+        }
+      ]
     },
     {
       "date": "2026-06-02",
       "tokens": 22904120,
       "cost": 21.8655,
-      "requests": 0
+      "requests": 179,
+      "input": 1191802,
+      "output": 132839,
+      "cacheRead": 21537408,
+      "cacheWrite": 0,
+      "reasoning": 42071,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 22904120
+        }
+      ]
     },
     {
       "date": "2026-06-03",
       "tokens": 2270308,
       "cost": 2.145,
-      "requests": 0
+      "requests": 17,
+      "input": 159854,
+      "output": 7431,
+      "cacheRead": 2100608,
+      "cacheWrite": 0,
+      "reasoning": 2415,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 2270308
+        }
+      ]
     },
     {
       "date": "2026-06-04",
       "tokens": 24829604,
       "cost": 18.0592,
-      "requests": 0
+      "requests": 198,
+      "input": 1759719,
+      "output": 102869,
+      "cacheRead": 22944000,
+      "cacheWrite": 0,
+      "reasoning": 23016,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 24829604
+        }
+      ]
     },
     {
       "date": "2026-06-06",
       "tokens": 27319,
       "cost": 0.0244,
-      "requests": 0
+      "requests": 5,
+      "input": 25679,
+      "output": 1640,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 27319
+        }
+      ]
     },
     {
       "date": "2026-06-07",
       "tokens": 1988654,
       "cost": 6.2426,
-      "requests": 0
+      "requests": 126,
+      "input": 1936615,
+      "output": 31377,
+      "cacheRead": 20608,
+      "cacheWrite": 0,
+      "reasoning": 54,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 885950
+        },
+        {
+          "name": "codex",
+          "tokens": 38508
+        },
+        {
+          "name": "claude",
+          "tokens": 12372
+        },
+        {
+          "name": "opencode",
+          "tokens": 1051824
+        }
+      ]
     },
     {
       "date": "2026-06-08",
       "tokens": 17661882,
       "cost": 46.5372,
-      "requests": 0
+      "requests": 497,
+      "input": 9110353,
+      "output": 112062,
+      "cacheRead": 8431488,
+      "cacheWrite": 0,
+      "reasoning": 7979,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 1161544
+        },
+        {
+          "name": "codex",
+          "tokens": 1243232
+        },
+        {
+          "name": "claude",
+          "tokens": 298894
+        },
+        {
+          "name": "opencode",
+          "tokens": 14958212
+        }
+      ]
     },
     {
       "date": "2026-06-09",
       "tokens": 21509098,
       "cost": 8.5777,
-      "requests": 0
+      "requests": 236,
+      "input": 5308696,
+      "output": 54008,
+      "cacheRead": 16125952,
+      "cacheWrite": 0,
+      "reasoning": 20442,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 4149400
+        },
+        {
+          "name": "claude",
+          "tokens": 82586
+        },
+        {
+          "name": "opencode",
+          "tokens": 17277112
+        }
+      ]
     },
     {
       "date": "2026-06-10",
       "tokens": 19987685,
       "cost": 9.4984,
-      "requests": 0
+      "requests": 275,
+      "input": 18951414,
+      "output": 81758,
+      "cacheRead": 952000,
+      "cacheWrite": 0,
+      "reasoning": 2513,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 530888
+        },
+        {
+          "name": "opencode",
+          "tokens": 19456797
+        }
+      ]
     },
     {
       "date": "2026-06-11",
       "tokens": 24507871,
       "cost": 8.6872,
-      "requests": 0
+      "requests": 432,
+      "input": 22058729,
+      "output": 199361,
+      "cacheRead": 2244992,
+      "cacheWrite": 0,
+      "reasoning": 4789,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 24507871
+        }
+      ]
     },
     {
       "date": "2026-06-12",
       "tokens": 31763520,
       "cost": 8.4429,
-      "requests": 0
+      "requests": 381,
+      "input": 24062914,
+      "output": 192373,
+      "cacheRead": 7478784,
+      "cacheWrite": 0,
+      "reasoning": 29449,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 31763520
+        }
+      ]
     },
     {
       "date": "2026-06-13",
       "tokens": 49501846,
       "cost": 104.4291,
-      "requests": 0
+      "requests": 415,
+      "input": 19367198,
+      "output": 171437,
+      "cacheRead": 29963147,
+      "cacheWrite": 0,
+      "reasoning": 64,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 49501846
+        }
+      ]
     },
     {
       "date": "2026-06-14",
       "tokens": 33617898,
       "cost": 87.728,
-      "requests": 0
+      "requests": 483,
+      "input": 14919963,
+      "output": 168855,
+      "cacheRead": 18528988,
+      "cacheWrite": 0,
+      "reasoning": 92,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 33617898
+        }
+      ]
     },
     {
       "date": "2026-06-15",
       "tokens": 30944341,
       "cost": 74.0399,
-      "requests": 0
+      "requests": 305,
+      "input": 14275015,
+      "output": 287178,
+      "cacheRead": 16382103,
+      "cacheWrite": 0,
+      "reasoning": 45,
+      "clients": [
+        {
+          "name": "droid",
+          "tokens": 8603203
+        },
+        {
+          "name": "opencode",
+          "tokens": 22341138
+        }
+      ]
     },
     {
       "date": "2026-06-16",
       "tokens": 2510727,
       "cost": 7.0991,
-      "requests": 0
+      "requests": 58,
+      "input": 1156392,
+      "output": 26123,
+      "cacheRead": 1328212,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 2510727
+        }
+      ]
     },
     {
       "date": "2026-06-18",
       "tokens": 3570161,
       "cost": 1.6521,
-      "requests": 0
+      "requests": 60,
+      "input": 567106,
+      "output": 34863,
+      "cacheRead": 2968192,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "zcode",
+          "tokens": 3570161
+        }
+      ]
     },
     {
       "date": "2026-06-19",
       "tokens": 677048,
       "cost": 0.7542,
-      "requests": 0
+      "requests": 30,
+      "input": 396639,
+      "output": 30425,
+      "cacheRead": 249984,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "zcode",
+          "tokens": 677048
+        }
+      ]
     },
     {
       "date": "2026-06-22",
       "tokens": 1507953,
       "cost": 0.5985,
-      "requests": 0
+      "requests": 46,
+      "input": 90070,
+      "output": 25051,
+      "cacheRead": 1392832,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "zcode",
+          "tokens": 1507953
+        }
+      ]
     },
     {
       "date": "2026-06-23",
       "tokens": 8492572,
       "cost": 3.7264,
-      "requests": 0
+      "requests": 178,
+      "input": 8407393,
+      "output": 85179,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 8492572
+        }
+      ]
     },
     {
       "date": "2026-06-24",
       "tokens": 69751602,
       "cost": 30.5688,
-      "requests": 0
+      "requests": 555,
+      "input": 69230037,
+      "output": 521565,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 63770368
+        },
+        {
+          "name": "opencode",
+          "tokens": 5981234
+        }
+      ]
     },
     {
       "date": "2026-06-26",
       "tokens": 7538412,
       "cost": 3.3007,
-      "requests": 0
+      "requests": 247,
+      "input": 7488920,
+      "output": 49492,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 7538412
+        }
+      ]
     },
     {
       "date": "2026-06-27",
       "tokens": 3699373,
       "cost": 1.6551,
-      "requests": 0
+      "requests": 121,
+      "input": 3661497,
+      "output": 37876,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 3693140
+        },
+        {
+          "name": "opencode",
+          "tokens": 6233
+        }
+      ]
     },
     {
       "date": "2026-06-29",
       "tokens": 8429751,
       "cost": 3.6892,
-      "requests": 0
+      "requests": 319,
+      "input": 8378646,
+      "output": 51105,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 8429751
+        }
+      ]
     },
     {
       "date": "2026-06-30",
       "tokens": 3395988,
       "cost": 1.4858,
-      "requests": 0
+      "requests": 147,
+      "input": 3376447,
+      "output": 19541,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 3395988
+        }
+      ]
     },
     {
       "date": "2026-07-02",
       "tokens": 2802288,
       "cost": 1.2397,
-      "requests": 0
+      "requests": 78,
+      "input": 2754770,
+      "output": 47518,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 2802288
+        }
+      ]
     },
     {
       "date": "2026-07-03",
       "tokens": 6215643,
       "cost": 2.7399,
-      "requests": 0
+      "requests": 303,
+      "input": 6132684,
+      "output": 82959,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 6215643
+        }
+      ]
     },
     {
       "date": "2026-07-04",
       "tokens": 2870611,
       "cost": 1.2532,
-      "requests": 0
+      "requests": 81,
+      "input": 2860333,
+      "output": 10278,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 2870611
+        }
+      ]
     },
     {
       "date": "2026-07-06",
       "tokens": 39808066,
       "cost": 78.1278,
-      "requests": 0
+      "requests": 660,
+      "input": 4353331,
+      "output": 115983,
+      "cacheRead": 35338752,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 39808066
+        }
+      ]
     },
     {
       "date": "2026-07-07",
       "tokens": 30630374,
       "cost": 44.3069,
-      "requests": 0
+      "requests": 675,
+      "input": 5213419,
+      "output": 115963,
+      "cacheRead": 25300992,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 30630374
+        }
+      ]
     },
     {
       "date": "2026-07-08",
       "tokens": 36584904,
       "cost": 84.1631,
-      "requests": 0
+      "requests": 598,
+      "input": 5263156,
+      "output": 114836,
+      "cacheRead": 31206912,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 36584904
+        }
+      ]
     },
     {
       "date": "2026-07-09",
       "tokens": 5026008,
       "cost": 7.341,
-      "requests": 0
+      "requests": 178,
+      "input": 972560,
+      "output": 15304,
+      "cacheRead": 4038144,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 5026008
+        }
+      ]
     },
     {
       "date": "2026-07-10",
       "tokens": 18582620,
       "cost": 38.2961,
-      "requests": 0
+      "requests": 680,
+      "input": 2313309,
+      "output": 65023,
+      "cacheRead": 16204288,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 18582620
+        }
+      ]
     },
     {
       "date": "2026-07-11",
       "tokens": 6350244,
       "cost": 5.5942,
-      "requests": 0
+      "requests": 408,
+      "input": 431770,
+      "output": 16138,
+      "cacheRead": 5902336,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 6350244
+        }
+      ]
     }
   ],
   "models": [

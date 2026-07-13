@@ -10,9 +10,6 @@ const isAvailable =
 	aiUsage.fetchedAt !== null &&
 	Date.now() - new Date(aiUsage.fetchedAt).getTime() < STALE_DAYS * 24 * 60 * 60 * 1000;
 
-function fmtTokens(n: number) {
-	return n.toLocaleString('en-US');
-}
 function fmtCompactTokens(n: number) {
 	return new Intl.NumberFormat('en-US', {
 		notation: 'compact',
@@ -21,6 +18,9 @@ function fmtCompactTokens(n: number) {
 }
 function fmtCost(n: number) {
 	return '$' + n.toFixed(2);
+}
+function fmtCompactCost(n: number) {
+	return '$' + fmtCompactTokens(n);
 }
 
 const { totals, stats, activity, models, clients } = aiUsage;
@@ -41,9 +41,27 @@ const modelRows = models
 	.filter((model) => model.name && Number(model.tokens) > 0);
 const modelColor = (name: string) => (name.toLowerCase().includes('gpt') ? 'bg-accent' : 'bg-secondary');
 
+const toolMeta: Record<string, { label: string; icon: string }> = {
+	claude: { label: 'Claude Code', icon: '/icons/ai-tools/claude.svg' },
+	kiro: { label: 'Kiro', icon: '/icons/ai-tools/kiro.svg' },
+	opencode: { label: 'OpenCode', icon: '/icons/ai-tools/opencode.png' },
+	hermes: { label: 'Hermes Agent', icon: '/icons/ai-tools/hermes.png' },
+	codex: { label: 'Codex CLI', icon: '/icons/ai-tools/codex.svg' },
+	droid: { label: 'Droid', icon: '/icons/ai-tools/droid.svg' },
+};
+const clientRows = clients
+	.map((client) => ({
+		...client,
+		key: String(client.name).toLowerCase(),
+		tokens: Number(client.tokens ?? 0),
+		percentage: Number(client.percentage ?? 0),
+	}))
+	.filter((client) => client.key && client.tokens > 0)
+	.sort((a, b) => b.tokens - a.tokens);
+
 const statCards = [
-	{ label: UI.section.aiUsage.totalTokens,   value: totals.tokens    > 0 ? fmtTokens(totals.tokens)    : null },
-	{ label: UI.section.aiUsage.totalCost,     value: totals.cost      > 0 ? '$' + totals.cost.toFixed(4) : null },
+	{ label: UI.section.aiUsage.totalTokens,   value: totals.tokens    > 0 ? fmtCompactTokens(totals.tokens) : null },
+	{ label: UI.section.aiUsage.totalCost,     value: totals.cost      > 0 ? fmtCompactCost(totals.cost)     : null },
 	{ label: UI.section.aiUsage.activeDays,    value: totals.activeDays > 0 ? String(totals.activeDays)  : null },
 	{ label: UI.section.aiUsage.streak,        value: stats.streak     > 0 ? stats.streak + ' days'      : null },
 ].filter((c): c is { label: typeof c.label; value: string } => c.value !== null);
@@ -70,6 +88,39 @@ const chartData = JSON.stringify({ activity, models });
 							</span>
 						</div>
 					))}
+				</div>
+			)}
+
+			{clientRows.length > 0 && (
+				<div class="reveal glass rounded-2xl border border-primary/20 bg-base-200/35 p-5 sm:p-7 mb-12">
+					<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-5">
+						<div>
+							<p class="font-mono text-xs uppercase tracking-[0.24em] text-info/70">Filter:</p>
+							<h3 class="mt-1 text-lg font-extrabold uppercase tracking-wider">AI Usage Tools</h3>
+						</div>
+						<p class="font-mono text-xs text-base-content/50">{clientRows.length} tools tracked</p>
+					</div>
+					<div class="flex flex-wrap gap-3">
+						{clientRows.map((client) => {
+							const meta = toolMeta[client.key] ?? {
+								label: client.name,
+								icon: null,
+							};
+							return (
+								<div class="group inline-flex items-center gap-3 rounded-full border border-primary/70 bg-primary/10 px-3 py-2 text-sm font-semibold text-base-content shadow-[0_0_0_1px_rgba(20,184,166,0.08)] transition hover:-translate-y-0.5 hover:border-primary hover:bg-primary/15 hover:shadow-[0_0_24px_rgba(20,184,166,0.18)]">
+									<span class="grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-full bg-base-300 ring-1 ring-white/20">
+										{meta.icon ? (
+											<img src={meta.icon} alt="" class="h-full w-full object-contain p-0.5" loading="lazy" />
+										) : (
+											<span class="text-[11px] font-black text-primary">{client.name.slice(0, 1).toUpperCase()}</span>
+										)}
+									</span>
+									<span>{meta.label}</span>
+									<span class="font-mono text-[11px] text-info/80">{client.percentage.toFixed(1)}%</span>
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			)}
 
@@ -115,6 +166,7 @@ const chartData = JSON.stringify({ activity, models });
 							</p>
 						</div>
 						{modelRows.length > 0 ? (
+							<div>
 							<table class="w-full min-w-[680px] border-collapse text-sm" data-ai-usage-model-table>
 								<thead>
 									<tr class="border-y border-base-content/10 bg-base-200/70 text-left font-mono text-xs uppercase tracking-widest text-info">
@@ -146,6 +198,19 @@ const chartData = JSON.stringify({ activity, models });
 									))}
 								</tbody>
 							</table>
+								<div class="mt-5 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-base-content/60" data-ai-usage-pagination>
+									<label class="flex items-center gap-2">Rows per page
+										<select class="rounded-lg border border-base-content/15 bg-base-200 px-2 py-1.5 text-base-content" data-ai-usage-page-size>
+											<option value="10">10</option><option value="20">20</option><option value="50">50</option>
+										</select>
+									</label>
+									<div class="flex items-center gap-3">
+										<span data-ai-usage-page-info></span>
+										<button type="button" class="rounded-lg border border-base-content/15 px-3 py-1.5 transition hover:border-primary disabled:opacity-30" data-ai-usage-page-prev>Previous</button>
+										<button type="button" class="rounded-lg border border-base-content/15 px-3 py-1.5 transition hover:border-primary disabled:opacity-30" data-ai-usage-page-next>Next</button>
+									</div>
+								</div>
+							</div>
 						) : (
 							<div class="px-6 py-10 text-center font-mono text-sm text-base-content/45">
 								No model data available

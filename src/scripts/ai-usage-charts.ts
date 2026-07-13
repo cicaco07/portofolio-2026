@@ -3,6 +3,12 @@ export interface ActivityDataPoint {
 	tokens: number;
 	cost: number;
 	requests: number;
+	input?: number;
+	output?: number;
+	cacheRead?: number;
+	cacheWrite?: number;
+	reasoning?: number;
+	clients?: { name: string; tokens: number }[];
 }
 
 export interface ModelDataPoint {
@@ -199,7 +205,8 @@ function createTooltip(): HTMLDivElement {
 		font-size: 12px;
 		color: oklch(0.9 0 0);
 		white-space: nowrap;
-		max-width: 280px;
+		min-width: 260px;
+		max-width: 320px;
 	`;
 	document.body.appendChild(tooltip);
 	return tooltip;
@@ -209,15 +216,22 @@ function showTooltip(tooltip: HTMLDivElement, cellInfo: CellInfo, canvasRect: DO
 	const date = new Date(cellInfo.date + 'T00:00:00');
 	const dateStr = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
 
-	let content = `<div style="font-weight:700;margin-bottom:4px;color:oklch(0.85 0.15 160)">${dateStr}</div>`;
+	const row = (label: string, value: string) => `<div style="display:flex;justify-content:space-between;gap:28px"><span style="color:oklch(0.7 0 0)">${label}</span><strong>${value}</strong></div>`;
+	let content = `<div style="font-weight:700;margin-bottom:10px">${dateStr}</div>`;
 	if (cellInfo.point && cellInfo.point.tokens > 0) {
-		content += `<div style="display:flex;flex-direction:column;gap:2px">`;
-		content += `<span><span style="color:oklch(0.7 0 0)">Tokens:</span> <strong>${fmtNum(cellInfo.point.tokens)}</strong></span>`;
-		if (cellInfo.point.cost > 0) {
-			content += `<span><span style="color:oklch(0.7 0 0)">Cost:</span> <strong>$${cellInfo.point.cost.toFixed(2)}</strong></span>`;
-		}
-		if (cellInfo.point.requests > 0) {
-			content += `<span><span style="color:oklch(0.7 0 0)">Submissions:</span> <strong>${cellInfo.point.requests}</strong></span>`;
+		const point = cellInfo.point;
+		content += `<div style="display:flex;flex-direction:column;gap:5px">${row('Total tokens', fmtNum(point.tokens))}`;
+		content += `<div style="height:1px;background:oklch(0.5 0.02 260 / .3);margin:5px 0"></div>`;
+		content += row('Input', fmtNum(point.input ?? 0));
+		content += row('Output', fmtNum(point.output ?? 0));
+		content += row('Cache read', fmtNum(point.cacheRead ?? 0));
+		if ((point.cacheWrite ?? 0) > 0) content += row('Cache write', fmtNum(point.cacheWrite ?? 0));
+		if ((point.reasoning ?? 0) > 0) content += row('Reasoning', fmtNum(point.reasoning ?? 0));
+		content += row('Cost', `$${point.cost.toFixed(2)}`);
+		content += row('Messages', point.requests.toLocaleString('en-US'));
+		if (point.clients?.length) {
+			content += `<div style="height:1px;background:oklch(0.5 0.02 260 / .3);margin:5px 0"></div><div style="font-size:10px;font-weight:700;letter-spacing:.12em;color:oklch(0.7 0 0)">CLIENTS</div>`;
+			for (const client of point.clients) content += row(client.name, fmtNum(client.tokens));
 		}
 		content += `</div>`;
 	} else {
@@ -347,13 +361,29 @@ function initModelSorting(): void {
 
 	let activeKey = 'tokens';
 	let direction: 'asc' | 'desc' = 'desc';
+	let page = 1;
+	let pageSize = 10;
+	const pageSizeSelect = document.querySelector<HTMLSelectElement>('[data-ai-usage-page-size]');
+	const pageInfo = document.querySelector<HTMLElement>('[data-ai-usage-page-info]');
+	const previous = document.querySelector<HTMLButtonElement>('[data-ai-usage-page-prev]');
+	const next = document.querySelector<HTMLButtonElement>('[data-ai-usage-page-next]');
+	const renderPage = () => {
+		const rows = Array.from(body.rows);
+		const totalPages = Math.max(1, Math.ceil(rows.length / pageSize));
+		page = Math.min(Math.max(page, 1), totalPages);
+		rows.forEach((row, index) => {
+			row.hidden = index < (page - 1) * pageSize || index >= page * pageSize;
+		});
+		if (pageInfo) pageInfo.textContent = `${page} of ${totalPages}`;
+		if (previous) previous.disabled = page === 1;
+		if (next) next.disabled = page === totalPages;
+	};
 
 	for (const button of table.querySelectorAll<HTMLButtonElement>('[data-ai-usage-sort]')) {
 		button.addEventListener('click', () => {
 			const key = button.dataset.aiUsageSort ?? 'tokens';
-			if (activeKey === key) {
-				direction = direction === 'asc' ? 'desc' : 'asc';
-			} else {
+			if (activeKey === key) direction = direction === 'asc' ? 'desc' : 'asc';
+			else {
 				activeKey = key;
 				direction = key === 'name' ? 'asc' : 'desc';
 			}
@@ -369,12 +399,23 @@ function initModelSorting(): void {
 			});
 
 			body.append(...rows);
+			page = 1;
+			renderPage();
 			for (const sortButton of table.querySelectorAll<HTMLButtonElement>('[data-ai-usage-sort]')) {
 				const isActive = sortButton.dataset.aiUsageSort === activeKey;
 				sortButton.setAttribute('aria-sort', isActive ? direction : 'none');
 			}
 		});
 	}
+
+	pageSizeSelect?.addEventListener('change', () => {
+		pageSize = Number(pageSizeSelect.value);
+		page = 1;
+		renderPage();
+	});
+	previous?.addEventListener('click', () => { page -= 1; renderPage(); });
+	next?.addEventListener('click', () => { page += 1; renderPage(); });
+	renderPage();
 }
 
 export function initAiUsageCharts(): void {

@@ -247,11 +247,22 @@ function normalizeFromFlightText(flightText) {
       clients.set(key, existing);
     }
 
+    const tokenBreakdown = entry.tokenBreakdown ?? entry.totals?.breakdown ?? entry.tokens ?? {};
+    const messages = entryClients.reduce((sum, client) => sum + Number(client.messages ?? 0), 0);
     return {
       date: entry.date ?? '',
       tokens: Number(entry.totals?.tokens ?? entry.tokens ?? 0),
       cost: Number(entry.totals?.cost ?? entry.cost ?? 0),
-      requests: Number(entry.totals?.messages ?? entry.messages ?? 0),
+      requests: messages || Number(entry.totals?.messages ?? entry.messages ?? 0),
+      input: Number(tokenBreakdown.input ?? 0),
+      output: Number(tokenBreakdown.output ?? 0),
+      cacheRead: Number(tokenBreakdown.cacheRead ?? 0),
+      cacheWrite: Number(tokenBreakdown.cacheWrite ?? 0),
+      reasoning: Number(tokenBreakdown.reasoning ?? 0),
+      clients: entryClients.map((client) => ({
+        name: client.client ?? client.name ?? '',
+        tokens: Number(client.tokens?.input ?? 0) + Number(client.tokens?.output ?? 0) + Number(client.tokens?.cacheRead ?? 0) + Number(client.tokens?.cacheWrite ?? 0) + Number(client.tokens?.reasoning ?? 0),
+      })).filter((client) => client.name && client.tokens > 0),
     };
   }).filter((entry) => entry.date && entry.tokens > 0);
 
