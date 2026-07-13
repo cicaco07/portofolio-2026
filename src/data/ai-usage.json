@@ -2,8 +2,8 @@
   "username": "cicaco07",
   "profileUrl": "https://tokscale.ai/u/cicaco07",
   "available": true,
-  "fetchedAt": "2026-07-13T11:23:21.835Z",
-  "lastSuccessfulFetch": "2026-07-13T11:23:21.835Z",
+  "fetchedAt": "2026-07-13T12:30:57.471Z",
+  "lastSuccessfulFetch": "2026-07-13T12:30:57.471Z",
   "stale": false,
   "error": null,
   "totals": {
@@ -28,6 +28,14 @@
           "name": "claude",
           "tokens": 35934
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 35934,
+          "cost": 0.200802
+        }
       ]
     },
     {
@@ -49,6 +57,20 @@
           "name": "claude",
           "tokens": 4076
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 19858,
+          "cost": 0.018476
+        },
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 4076,
+          "cost": 0.016044000000000003
+        }
       ]
     },
     {
@@ -66,6 +88,14 @@
           "name": "claude",
           "tokens": 810
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 810,
+          "cost": 0.00429
+        }
       ]
     },
     {
@@ -82,6 +112,14 @@
         {
           "name": "kiro",
           "tokens": 23961
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 23961,
+          "cost": 0.02301285
         }
       ]
     },
@@ -103,6 +141,20 @@
         {
           "name": "opencode",
           "tokens": 537028
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 45264,
+          "cost": 0.0406451
+        },
+        {
+          "model": "gpt-5.2-codex",
+          "client": "opencode",
+          "tokens": 537028,
+          "cost": 0.45994165000000004
         }
       ]
     },
@@ -129,6 +181,26 @@
           "name": "opencode",
           "tokens": 786
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "kiro",
+          "tokens": 1090,
+          "cost": 0
+        },
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 164,
+          "cost": 0.00246
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 786,
+          "cost": 0.011790000000000002
+        }
       ]
     },
     {
@@ -145,6 +217,20 @@
         {
           "name": "opencode",
           "tokens": 1045809
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 1000563,
+          "cost": 5.091175000000001
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 45246,
+          "cost": 0.6786899999999995
         }
       ]
     },
@@ -167,6 +253,26 @@
           "name": "opencode",
           "tokens": 20722440
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 246241,
+          "cost": 0.21450585000000003
+        },
+        {
+          "model": "claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 20686989,
+          "cost": 110.69458500000002
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 35451,
+          "cost": 0.531765
+        }
       ]
     },
     {
@@ -188,6 +294,26 @@
           "name": "opencode",
           "tokens": 12103
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 187558,
+          "cost": 0.1656956
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 8490,
+          "cost": 0.12734999999999996
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 3613,
+          "cost": 0.054195
+        }
       ]
     },
     {
@@ -208,6 +334,20 @@
         {
           "name": "opencode",
           "tokens": 1548
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 41249,
+          "cost": 0.03620335
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 1548,
+          "cost": 0.02322
         }
       ]
     },
@@ -234,6 +374,62 @@
           "name": "opencode",
           "tokens": 9336428
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 110748,
+          "cost": 0.09741810000000001
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 525449,
+          "cost": 0
+        },
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 14,
+          "cost": 0.00021
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "claude",
+          "tokens": 8,
+          "cost": 0.00012
+        },
+        {
+          "model": "gpt-5.4",
+          "client": "opencode",
+          "tokens": 909229,
+          "cost": 2.4276350000000004
+        },
+        {
+          "model": "minimax-m2.5",
+          "client": "opencode",
+          "tokens": 12574,
+          "cost": 0.011945299999999999
+        },
+        {
+          "model": "claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 8401076,
+          "cost": 43.2703
+        },
+        {
+          "model": "claude-haiku-4-5",
+          "client": "opencode",
+          "tokens": 3598,
+          "cost": 0.017990000000000006
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 9951,
+          "cost": 0.149265
+        }
       ]
     },
     {
@@ -250,6 +446,26 @@
         {
           "name": "opencode",
           "tokens": 38866
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 21589,
+          "cost": 0.10939500000000002
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 18,
+          "cost": 0.00027
+        },
+        {
+          "model": "kr/claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 17259,
+          "cost": 0.05268900000000001
         }
       ]
     },
@@ -271,6 +487,38 @@
         {
           "name": "opencode",
           "tokens": 21906373
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 200550,
+          "cost": 0
+        },
+        {
+          "model": "claude-opus-4-7",
+          "client": "claude",
+          "tokens": 10668,
+          "cost": 0.05374
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 17543095,
+          "cost": 15.331223000000001
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 955116,
+          "cost": 4.8200199999999995
+        },
+        {
+          "model": "ag/claude-opus-4-6-thinking",
+          "client": "opencode",
+          "tokens": 3408162,
+          "cost": 3.634691
         }
       ]
     },
@@ -297,6 +545,62 @@
           "name": "opencode",
           "tokens": 42800543
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 26313,
+          "cost": 0.023022650000000002
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 763982,
+          "cost": 0
+        },
+        {
+          "model": "glm-5",
+          "client": "opencode",
+          "tokens": 517,
+          "cost": 0.0016544
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 2406553,
+          "cost": 2.5872820000000005
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 20592720,
+          "cost": 20.234181999999997
+        },
+        {
+          "model": "kr/claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 209236,
+          "cost": 1.06414
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 5353911,
+          "cost": 27.072074999999998
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 4749041,
+          "cost": 14.304999
+        },
+        {
+          "model": "ag/claude-opus-4-6-thinking",
+          "client": "opencode",
+          "tokens": 9488565,
+          "cost": 7.589711
+        }
       ]
     },
     {
@@ -321,6 +625,44 @@
         {
           "name": "opencode",
           "tokens": 25055975
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 5383981,
+          "cost": 7.558270000000003
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 1109023,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 3235833,
+          "cost": 2.9059855
+        },
+        {
+          "model": "cx/gpt-5.3-codex",
+          "client": "opencode",
+          "tokens": 142613,
+          "cost": 0.11528755
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 14935951,
+          "cost": 74.86119500000001
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 6741578,
+          "cost": 20.370582000000002
         }
       ]
     },
@@ -347,6 +689,44 @@
           "name": "opencode",
           "tokens": 8935574
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1556281,
+          "cost": 1.5927029999999998
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 61993,
+          "cost": 0.01186885
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 140407,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 278665,
+          "cost": 0.542591
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 7671286,
+          "cost": 6.931412999999999
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 985623,
+          "cost": 4.951015
+        }
       ]
     },
     {
@@ -367,6 +747,38 @@
         {
           "name": "opencode",
           "tokens": 24586015
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 419167,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 304763,
+          "cost": 0.721195
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 19785590,
+          "cost": 16.042354
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 3145892,
+          "cost": 15.78332
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 1349770,
+          "cost": 4.2374220000000005
         }
       ]
     },
@@ -393,6 +805,44 @@
           "name": "opencode",
           "tokens": 23278040
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 153090,
+          "cost": 0.285441
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 527505,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 606839,
+          "cost": 0.9877830000000001
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 20701441,
+          "cost": 17.951871
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 1882030,
+          "cost": 9.455250000000001
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 87730,
+          "cost": 0.285138
+        }
       ]
     },
     {
@@ -418,6 +868,44 @@
           "name": "opencode",
           "tokens": 8961343
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1624187,
+          "cost": 1.978271
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 99299,
+          "cost": 0.014091949999999999
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 456110,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 1441371,
+          "cost": 1.6391415
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 1993497,
+          "cost": 2.648618
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 5526475,
+          "cost": 27.862415000000002
+        }
       ]
     },
     {
@@ -442,6 +930,50 @@
         {
           "name": "opencode",
           "tokens": 24769287
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 2459632,
+          "cost": 2.9420859999999998
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 799027,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 3167232,
+          "cost": 3.3332120000000005
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 11562448,
+          "cost": 14.743748000000002
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 5765585,
+          "cost": 29.216065000000008
+        },
+        {
+          "model": "kr/claude-haiku-4-5",
+          "client": "opencode",
+          "tokens": 5419,
+          "cost": 0.006059
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 4268603,
+          "cost": 12.843152999999997
         }
       ]
     },
@@ -472,6 +1004,56 @@
           "name": "opencode",
           "tokens": 31142466
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "kiro",
+          "tokens": 3425,
+          "cost": 0
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 28142014,
+          "cost": 24.273936
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 70188,
+          "cost": 0.0088931
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 1383594,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 9993655,
+          "cost": 8.129463
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 6798811,
+          "cost": 10.923017
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 4857181,
+          "cost": 24.534965000000003
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 9492819,
+          "cost": 28.714221
+        }
       ]
     },
     {
@@ -501,6 +1083,56 @@
           "name": "opencode",
           "tokens": 20961470
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "kiro",
+          "tokens": 3643,
+          "cost": 0
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 9826918,
+          "cost": 10.808788
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 577442,
+          "cost": 0.044328599999999996
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 687363,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 4719685,
+          "cost": 3.6301219999999996
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 12200095,
+          "cost": 15.062401000000005
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 1804410,
+          "cost": 9.125969999999999
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 2237280,
+          "cost": 6.763488000000001
+        }
       ]
     },
     {
@@ -525,6 +1157,38 @@
         {
           "name": "opencode",
           "tokens": 2356368
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 4548232,
+          "cost": 4.396259000000001
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 222850,
+          "cost": 0
+        },
+        {
+          "model": "kr/claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 180919,
+          "cost": 1.0636349999999999
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 1533329,
+          "cost": 7.952865
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 642120,
+          "cost": 1.9362720000000002
         }
       ]
     },
@@ -551,6 +1215,38 @@
           "name": "opencode",
           "tokens": 319457
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 36324489,
+          "cost": 32.275797
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 235252,
+          "cost": 0.03932935
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 4408,
+          "cost": 0
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 272113,
+          "cost": 0.819639
+        },
+        {
+          "model": "pion/claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 47344,
+          "cost": 0.23864000000000002
+        }
       ]
     },
     {
@@ -567,6 +1263,20 @@
         {
           "name": "codex",
           "tokens": 25740479
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 25684743,
+          "cost": 22.050852
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 55736,
+          "cost": 0.007529899999999999
         }
       ]
     },
@@ -585,6 +1295,14 @@
           "name": "codex",
           "tokens": 7636852
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 7636852,
+          "cost": 7.186641
+        }
       ]
     },
     {
@@ -601,6 +1319,20 @@
         {
           "name": "codex",
           "tokens": 1486298
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1430757,
+          "cost": 2.704348
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 55541,
+          "cost": 0.010218249999999998
         }
       ]
     },
@@ -623,6 +1355,20 @@
           "name": "codex",
           "tokens": 11096673
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 22036,
+          "cost": 0.019674900000000002
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 11096673,
+          "cost": 12.306804000000001
+        }
       ]
     },
     {
@@ -644,6 +1390,20 @@
           "name": "codex",
           "tokens": 31735402
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 6511,
+          "cost": 0.00553435
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 31735402,
+          "cost": 24.114222
+        }
       ]
     },
     {
@@ -660,6 +1420,20 @@
         {
           "name": "codex",
           "tokens": 22904120
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 22862985,
+          "cost": 21.859354
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 41135,
+          "cost": 0.0061715
         }
       ]
     },
@@ -678,6 +1452,14 @@
           "name": "codex",
           "tokens": 2270308
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 2270308,
+          "cost": 2.1449540000000002
+        }
       ]
     },
     {
@@ -695,6 +1477,26 @@
           "name": "codex",
           "tokens": 24829604
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.4",
+          "client": "codex",
+          "tokens": 10794678,
+          "cost": 5.702446
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 13918678,
+          "cost": 12.341352999999998
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 116248,
+          "cost": 0.015371
+        }
       ]
     },
     {
@@ -711,6 +1513,14 @@
         {
           "name": "kiro",
           "tokens": 27319
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 27319,
+          "cost": 0.024369150000000003
         }
       ]
     },
@@ -741,6 +1551,44 @@
           "name": "opencode",
           "tokens": 1051824
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 868076,
+          "cost": 0.7540758999999999
+        },
+        {
+          "model": "claude-sonnet-4-6",
+          "client": "kiro",
+          "tokens": 17874,
+          "cost": 0.057426000000000005
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "client": "codex",
+          "tokens": 38508,
+          "cost": 0.015454350000000002
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 12372,
+          "cost": 0
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 480728,
+          "cost": 2.47752
+        },
+        {
+          "model": "kr/claude-opus-4-8",
+          "client": "opencode",
+          "tokens": 571096,
+          "cost": 2.9381200000000005
+        }
       ]
     },
     {
@@ -770,6 +1618,56 @@
           "name": "opencode",
           "tokens": 14958212
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 1161544,
+          "cost": 0.9893592
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1194366,
+          "cost": 1.9949130000000006
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "client": "codex",
+          "tokens": 12832,
+          "cost": 0.00812865
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 36034,
+          "cost": 0.00762025
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 298894,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 7971908,
+          "cost": 7.5459900000000015
+        },
+        {
+          "model": "kr/claude-opus-4-8",
+          "client": "opencode",
+          "tokens": 3810344,
+          "cost": 19.594580000000004
+        },
+        {
+          "model": "kiro/claude-opus-4-8-thinking-agentic",
+          "client": "opencode",
+          "tokens": 3175960,
+          "cost": 16.396619999999995
+        }
       ]
     },
     {
@@ -795,6 +1693,56 @@
           "name": "opencode",
           "tokens": 17277112
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 4149400,
+          "cost": 3.5275437
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 82586,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 1375175,
+          "cost": 1.4644990000000002
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 8711,
+          "cost": 0.044555000000000004
+        },
+        {
+          "model": "kr/claude-opus-4-8",
+          "client": "opencode",
+          "tokens": 68036,
+          "cost": 0.349
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 86518,
+          "cost": 0.260898
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 15163801,
+          "cost": 0
+        },
+        {
+          "model": "kiro/claude-opus-4-8-thinking-agentic",
+          "client": "opencode",
+          "tokens": 574871,
+          "cost": 2.931175
+        }
       ]
     },
     {
@@ -816,6 +1764,56 @@
           "name": "opencode",
           "tokens": 19456797
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 530888,
+          "cost": 0.4517322
+        },
+        {
+          "model": "mimo-v2.5-free",
+          "client": "opencode",
+          "tokens": 790103,
+          "cost": 0
+        },
+        {
+          "model": "nemotron-3-ultra-free",
+          "client": "opencode",
+          "tokens": 85302,
+          "cost": 0
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 255464,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 17254338,
+          "cost": 6.926821600000001
+        },
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "opencode",
+          "tokens": 49192,
+          "cost": 0.021516405000000002
+        },
+        {
+          "model": "cmc/qwen/qwen3.6-max-preview",
+          "client": "opencode",
+          "tokens": 783017,
+          "cost": 0.84178328
+        },
+        {
+          "model": "kiro/claude-opus-4-8-thinking-agentic",
+          "client": "opencode",
+          "tokens": 239381,
+          "cost": 1.256545
+        }
       ]
     },
     {
@@ -832,6 +1830,26 @@
         {
           "name": "opencode",
           "tokens": 24507871
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/qwen/qwen3.6-plus",
+          "client": "opencode",
+          "tokens": 2458200,
+          "cost": 0.8156915000000002
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 2553869,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 19495802,
+          "cost": 7.8714648
         }
       ]
     },
@@ -850,6 +1868,32 @@
           "name": "opencode",
           "tokens": 31763520
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/qwen/qwen3.6-plus",
+          "client": "opencode",
+          "tokens": 6348773,
+          "cost": 2.1742704749999993
+        },
+        {
+          "model": "nemotron-3-ultra-free",
+          "client": "opencode",
+          "tokens": 1818508,
+          "cost": 0
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 8027143,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 15569096,
+          "cost": 6.2686764
+        }
       ]
     },
     {
@@ -867,6 +1911,32 @@
           "name": "opencode",
           "tokens": 49501846
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cb-gpt-5.4",
+          "client": "opencode",
+          "tokens": 18488,
+          "cost": 0.047295000000000004
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 47048197,
+          "cost": 103.3300635
+        },
+        {
+          "model": "cb-sonnet-4.6",
+          "client": "opencode",
+          "tokens": 25363,
+          "cost": 0.077757
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 2409798,
+          "cost": 0.9739648000000001
+        }
       ]
     },
     {
@@ -883,6 +1953,32 @@
         {
           "name": "opencode",
           "tokens": 33617898
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "big-pickle",
+          "client": "opencode",
+          "tokens": 25650,
+          "cost": 0.014581999999999998
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 33539928,
+          "cost": 87.702718
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 25548,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 26772,
+          "cost": 0.010728800000000002
         }
       ]
     },
@@ -905,6 +2001,44 @@
           "name": "opencode",
           "tokens": 22341138
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cb-opus-4-6",
+          "client": "droid",
+          "tokens": 3098259,
+          "cost": 9.726503000000001
+        },
+        {
+          "model": "cb-sonnet-4-6",
+          "client": "droid",
+          "tokens": 19432,
+          "cost": 0.059292000000000004
+        },
+        {
+          "model": "claude-opus-4-6",
+          "client": "droid",
+          "tokens": 343800,
+          "cost": 1.633299
+        },
+        {
+          "model": "cb-gpt-5-3-codex",
+          "client": "droid",
+          "tokens": 5141712,
+          "cost": 7.8959195
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 22334807,
+          "cost": 54.71302450000002
+        },
+        {
+          "model": "cb-gpt-5.3-codex",
+          "client": "opencode",
+          "tokens": 6331,
+          "cost": 0.011863249999999999
+        }
       ]
     },
     {
@@ -921,6 +2055,14 @@
         {
           "name": "opencode",
           "tokens": 2510727
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 2510727,
+          "cost": 7.099141
         }
       ]
     },
@@ -939,6 +2081,20 @@
           "name": "zcode",
           "tokens": 3570161
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "glm-5.2",
+          "client": "zcode",
+          "tokens": 2880981,
+          "cost": 1.1991950399999998
+        },
+        {
+          "model": "glm-5-turbo",
+          "client": "zcode",
+          "tokens": 689180,
+          "cost": 0.45288991999999995
+        }
       ]
     },
     {
@@ -955,6 +2111,14 @@
         {
           "name": "zcode",
           "tokens": 677048
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "glm-5.2",
+          "client": "zcode",
+          "tokens": 677048,
+          "cost": 0.7541604399999999
         }
       ]
     },
@@ -973,6 +2137,14 @@
           "name": "zcode",
           "tokens": 1507953
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "glm-5.2",
+          "client": "zcode",
+          "tokens": 1507953,
+          "cost": 0.59845872
+        }
       ]
     },
     {
@@ -989,6 +2161,20 @@
         {
           "name": "opencode",
           "tokens": 8492572
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "qd/qmodel_latest",
+          "client": "opencode",
+          "tokens": 11392,
+          "cost": 0
+        },
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "opencode",
+          "tokens": 8481180,
+          "cost": 3.7263548550000003
         }
       ]
     },
@@ -1011,6 +2197,20 @@
           "name": "opencode",
           "tokens": 5981234
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 63770368,
+          "cost": 27.88302759
+        },
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "opencode",
+          "tokens": 5981234,
+          "cost": 2.6858000550000005
+        }
       ]
     },
     {
@@ -1027,6 +2227,14 @@
         {
           "name": "hermes",
           "tokens": 7538412
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 7538412,
+          "cost": 3.3007382400000003
         }
       ]
     },
@@ -1049,6 +2257,20 @@
           "name": "opencode",
           "tokens": 6233
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 3693140,
+          "cost": 1.62297021
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 6233,
+          "cost": 0.032165
+        }
       ]
     },
     {
@@ -1065,6 +2287,14 @@
         {
           "name": "hermes",
           "tokens": 8429751
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 8429751,
+          "cost": 3.68917236
         }
       ]
     },
@@ -1083,6 +2313,14 @@
           "name": "hermes",
           "tokens": 3395988
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 3395988,
+          "cost": 1.4857551150000001
+        }
       ]
     },
     {
@@ -1099,6 +2337,14 @@
         {
           "name": "hermes",
           "tokens": 2802288
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 2802288,
+          "cost": 1.2396656099999999
         }
       ]
     },
@@ -1117,6 +2363,14 @@
           "name": "hermes",
           "tokens": 6215643
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 6215643,
+          "cost": 2.73989187
+        }
       ]
     },
     {
@@ -1133,6 +2387,14 @@
         {
           "name": "hermes",
           "tokens": 2870611
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 2870611,
+          "cost": 1.253186715
         }
       ]
     },
@@ -1151,6 +2413,14 @@
           "name": "hermes",
           "tokens": 39808066
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "hermes",
+          "tokens": 39808066,
+          "cost": 78.127793
+        }
       ]
     },
     {
@@ -1167,6 +2437,20 @@
         {
           "name": "hermes",
           "tokens": 30630374
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "hermes",
+          "tokens": 2098924,
+          "cost": 7.411512
+        },
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 28531450,
+          "cost": 36.895365000000005
         }
       ]
     },
@@ -1185,6 +2469,14 @@
           "name": "hermes",
           "tokens": 36584904
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "hermes",
+          "tokens": 36584904,
+          "cost": 84.163102
+        }
       ]
     },
     {
@@ -1201,6 +2493,14 @@
         {
           "name": "hermes",
           "tokens": 5026008
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 5026008,
+          "cost": 7.340992
         }
       ]
     },
@@ -1219,6 +2519,14 @@
           "name": "hermes",
           "tokens": 18582620
         }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 18582620,
+          "cost": 38.296068
+        }
       ]
     },
     {
@@ -1235,6 +2543,14 @@
         {
           "name": "hermes",
           "tokens": 6350244
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 6350244,
+          "cost": 5.594158
         }
       ]
     }

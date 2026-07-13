@@ -9,6 +9,7 @@ export interface ActivityDataPoint {
 	cacheWrite?: number;
 	reasoning?: number;
 	clients?: { name: string; tokens: number }[];
+	modelUsage?: { model: string; client: string; tokens: number; cost: number }[];
 }
 
 export interface ModelDataPoint {
@@ -418,11 +419,75 @@ function initModelSorting(): void {
 	renderPage();
 }
 
+function initModelComparison(activity: ActivityDataPoint[]): void {
+	const canvas = document.querySelector<HTMLCanvasElement>('[data-ai-usage-model-chart]');
+	const range = document.querySelector<HTMLSelectElement>('[data-ai-usage-range]');
+	const client = document.querySelector<HTMLSelectElement>('[data-ai-usage-client]');
+	const legend = document.querySelector<HTMLElement>('[data-ai-usage-model-legend]');
+	if (!canvas || !range || !client || !legend) return;
+	const colors = ['#22d3ee', '#60a5fa', '#facc15', '#34d399', '#c084fc', '#fb7185', '#a3e635', '#f97316'];
+
+	const render = () => {
+		const days = activity.slice(-Number(range.value));
+		const totals = new Map<string, number>();
+		for (const day of days) for (const usage of day.modelUsage ?? []) {
+			if (client.value !== 'all' && usage.client !== client.value) continue;
+			totals.set(usage.model, (totals.get(usage.model) ?? 0) + usage.tokens);
+		}
+		const models = [...totals].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([name]) => name);
+		const rect = canvas.getBoundingClientRect();
+		const dpr = window.devicePixelRatio || 1;
+		canvas.width = rect.width * dpr;
+		canvas.height = rect.height * dpr;
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return;
+		ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+		ctx.clearRect(0, 0, rect.width, rect.height);
+		const pad = { l: 8, r: 8, t: 12, b: 28 };
+		const width = rect.width - pad.l - pad.r;
+		const height = rect.height - pad.t - pad.b;
+		ctx.strokeStyle = 'rgba(148,163,184,.14)';
+		ctx.lineWidth = 1;
+		for (let i = 0; i <= 4; i += 1) {
+			const y = pad.t + height * i / 4;
+			ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + width, y); ctx.stroke();
+		}
+		const values = models.map((model) => days.map((day) =>
+			(day.modelUsage ?? []).filter((usage) => usage.model === model && (client.value === 'all' || usage.client === client.value)).reduce((sum, usage) => sum + usage.tokens, 0),
+		));
+		const max = Math.max(1, ...values.flat());
+		values.forEach((series, seriesIndex) => {
+			ctx.strokeStyle = colors[seriesIndex]; ctx.lineWidth = 2; ctx.beginPath();
+			series.forEach((value, index) => {
+				const x = pad.l + (days.length <= 1 ? width / 2 : width * index / (days.length - 1));
+				const y = pad.t + height - value / max * height;
+				index ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+			});
+			ctx.stroke();
+		});
+		ctx.fillStyle = getThemeTextColor();
+		ctx.font = '10px "JetBrains Mono", monospace';
+		if (days.length) {
+			ctx.fillText(days[0].date, pad.l, rect.height - 7);
+			ctx.textAlign = 'right';
+			ctx.fillText(days.at(-1)?.date ?? '', rect.width - pad.r, rect.height - 7);
+			ctx.textAlign = 'left';
+		}
+		legend.innerHTML = models.map((model, index) => `<span style="display:inline-flex;align-items:center;gap:6px"><i style="width:8px;height:8px;border-radius:999px;background:${colors[index]}"></i>${model}</span>`).join('') || '<span>No model usage for this filter</span>';
+	};
+
+	range.addEventListener('change', render);
+	client.addEventListener('change', render);
+	new ResizeObserver(render).observe(canvas);
+	render();
+}
+
 export function initAiUsageCharts(): void {
 	if (typeof window === 'undefined') return;
 	if (!document.getElementById(AI_USAGE_SECTION_ID)) return;
 
 	const { activity } = parseAiUsageData();
 	initHeatmap(activity);
+	initModelComparison(activity);
 	initModelSorting();
 }

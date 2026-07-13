@@ -263,6 +263,14 @@ function normalizeFromFlightText(flightText) {
         name: client.client ?? client.name ?? '',
         tokens: Number(client.tokens?.input ?? 0) + Number(client.tokens?.output ?? 0) + Number(client.tokens?.cacheRead ?? 0) + Number(client.tokens?.cacheWrite ?? 0) + Number(client.tokens?.reasoning ?? 0),
       })).filter((client) => client.name && client.tokens > 0),
+      modelUsage: entryClients.flatMap((client) =>
+        Object.entries(client.models ?? {}).map(([model, usage]) => ({
+          model,
+          client: client.client ?? client.name ?? '',
+          tokens: Number(usage.tokens ?? 0),
+          cost: Number(usage.cost ?? 0),
+        })),
+      ).filter((usage) => usage.model && usage.tokens > 0),
     };
   }).filter((entry) => entry.date && entry.tokens > 0);
 
