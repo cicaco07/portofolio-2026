@@ -1,10 +1,10 @@
 {
   "username": "cicaco07",
-  "available": true,
-  "fetchedAt": "2026-08-06T13:52:14.994Z",
+  "available": false,
+  "fetchedAt": "2026-08-30T03:09:31.493Z",
   "lastSuccessfulFetch": "2026-08-06T13:52:14.994Z",
-  "stale": false,
-  "error": "GitHub: GitHub GraphQL error: The total time spanned by 'from' and 'to' must not exceed 1 year",
+  "stale": true,
+  "error": "GitHub: GitHub GraphQL HTTP 401 | GitLab: GitLab calendar returned no activity rows | GitLab activity events HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1)",
   "totals": {
     "all": 829,
     "github": 433,
@@ -1256,12 +1256,12 @@
   ],
   "github": {
     "available": false,
-    "error": "GitHub GraphQL error: The total time spanned by 'from' and 'to' must not exceed 1 year",
-    "total": 433
+    "error": "GitHub GraphQL HTTP 401",
+    "total": 0
   },
   "gitlab": {
-    "available": true,
-    "error": null,
-    "total": 396
+    "available": false,
+    "error": "GitLab calendar returned no activity rows | GitLab activity events HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1)",
+    "total": 0
   }
 }
