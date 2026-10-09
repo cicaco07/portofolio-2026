@@ -2,22 +2,2883 @@
   "username": "cicaco07",
   "profileUrl": "https://tokscale.ai/u/cicaco07",
   "available": true,
-  "fetchedAt": "2026-10-08T21:43:36.680Z",
-  "lastSuccessfulFetch": "2026-10-08T21:43:52.382Z",
+  "fetchedAt": "2026-10-09T21:25:07.223Z",
+  "lastSuccessfulFetch": "2026-10-09T21:25:07.223Z",
   "stale": false,
   "error": null,
   "totals": {
     "tokens": 983514118,
     "cost": 1517.0833,
-    "requests": 0,
-    "activeDays": 0
+    "requests": 23,
+    "activeDays": 61
   },
-  "activity": [],
-  "models": [],
-  "clients": [],
+  "activity": [
+    {
+      "date": "2026-04-26",
+      "tokens": 35934,
+      "cost": 0.2008,
+      "requests": 18,
+      "input": 28184,
+      "output": 7750,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 35934
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 35934,
+          "cost": 0.200802
+        }
+      ]
+    },
+    {
+      "date": "2026-04-27",
+      "tokens": 23934,
+      "cost": 0.0345,
+      "requests": 5,
+      "input": 21335,
+      "output": 2599,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 19858
+        },
+        {
+          "name": "claude",
+          "tokens": 4076
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 19858,
+          "cost": 0.018476
+        },
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 4076,
+          "cost": 0.016044000000000003
+        }
+      ]
+    },
+    {
+      "date": "2026-04-28",
+      "tokens": 810,
+      "cost": 0.0043,
+      "requests": 2,
+      "input": 655,
+      "output": 155,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 810
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 810,
+          "cost": 0.00429
+        }
+      ]
+    },
+    {
+      "date": "2026-04-29",
+      "tokens": 23961,
+      "cost": 0.023,
+      "requests": 3,
+      "input": 20181,
+      "output": 3780,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 23961
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 23961,
+          "cost": 0.02301285
+        }
+      ]
+    },
+    {
+      "date": "2026-04-30",
+      "tokens": 582292,
+      "cost": 0.5006,
+      "requests": 23,
+      "input": 181958,
+      "output": 5006,
+      "cacheRead": 386688,
+      "cacheWrite": 0,
+      "reasoning": 8640,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 45264
+        },
+        {
+          "name": "opencode",
+          "tokens": 537028
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 45264,
+          "cost": 0.0406451
+        },
+        {
+          "model": "gpt-5.2-codex",
+          "client": "opencode",
+          "tokens": 537028,
+          "cost": 0.45994165000000004
+        }
+      ]
+    },
+    {
+      "date": "2026-05-03",
+      "tokens": 2040,
+      "cost": 0.0143,
+      "requests": 16,
+      "input": 1070,
+      "output": 970,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 1090
+        },
+        {
+          "name": "claude",
+          "tokens": 164
+        },
+        {
+          "name": "opencode",
+          "tokens": 786
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "kiro",
+          "tokens": 1090,
+          "cost": 0
+        },
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 164,
+          "cost": 0.00246
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 786,
+          "cost": 0.011790000000000002
+        }
+      ]
+    },
+    {
+      "date": "2026-05-04",
+      "tokens": 1045809,
+      "cost": 5.7699,
+      "requests": 839,
+      "input": 996145,
+      "output": 49664,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 1045809
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 1000563,
+          "cost": 5.091175000000001
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 45246,
+          "cost": 0.6786899999999995
+        }
+      ]
+    },
+    {
+      "date": "2026-05-05",
+      "tokens": 20968681,
+      "cost": 111.4409,
+      "requests": 761,
+      "input": 20562818,
+      "output": 405863,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 246241
+        },
+        {
+          "name": "opencode",
+          "tokens": 20722440
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 246241,
+          "cost": 0.21450585000000003
+        },
+        {
+          "model": "claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 20686989,
+          "cost": 110.69458500000002
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 35451,
+          "cost": 0.531765
+        }
+      ]
+    },
+    {
+      "date": "2026-05-06",
+      "tokens": 199661,
+      "cost": 0.3472,
+      "requests": 182,
+      "input": 178599,
+      "output": 21062,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 187558
+        },
+        {
+          "name": "opencode",
+          "tokens": 12103
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 187558,
+          "cost": 0.1656956
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 8490,
+          "cost": 0.12734999999999996
+        },
+        {
+          "model": "claude-sonnet-4-5-thinking",
+          "client": "opencode",
+          "tokens": 3613,
+          "cost": 0.054195
+        }
+      ]
+    },
+    {
+      "date": "2026-05-07",
+      "tokens": 42797,
+      "cost": 0.0594,
+      "requests": 67,
+      "input": 39618,
+      "output": 3179,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 41249
+        },
+        {
+          "name": "opencode",
+          "tokens": 1548
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 41249,
+          "cost": 0.03620335
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 1548,
+          "cost": 0.02322
+        }
+      ]
+    },
+    {
+      "date": "2026-05-08",
+      "tokens": 9972647,
+      "cost": 45.9749,
+      "requests": 658,
+      "input": 9866202,
+      "output": 106445,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 110748
+        },
+        {
+          "name": "claude",
+          "tokens": 525471
+        },
+        {
+          "name": "opencode",
+          "tokens": 9336428
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 110748,
+          "cost": 0.09741810000000001
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 525449,
+          "cost": 0
+        },
+        {
+          "model": "claude-sonnet-4",
+          "client": "claude",
+          "tokens": 14,
+          "cost": 0.00021
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "claude",
+          "tokens": 8,
+          "cost": 0.00012
+        },
+        {
+          "model": "gpt-5.4",
+          "client": "opencode",
+          "tokens": 909229,
+          "cost": 2.4276350000000004
+        },
+        {
+          "model": "minimax-m2.5",
+          "client": "opencode",
+          "tokens": 12574,
+          "cost": 0.011945299999999999
+        },
+        {
+          "model": "claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 8401076,
+          "cost": 43.2703
+        },
+        {
+          "model": "claude-haiku-4-5",
+          "client": "opencode",
+          "tokens": 3598,
+          "cost": 0.017990000000000006
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 9951,
+          "cost": 0.149265
+        }
+      ]
+    },
+    {
+      "date": "2026-05-10",
+      "tokens": 38866,
+      "cost": 0.1624,
+      "requests": 3,
+      "input": 38714,
+      "output": 152,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 38866
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 21589,
+          "cost": 0.10939500000000002
+        },
+        {
+          "model": "claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 18,
+          "cost": 0.00027
+        },
+        {
+          "model": "kr/claude-sonnet-4-5",
+          "client": "opencode",
+          "tokens": 17259,
+          "cost": 0.05268900000000001
+        }
+      ]
+    },
+    {
+      "date": "2026-05-11",
+      "tokens": 22117591,
+      "cost": 23.8397,
+      "requests": 248,
+      "input": 2492116,
+      "output": 92237,
+      "cacheRead": 19533238,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 211218
+        },
+        {
+          "name": "opencode",
+          "tokens": 21906373
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 200550,
+          "cost": 0
+        },
+        {
+          "model": "claude-opus-4-7",
+          "client": "claude",
+          "tokens": 10668,
+          "cost": 0.05374
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 17543095,
+          "cost": 15.331223000000001
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 955116,
+          "cost": 4.8200199999999995
+        },
+        {
+          "model": "ag/claude-opus-4-6-thinking",
+          "client": "opencode",
+          "tokens": 3408162,
+          "cost": 3.634691
+        }
+      ]
+    },
+    {
+      "date": "2026-05-12",
+      "tokens": 43590838,
+      "cost": 72.8771,
+      "requests": 635,
+      "input": 14150033,
+      "output": 124961,
+      "cacheRead": 29315844,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 26313
+        },
+        {
+          "name": "claude",
+          "tokens": 763982
+        },
+        {
+          "name": "opencode",
+          "tokens": 42800543
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 26313,
+          "cost": 0.023022650000000002
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 763982,
+          "cost": 0
+        },
+        {
+          "model": "glm-5",
+          "client": "opencode",
+          "tokens": 517,
+          "cost": 0.0016544
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 2406553,
+          "cost": 2.5872820000000005
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 20592720,
+          "cost": 20.234181999999997
+        },
+        {
+          "model": "kr/claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 209236,
+          "cost": 1.06414
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 5353911,
+          "cost": 27.072074999999998
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 4749041,
+          "cost": 14.304999
+        },
+        {
+          "model": "ag/claude-opus-4-6-thinking",
+          "client": "opencode",
+          "tokens": 9488565,
+          "cost": 7.589711
+        }
+      ]
+    },
+    {
+      "date": "2026-05-13",
+      "tokens": 31548979,
+      "cost": 105.8113,
+      "requests": 690,
+      "input": 24150838,
+      "output": 116204,
+      "cacheRead": 7273088,
+      "cacheWrite": 0,
+      "reasoning": 8849,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 5383981
+        },
+        {
+          "name": "claude",
+          "tokens": 1109023
+        },
+        {
+          "name": "opencode",
+          "tokens": 25055975
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 5383981,
+          "cost": 7.558270000000003
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 1109023,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 3235833,
+          "cost": 2.9059855
+        },
+        {
+          "model": "cx/gpt-5.3-codex",
+          "client": "opencode",
+          "tokens": 142613,
+          "cost": 0.11528755
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 14935951,
+          "cost": 74.86119500000001
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 6741578,
+          "cost": 20.370582000000002
+        }
+      ]
+    },
+    {
+      "date": "2026-05-14",
+      "tokens": 10694255,
+      "cost": 14.0296,
+      "requests": 192,
+      "input": 1811696,
+      "output": 65036,
+      "cacheRead": 8814720,
+      "cacheWrite": 0,
+      "reasoning": 2803,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 1618274
+        },
+        {
+          "name": "claude",
+          "tokens": 140407
+        },
+        {
+          "name": "opencode",
+          "tokens": 8935574
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1556281,
+          "cost": 1.5927029999999998
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 61993,
+          "cost": 0.01186885
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 140407,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 278665,
+          "cost": 0.542591
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 7671286,
+          "cost": 6.931412999999999
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 985623,
+          "cost": 4.951015
+        }
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "tokens": 25005182,
+      "cost": 36.7843,
+      "requests": 451,
+      "input": 6057906,
+      "output": 93388,
+      "cacheRead": 18853888,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "claude",
+          "tokens": 419167
+        },
+        {
+          "name": "opencode",
+          "tokens": 24586015
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 419167,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 304763,
+          "cost": 0.721195
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 19785590,
+          "cost": 16.042354
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 3145892,
+          "cost": 15.78332
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 1349770,
+          "cost": 4.2374220000000005
+        }
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tokens": 23958635,
+      "cost": 28.9655,
+      "requests": 370,
+      "input": 4004907,
+      "output": 94185,
+      "cacheRead": 19858816,
+      "cacheWrite": 0,
+      "reasoning": 727,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 153090
+        },
+        {
+          "name": "claude",
+          "tokens": 527505
+        },
+        {
+          "name": "opencode",
+          "tokens": 23278040
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 153090,
+          "cost": 0.285441
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 527505,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 606839,
+          "cost": 0.9877830000000001
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 20701441,
+          "cost": 17.951871
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 1882030,
+          "cost": 9.455250000000001
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 87730,
+          "cost": 0.285138
+        }
+      ]
+    },
+    {
+      "date": "2026-05-17",
+      "tokens": 11140939,
+      "cost": 34.1425,
+      "requests": 265,
+      "input": 6800524,
+      "output": 70851,
+      "cacheRead": 4265472,
+      "cacheWrite": 0,
+      "reasoning": 4092,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 1723486
+        },
+        {
+          "name": "claude",
+          "tokens": 456110
+        },
+        {
+          "name": "opencode",
+          "tokens": 8961343
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1624187,
+          "cost": 1.978271
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 99299,
+          "cost": 0.014091949999999999
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 456110,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 1441371,
+          "cost": 1.6391415
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 1993497,
+          "cost": 2.648618
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 5526475,
+          "cost": 27.862415000000002
+        }
+      ]
+    },
+    {
+      "date": "2026-05-18",
+      "tokens": 28027946,
+      "cost": 63.0843,
+      "requests": 736,
+      "input": 12993409,
+      "output": 217878,
+      "cacheRead": 14809856,
+      "cacheWrite": 0,
+      "reasoning": 6803,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 2459632
+        },
+        {
+          "name": "claude",
+          "tokens": 799027
+        },
+        {
+          "name": "opencode",
+          "tokens": 24769287
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 2459632,
+          "cost": 2.9420859999999998
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 799027,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 3167232,
+          "cost": 3.3332120000000005
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 11562448,
+          "cost": 14.743748000000002
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 5765585,
+          "cost": 29.216065000000008
+        },
+        {
+          "model": "kr/claude-haiku-4-5",
+          "client": "opencode",
+          "tokens": 5419,
+          "cost": 0.006059
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 4268603,
+          "cost": 12.843152999999997
+        }
+      ]
+    },
+    {
+      "date": "2026-05-19",
+      "tokens": 60741687,
+      "cost": 96.5845,
+      "requests": 1736,
+      "input": 20125399,
+      "output": 312742,
+      "cacheRead": 40271232,
+      "cacheWrite": 0,
+      "reasoning": 32314,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 3425
+        },
+        {
+          "name": "codex",
+          "tokens": 28212202
+        },
+        {
+          "name": "claude",
+          "tokens": 1383594
+        },
+        {
+          "name": "opencode",
+          "tokens": 31142466
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "kiro",
+          "tokens": 3425,
+          "cost": 0
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 28142014,
+          "cost": 24.273936
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 70188,
+          "cost": 0.0088931
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 1383594,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 9993655,
+          "cost": 8.129463
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 6798811,
+          "cost": 10.923017
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 4857181,
+          "cost": 24.534965000000003
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 9492819,
+          "cost": 28.714221
+        }
+      ]
+    },
+    {
+      "date": "2026-05-20",
+      "tokens": 32056836,
+      "cost": 45.4351,
+      "requests": 781,
+      "input": 8144160,
+      "output": 162718,
+      "cacheRead": 23735680,
+      "cacheWrite": 0,
+      "reasoning": 14278,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 3643
+        },
+        {
+          "name": "codex",
+          "tokens": 10404360
+        },
+        {
+          "name": "claude",
+          "tokens": 687363
+        },
+        {
+          "name": "opencode",
+          "tokens": 20961470
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "unknown",
+          "client": "kiro",
+          "tokens": 3643,
+          "cost": 0
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 9826918,
+          "cost": 10.808788
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 577442,
+          "cost": 0.044328599999999996
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 687363,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.4",
+          "client": "opencode",
+          "tokens": 4719685,
+          "cost": 3.6301219999999996
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 12200095,
+          "cost": 15.062401000000005
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 1804410,
+          "cost": 9.125969999999999
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 2237280,
+          "cost": 6.763488000000001
+        }
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "tokens": 7127450,
+      "cost": 15.349,
+      "requests": 254,
+      "input": 2872566,
+      "output": 42748,
+      "cacheRead": 4208128,
+      "cacheWrite": 0,
+      "reasoning": 4008,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 4548232
+        },
+        {
+          "name": "claude",
+          "tokens": 222850
+        },
+        {
+          "name": "opencode",
+          "tokens": 2356368
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 4548232,
+          "cost": 4.396259000000001
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 222850,
+          "cost": 0
+        },
+        {
+          "model": "kr/claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 180919,
+          "cost": 1.0636349999999999
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 1533329,
+          "cost": 7.952865
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 642120,
+          "cost": 1.9362720000000002
+        }
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "tokens": 36883606,
+      "cost": 33.3734,
+      "requests": 348,
+      "input": 2646590,
+      "output": 115688,
+      "cacheRead": 34090368,
+      "cacheWrite": 0,
+      "reasoning": 30960,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 36559741
+        },
+        {
+          "name": "claude",
+          "tokens": 4408
+        },
+        {
+          "name": "opencode",
+          "tokens": 319457
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 36324489,
+          "cost": 32.275797
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 235252,
+          "cost": 0.03932935
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 4408,
+          "cost": 0
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 272113,
+          "cost": 0.819639
+        },
+        {
+          "model": "pion/claude-opus-4-6",
+          "client": "opencode",
+          "tokens": 47344,
+          "cost": 0.23864000000000002
+        }
+      ]
+    },
+    {
+      "date": "2026-05-28",
+      "tokens": 25740479,
+      "cost": 22.0584,
+      "requests": 214,
+      "input": 1035804,
+      "output": 128431,
+      "cacheRead": 24546560,
+      "cacheWrite": 0,
+      "reasoning": 29684,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 25740479
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 25684743,
+          "cost": 22.050852
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 55736,
+          "cost": 0.007529899999999999
+        }
+      ]
+    },
+    {
+      "date": "2026-05-29",
+      "tokens": 7636852,
+      "cost": 7.1866,
+      "requests": 84,
+      "input": 411871,
+      "output": 39180,
+      "cacheRead": 7173632,
+      "cacheWrite": 0,
+      "reasoning": 12169,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 7636852
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 7636852,
+          "cost": 7.186641
+        }
+      ]
+    },
+    {
+      "date": "2026-05-30",
+      "tokens": 1486298,
+      "cost": 2.7146,
+      "requests": 50,
+      "input": 292691,
+      "output": 20890,
+      "cacheRead": 1165056,
+      "cacheWrite": 0,
+      "reasoning": 7661,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 1486298
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1430757,
+          "cost": 2.704348
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 55541,
+          "cost": 0.010218249999999998
+        }
+      ]
+    },
+    {
+      "date": "2026-05-31",
+      "tokens": 11118709,
+      "cost": 12.3265,
+      "requests": 90,
+      "input": 903049,
+      "output": 81424,
+      "cacheRead": 10119808,
+      "cacheWrite": 0,
+      "reasoning": 14428,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 22036
+        },
+        {
+          "name": "codex",
+          "tokens": 11096673
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 22036,
+          "cost": 0.019674900000000002
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 11096673,
+          "cost": 12.306804000000001
+        }
+      ]
+    },
+    {
+      "date": "2026-06-01",
+      "tokens": 31741913,
+      "cost": 24.1198,
+      "requests": 240,
+      "input": 933277,
+      "output": 104403,
+      "cacheRead": 30670464,
+      "cacheWrite": 0,
+      "reasoning": 33769,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 6511
+        },
+        {
+          "name": "codex",
+          "tokens": 31735402
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 6511,
+          "cost": 0.00553435
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 31735402,
+          "cost": 24.114222
+        }
+      ]
+    },
+    {
+      "date": "2026-06-02",
+      "tokens": 22904120,
+      "cost": 21.8655,
+      "requests": 179,
+      "input": 1191802,
+      "output": 132839,
+      "cacheRead": 21537408,
+      "cacheWrite": 0,
+      "reasoning": 42071,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 22904120
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 22862985,
+          "cost": 21.859354
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 41135,
+          "cost": 0.0061715
+        }
+      ]
+    },
+    {
+      "date": "2026-06-03",
+      "tokens": 2270308,
+      "cost": 2.145,
+      "requests": 17,
+      "input": 159854,
+      "output": 7431,
+      "cacheRead": 2100608,
+      "cacheWrite": 0,
+      "reasoning": 2415,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 2270308
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 2270308,
+          "cost": 2.1449540000000002
+        }
+      ]
+    },
+    {
+      "date": "2026-06-04",
+      "tokens": 24829604,
+      "cost": 18.0592,
+      "requests": 198,
+      "input": 1759719,
+      "output": 102869,
+      "cacheRead": 22944000,
+      "cacheWrite": 0,
+      "reasoning": 23016,
+      "clients": [
+        {
+          "name": "codex",
+          "tokens": 24829604
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "gpt-5.4",
+          "client": "codex",
+          "tokens": 10794678,
+          "cost": 5.702446
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 13918678,
+          "cost": 12.341352999999998
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 116248,
+          "cost": 0.015371
+        }
+      ]
+    },
+    {
+      "date": "2026-06-06",
+      "tokens": 27319,
+      "cost": 0.0244,
+      "requests": 5,
+      "input": 25679,
+      "output": 1640,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 27319
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 27319,
+          "cost": 0.024369150000000003
+        }
+      ]
+    },
+    {
+      "date": "2026-06-07",
+      "tokens": 1988654,
+      "cost": 6.2426,
+      "requests": 126,
+      "input": 1936615,
+      "output": 31377,
+      "cacheRead": 20608,
+      "cacheWrite": 0,
+      "reasoning": 54,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 885950
+        },
+        {
+          "name": "codex",
+          "tokens": 38508
+        },
+        {
+          "name": "claude",
+          "tokens": 12372
+        },
+        {
+          "name": "opencode",
+          "tokens": 1051824
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 868076,
+          "cost": 0.7540758999999999
+        },
+        {
+          "model": "claude-sonnet-4-6",
+          "client": "kiro",
+          "tokens": 17874,
+          "cost": 0.057426000000000005
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "client": "codex",
+          "tokens": 38508,
+          "cost": 0.015454350000000002
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 12372,
+          "cost": 0
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 480728,
+          "cost": 2.47752
+        },
+        {
+          "model": "kr/claude-opus-4-8",
+          "client": "opencode",
+          "tokens": 571096,
+          "cost": 2.9381200000000005
+        }
+      ]
+    },
+    {
+      "date": "2026-06-08",
+      "tokens": 17661882,
+      "cost": 46.5372,
+      "requests": 497,
+      "input": 9110353,
+      "output": 112062,
+      "cacheRead": 8431488,
+      "cacheWrite": 0,
+      "reasoning": 7979,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 1161544
+        },
+        {
+          "name": "codex",
+          "tokens": 1243232
+        },
+        {
+          "name": "claude",
+          "tokens": 298894
+        },
+        {
+          "name": "opencode",
+          "tokens": 14958212
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 1161544,
+          "cost": 0.9893592
+        },
+        {
+          "model": "gpt-5.5",
+          "client": "codex",
+          "tokens": 1194366,
+          "cost": 1.9949130000000006
+        },
+        {
+          "model": "gpt-5.4-mini",
+          "client": "codex",
+          "tokens": 12832,
+          "cost": 0.00812865
+        },
+        {
+          "model": "codex-auto-review",
+          "client": "codex",
+          "tokens": 36034,
+          "cost": 0.00762025
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 298894,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 7971908,
+          "cost": 7.5459900000000015
+        },
+        {
+          "model": "kr/claude-opus-4-8",
+          "client": "opencode",
+          "tokens": 3810344,
+          "cost": 19.594580000000004
+        },
+        {
+          "model": "kiro/claude-opus-4-8-thinking-agentic",
+          "client": "opencode",
+          "tokens": 3175960,
+          "cost": 16.396619999999995
+        }
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "tokens": 21509098,
+      "cost": 8.5777,
+      "requests": 236,
+      "input": 5308696,
+      "output": 54008,
+      "cacheRead": 16125952,
+      "cacheWrite": 0,
+      "reasoning": 20442,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 4149400
+        },
+        {
+          "name": "claude",
+          "tokens": 82586
+        },
+        {
+          "name": "opencode",
+          "tokens": 17277112
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 4149400,
+          "cost": 3.5275437
+        },
+        {
+          "model": "unknown",
+          "client": "claude",
+          "tokens": 82586,
+          "cost": 0
+        },
+        {
+          "model": "cx/gpt-5.5",
+          "client": "opencode",
+          "tokens": 1375175,
+          "cost": 1.4644990000000002
+        },
+        {
+          "model": "kr/claude-opus-4-7",
+          "client": "opencode",
+          "tokens": 8711,
+          "cost": 0.044555000000000004
+        },
+        {
+          "model": "kr/claude-opus-4-8",
+          "client": "opencode",
+          "tokens": 68036,
+          "cost": 0.349
+        },
+        {
+          "model": "kr/claude-sonnet-4-6",
+          "client": "opencode",
+          "tokens": 86518,
+          "cost": 0.260898
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 15163801,
+          "cost": 0
+        },
+        {
+          "model": "kiro/claude-opus-4-8-thinking-agentic",
+          "client": "opencode",
+          "tokens": 574871,
+          "cost": 2.931175
+        }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "tokens": 19987685,
+      "cost": 9.4984,
+      "requests": 275,
+      "input": 18951414,
+      "output": 81758,
+      "cacheRead": 952000,
+      "cacheWrite": 0,
+      "reasoning": 2513,
+      "clients": [
+        {
+          "name": "kiro",
+          "tokens": 530888
+        },
+        {
+          "name": "opencode",
+          "tokens": 19456797
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "auto",
+          "client": "kiro",
+          "tokens": 530888,
+          "cost": 0.4517322
+        },
+        {
+          "model": "mimo-v2.5-free",
+          "client": "opencode",
+          "tokens": 790103,
+          "cost": 0
+        },
+        {
+          "model": "nemotron-3-ultra-free",
+          "client": "opencode",
+          "tokens": 85302,
+          "cost": 0
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 255464,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 17254338,
+          "cost": 6.926821600000001
+        },
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "opencode",
+          "tokens": 49192,
+          "cost": 0.021516405000000002
+        },
+        {
+          "model": "cmc/qwen/qwen3.6-max-preview",
+          "client": "opencode",
+          "tokens": 783017,
+          "cost": 0.84178328
+        },
+        {
+          "model": "kiro/claude-opus-4-8-thinking-agentic",
+          "client": "opencode",
+          "tokens": 239381,
+          "cost": 1.256545
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "tokens": 24507871,
+      "cost": 8.6872,
+      "requests": 432,
+      "input": 22058729,
+      "output": 199361,
+      "cacheRead": 2244992,
+      "cacheWrite": 0,
+      "reasoning": 4789,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 24507871
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/qwen/qwen3.6-plus",
+          "client": "opencode",
+          "tokens": 2458200,
+          "cost": 0.8156915000000002
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 2553869,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 19495802,
+          "cost": 7.8714648
+        }
+      ]
+    },
+    {
+      "date": "2026-06-12",
+      "tokens": 31763520,
+      "cost": 8.4429,
+      "requests": 381,
+      "input": 24062914,
+      "output": 192373,
+      "cacheRead": 7478784,
+      "cacheWrite": 0,
+      "reasoning": 29449,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 31763520
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/qwen/qwen3.6-plus",
+          "client": "opencode",
+          "tokens": 6348773,
+          "cost": 2.1742704749999993
+        },
+        {
+          "model": "nemotron-3-ultra-free",
+          "client": "opencode",
+          "tokens": 1818508,
+          "cost": 0
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 8027143,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 15569096,
+          "cost": 6.2686764
+        }
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tokens": 49501846,
+      "cost": 104.4291,
+      "requests": 415,
+      "input": 19367198,
+      "output": 171437,
+      "cacheRead": 29963147,
+      "cacheWrite": 0,
+      "reasoning": 64,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 49501846
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cb-gpt-5.4",
+          "client": "opencode",
+          "tokens": 18488,
+          "cost": 0.047295000000000004
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 47048197,
+          "cost": 103.3300635
+        },
+        {
+          "model": "cb-sonnet-4.6",
+          "client": "opencode",
+          "tokens": 25363,
+          "cost": 0.077757
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 2409798,
+          "cost": 0.9739648000000001
+        }
+      ]
+    },
+    {
+      "date": "2026-06-14",
+      "tokens": 33617898,
+      "cost": 87.728,
+      "requests": 483,
+      "input": 14919963,
+      "output": 168855,
+      "cacheRead": 18528988,
+      "cacheWrite": 0,
+      "reasoning": 92,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 33617898
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "big-pickle",
+          "client": "opencode",
+          "tokens": 25650,
+          "cost": 0.014581999999999998
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 33539928,
+          "cost": 87.702718
+        },
+        {
+          "model": "deepseek-v4-flash-free",
+          "client": "opencode",
+          "tokens": 25548,
+          "cost": 0
+        },
+        {
+          "model": "cmc/xiaomi/mimo-v2.5-pro",
+          "client": "opencode",
+          "tokens": 26772,
+          "cost": 0.010728800000000002
+        }
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "tokens": 30944341,
+      "cost": 74.0399,
+      "requests": 305,
+      "input": 14275015,
+      "output": 287178,
+      "cacheRead": 16382103,
+      "cacheWrite": 0,
+      "reasoning": 45,
+      "clients": [
+        {
+          "name": "droid",
+          "tokens": 8603203
+        },
+        {
+          "name": "opencode",
+          "tokens": 22341138
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cb-opus-4-6",
+          "client": "droid",
+          "tokens": 3098259,
+          "cost": 9.726503000000001
+        },
+        {
+          "model": "cb-sonnet-4-6",
+          "client": "droid",
+          "tokens": 19432,
+          "cost": 0.059292000000000004
+        },
+        {
+          "model": "claude-opus-4-6",
+          "client": "droid",
+          "tokens": 343800,
+          "cost": 1.633299
+        },
+        {
+          "model": "cb-gpt-5-3-codex",
+          "client": "droid",
+          "tokens": 5141712,
+          "cost": 7.8959195
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 22334807,
+          "cost": 54.71302450000002
+        },
+        {
+          "model": "cb-gpt-5.3-codex",
+          "client": "opencode",
+          "tokens": 6331,
+          "cost": 0.011863249999999999
+        }
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "tokens": 2510727,
+      "cost": 7.0991,
+      "requests": 58,
+      "input": 1156392,
+      "output": 26123,
+      "cacheRead": 1328212,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 2510727
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 2510727,
+          "cost": 7.099141
+        }
+      ]
+    },
+    {
+      "date": "2026-06-18",
+      "tokens": 3570161,
+      "cost": 1.6521,
+      "requests": 60,
+      "input": 567106,
+      "output": 34863,
+      "cacheRead": 2968192,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "zcode",
+          "tokens": 3570161
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "glm-5.2",
+          "client": "zcode",
+          "tokens": 2880981,
+          "cost": 1.1991950399999998
+        },
+        {
+          "model": "glm-5-turbo",
+          "client": "zcode",
+          "tokens": 689180,
+          "cost": 0.45288991999999995
+        }
+      ]
+    },
+    {
+      "date": "2026-06-19",
+      "tokens": 677048,
+      "cost": 0.7542,
+      "requests": 30,
+      "input": 396639,
+      "output": 30425,
+      "cacheRead": 249984,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "zcode",
+          "tokens": 677048
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "glm-5.2",
+          "client": "zcode",
+          "tokens": 677048,
+          "cost": 0.7541604399999999
+        }
+      ]
+    },
+    {
+      "date": "2026-06-22",
+      "tokens": 1507953,
+      "cost": 0.5985,
+      "requests": 46,
+      "input": 90070,
+      "output": 25051,
+      "cacheRead": 1392832,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "zcode",
+          "tokens": 1507953
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "glm-5.2",
+          "client": "zcode",
+          "tokens": 1507953,
+          "cost": 0.59845872
+        }
+      ]
+    },
+    {
+      "date": "2026-06-23",
+      "tokens": 8492572,
+      "cost": 3.7264,
+      "requests": 178,
+      "input": 8407393,
+      "output": 85179,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "opencode",
+          "tokens": 8492572
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "qd/qmodel_latest",
+          "client": "opencode",
+          "tokens": 11392,
+          "cost": 0
+        },
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "opencode",
+          "tokens": 8481180,
+          "cost": 3.7263548550000003
+        }
+      ]
+    },
+    {
+      "date": "2026-06-24",
+      "tokens": 69751602,
+      "cost": 30.5688,
+      "requests": 555,
+      "input": 69230037,
+      "output": 521565,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 63770368
+        },
+        {
+          "name": "opencode",
+          "tokens": 5981234
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 63770368,
+          "cost": 27.88302759
+        },
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "opencode",
+          "tokens": 5981234,
+          "cost": 2.6858000550000005
+        }
+      ]
+    },
+    {
+      "date": "2026-06-26",
+      "tokens": 7538412,
+      "cost": 3.3007,
+      "requests": 247,
+      "input": 7488920,
+      "output": 49492,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 7538412
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 7538412,
+          "cost": 3.3007382400000003
+        }
+      ]
+    },
+    {
+      "date": "2026-06-27",
+      "tokens": 3699373,
+      "cost": 1.6551,
+      "requests": 121,
+      "input": 3661497,
+      "output": 37876,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 3693140
+        },
+        {
+          "name": "opencode",
+          "tokens": 6233
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 3693140,
+          "cost": 1.62297021
+        },
+        {
+          "model": "cb-opus-4.6",
+          "client": "opencode",
+          "tokens": 6233,
+          "cost": 0.032165
+        }
+      ]
+    },
+    {
+      "date": "2026-06-29",
+      "tokens": 8429751,
+      "cost": 3.6892,
+      "requests": 319,
+      "input": 8378646,
+      "output": 51105,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 8429751
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 8429751,
+          "cost": 3.68917236
+        }
+      ]
+    },
+    {
+      "date": "2026-06-30",
+      "tokens": 3395988,
+      "cost": 1.4858,
+      "requests": 147,
+      "input": 3376447,
+      "output": 19541,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 3395988
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 3395988,
+          "cost": 1.4857551150000001
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "tokens": 2802288,
+      "cost": 1.2397,
+      "requests": 78,
+      "input": 2754770,
+      "output": 47518,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 2802288
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 2802288,
+          "cost": 1.2396656099999999
+        }
+      ]
+    },
+    {
+      "date": "2026-07-03",
+      "tokens": 6215643,
+      "cost": 2.7399,
+      "requests": 303,
+      "input": 6132684,
+      "output": 82959,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 6215643
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 6215643,
+          "cost": 2.73989187
+        }
+      ]
+    },
+    {
+      "date": "2026-07-04",
+      "tokens": 2870611,
+      "cost": 1.2532,
+      "requests": 81,
+      "input": 2860333,
+      "output": 10278,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 2870611
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cmc/deepseek/deepseek-v4-pro",
+          "client": "hermes",
+          "tokens": 2870611,
+          "cost": 1.253186715
+        }
+      ]
+    },
+    {
+      "date": "2026-07-06",
+      "tokens": 39808066,
+      "cost": 78.1278,
+      "requests": 660,
+      "input": 4353331,
+      "output": 115983,
+      "cacheRead": 35338752,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 39808066
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "hermes",
+          "tokens": 39808066,
+          "cost": 78.127793
+        }
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "tokens": 30630374,
+      "cost": 44.3069,
+      "requests": 675,
+      "input": 5213419,
+      "output": 115963,
+      "cacheRead": 25300992,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 30630374
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "hermes",
+          "tokens": 2098924,
+          "cost": 7.411512
+        },
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 28531450,
+          "cost": 36.895365000000005
+        }
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "tokens": 36584904,
+      "cost": 84.1631,
+      "requests": 598,
+      "input": 5263156,
+      "output": 114836,
+      "cacheRead": 31206912,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 36584904
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.5",
+          "client": "hermes",
+          "tokens": 36584904,
+          "cost": 84.163102
+        }
+      ]
+    },
+    {
+      "date": "2026-07-09",
+      "tokens": 5026008,
+      "cost": 7.341,
+      "requests": 178,
+      "input": 972560,
+      "output": 15304,
+      "cacheRead": 4038144,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 5026008
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 5026008,
+          "cost": 7.340992
+        }
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "tokens": 18582620,
+      "cost": 38.2961,
+      "requests": 680,
+      "input": 2313309,
+      "output": 65023,
+      "cacheRead": 16204288,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 18582620
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 18582620,
+          "cost": 38.296068
+        }
+      ]
+    },
+    {
+      "date": "2026-07-11",
+      "tokens": 6350244,
+      "cost": 5.5942,
+      "requests": 408,
+      "input": 431770,
+      "output": 16138,
+      "cacheRead": 5902336,
+      "cacheWrite": 0,
+      "reasoning": 0,
+      "clients": [
+        {
+          "name": "hermes",
+          "tokens": 6350244
+        }
+      ],
+      "modelUsage": [
+        {
+          "model": "cx/gpt-5.6-sol",
+          "client": "hermes",
+          "tokens": 6350244,
+          "cost": 5.594158
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "name": "cx/gpt-5.5",
+      "tokens": 206709549,
+      "cost": 298.69111799999996,
+      "percentage": 19.68851793465871
+    },
+    {
+      "name": "cb-opus-4.6",
+      "tokens": 105439892,
+      "cost": 252.877112,
+      "percentage": 16.668642804693977
+    },
+    {
+      "name": "kr/claude-opus-4-7",
+      "tokens": 47234942,
+      "cost": 238.15723000000003,
+      "percentage": 15.698367348585304
+    },
+    {
+      "name": "gpt-5.5",
+      "tokens": 207849588,
+      "cost": 192.814992,
+      "percentage": 12.709589268948655
+    },
+    {
+      "name": "claude-opus-4-6",
+      "tokens": 30432428,
+      "cost": 160.68935900000002,
+      "percentage": 10.591996667876522
+    },
+    {
+      "name": "kr/claude-sonnet-4-6",
+      "tokens": 29927572,
+      "cost": 90.53581199999999,
+      "percentage": 5.967756825935779
+    },
+    {
+      "name": "cx/gpt-5.6-sol",
+      "tokens": 58490322,
+      "cost": 88.12658300000001,
+      "percentage": 5.808950133949714
+    },
+    {
+      "name": "cmc/deepseek/deepseek-v4-pro",
+      "tokens": 113227807,
+      "cost": 49.64807902500001,
+      "percentage": 3.2726018130377272
+    },
+    {
+      "name": "cx/gpt-5.4",
+      "tokens": 26154596,
+      "cost": 24.476774999999996,
+      "percentage": 1.6134106256554501
+    },
+    {
+      "name": "kr/claude-opus-4-8",
+      "tokens": 4449476,
+      "cost": 22.881700000000006,
+      "percentage": 1.5082696929256543
+    },
+    {
+      "name": "cmc/xiaomi/mimo-v2.5-pro",
+      "tokens": 54755806,
+      "cost": 22.051656400000002,
+      "percentage": 1.4535565551042988
+    },
+    {
+      "name": "kiro/claude-opus-4-8-thinking-agentic",
+      "tokens": 3990212,
+      "cost": 20.584339999999994,
+      "percentage": 1.3568369557715225
+    },
+    {
+      "name": "ag/claude-opus-4-6-thinking",
+      "tokens": 12896727,
+      "cost": 11.224402000000001,
+      "percentage": 0.7398674642974122
+    },
+    {
+      "name": "cb-opus-4-6",
+      "tokens": 3098259,
+      "cost": 9.726503000000001,
+      "percentage": 0.6411319828968325
+    },
+    {
+      "name": "gpt-5.4",
+      "tokens": 11703907,
+      "cost": 8.130081,
+      "percentage": 0.5359022613411893
+    },
+    {
+      "name": "cb-gpt-5-3-codex",
+      "tokens": 5141712,
+      "cost": 7.8959195,
+      "percentage": 0.5204672764537024
+    },
+    {
+      "name": "auto",
+      "tokens": 7466966,
+      "cost": 6.3912689,
+      "percentage": 0.42128675671861276
+    },
+    {
+      "name": "cmc/qwen/qwen3.6-plus",
+      "tokens": 8806973,
+      "cost": 2.9899619749999995,
+      "percentage": 0.19708627549057242
+    },
+    {
+      "name": "glm-5.2",
+      "tokens": 5065982,
+      "cost": 2.5518142,
+      "percentage": 0.16820533526081205
+    },
+    {
+      "name": "kr/claude-opus-4-6",
+      "tokens": 390155,
+      "cost": 2.1277749999999997,
+      "percentage": 0.14025437558681753
+    },
+    {
+      "name": "claude-sonnet-4-5-thinking",
+      "tokens": 85096,
+      "cost": 1.2764399999999996,
+      "percentage": 0.08413779425645915
+    },
+    {
+      "name": "cmc/qwen/qwen3.6-max-preview",
+      "tokens": 783017,
+      "cost": 0.84178328,
+      "percentage": 0.055486970340295955
+    },
+    {
+      "name": "gpt-5.2-codex",
+      "tokens": 537028,
+      "cost": 0.45994165000000004,
+      "percentage": 0.030317504871107417
+    },
+    {
+      "name": "glm-5-turbo",
+      "tokens": 689180,
+      "cost": 0.45288991999999995,
+      "percentage": 0.02985268317334481
+    },
+    {
+      "name": "claude-sonnet-4-5",
+      "tokens": 20015,
+      "cost": 0.30022499999999996,
+      "percentage": 0.01978962527078864
+    },
+    {
+      "name": "pion/claude-opus-4-6",
+      "tokens": 47344,
+      "cost": 0.23864000000000002,
+      "percentage": 0.01573018960653177
+    },
+    {
+      "name": "claude-sonnet-4",
+      "tokens": 40998,
+      "cost": 0.22380599999999998,
+      "percentage": 0.014752391950550826
+    },
+    {
+      "name": "codex-auto-review",
+      "tokens": 1348868,
+      "cost": 0.16542274999999998,
+      "percentage": 0.010904002777128323
+    },
+    {
+      "name": "cx/gpt-5.3-codex",
+      "tokens": 142613,
+      "cost": 0.11528755,
+      "percentage": 0.007599291907360509
+    },
+    {
+      "name": "cb-sonnet-4.6",
+      "tokens": 25363,
+      "cost": 0.077757,
+      "percentage": 0.005125428902259014
+    },
+    {
+      "name": "cb-sonnet-4-6",
+      "tokens": 19432,
+      "cost": 0.059292000000000004,
+      "percentage": 0.003908290320778084
+    },
+    {
+      "name": "claude-sonnet-4-6",
+      "tokens": 17874,
+      "cost": 0.057426000000000005,
+      "percentage": 0.0037852911010086056
+    },
+    {
+      "name": "claude-opus-4-7",
+      "tokens": 10668,
+      "cost": 0.05374,
+      "percentage": 0.0035423247965765065
+    },
+    {
+      "name": "kr/claude-sonnet-4-5",
+      "tokens": 17259,
+      "cost": 0.05268900000000001,
+      "percentage": 0.003473047100982872
+    },
+    {
+      "name": "cb-gpt-5.4",
+      "tokens": 18488,
+      "cost": 0.047295000000000004,
+      "percentage": 0.003117496301713544
+    },
+    {
+      "name": "gpt-5.4-mini",
+      "tokens": 51340,
+      "cost": 0.023583,
+      "percentage": 0.0015544965701091132
+    },
+    {
+      "name": "claude-haiku-4-5",
+      "tokens": 3598,
+      "cost": 0.017990000000000006,
+      "percentage": 0.001185828490703598
+    },
+    {
+      "name": "big-pickle",
+      "tokens": 25650,
+      "cost": 0.014581999999999998,
+      "percentage": 0.000961186828873811
+    },
+    {
+      "name": "minimax-m2.5",
+      "tokens": 12574,
+      "cost": 0.011945299999999999,
+      "percentage": 0.0007873861628683538
+    },
+    {
+      "name": "cb-gpt-5.3-codex",
+      "tokens": 6331,
+      "cost": 0.011863249999999999,
+      "percentage": 0.0007819777566614483
+    },
+    {
+      "name": "kr/claude-haiku-4-5",
+      "tokens": 5419,
+      "cost": 0.006059,
+      "percentage": 0.0003993849263575931
+    },
+    {
+      "name": "glm-5",
+      "tokens": 517,
+      "cost": 0.0016544,
+      "percentage": 0.00010905139827793399
+    },
+    {
+      "name": "deepseek-v4-flash-free",
+      "tokens": 26025825,
+      "cost": 0,
+      "percentage": 0
+    },
+    {
+      "name": "unknown",
+      "tokens": 7641445,
+      "cost": 0,
+      "percentage": 0
+    },
+    {
+      "name": "nemotron-3-ultra-free",
+      "tokens": 1903810,
+      "cost": 0,
+      "percentage": 0
+    },
+    {
+      "name": "mimo-v2.5-free",
+      "tokens": 790103,
+      "cost": 0,
+      "percentage": 0
+    },
+    {
+      "name": "qd/qmodel_latest",
+      "tokens": 11392,
+      "cost": 0,
+      "percentage": 0
+    }
+  ],
+  "clients": [
+    {
+      "name": "opencode",
+      "tokens": 498234903,
+      "percentage": 50.65864270593012
+    },
+    {
+      "name": "hermes",
+      "tokens": 235698417,
+      "percentage": 23.964924619414564
+    },
+    {
+      "name": "codex",
+      "tokens": 220044474,
+      "percentage": 22.373290832618224
+    },
+    {
+      "name": "droid",
+      "tokens": 8603203,
+      "percentage": 0.8747411798719091
+    },
+    {
+      "name": "claude",
+      "tokens": 7684961,
+      "percentage": 0.7813778022452342
+    },
+    {
+      "name": "kiro",
+      "tokens": 7492998,
+      "percentage": 0.7618597296027834
+    },
+    {
+      "name": "zcode",
+      "tokens": 5755162,
+      "percentage": 0.5851631303171593
+    }
+  ],
   "stats": {
     "streak": 0,
-    "bestDay": null,
-    "avgDailyTokens": 0
+    "bestDay": "2026-06-24",
+    "avgDailyTokens": 16123182
   }
 }
