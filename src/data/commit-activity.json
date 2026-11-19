@@ -1,10 +1,10 @@
 {
   "username": "cicaco07",
   "available": false,
-  "fetchedAt": "2026-11-18T19:52:05.450Z",
+  "fetchedAt": "2026-11-19T05:35:28.301Z",
   "lastSuccessfulFetch": "2026-08-06T13:52:14.994Z",
   "stale": true,
-  "error": "GitHub: GitHub GraphQL HTTP 401 | GitLab: GitLab calendar HTTP 429 | GitLab activity events HTTP 429 (page 1) | GitLab projects HTTP 429 (page 1) | GitLab projects HTTP 429 (page 1)",
+  "error": "GitHub: GitHub GraphQL HTTP 401 | GitLab: GitLab calendar returned no activity rows | GitLab activity events HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1)",
   "totals": {
     "all": 829,
     "github": 433,
@@ -1261,7 +1261,7 @@
   },
   "gitlab": {
     "available": false,
-    "error": "GitLab calendar HTTP 429 | GitLab activity events HTTP 429 (page 1) | GitLab projects HTTP 429 (page 1) | GitLab projects HTTP 429 (page 1)",
+    "error": "GitLab calendar returned no activity rows | GitLab activity events HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1) | GitLab projects HTTP 401 (page 1)",
     "total": 0
   }
 }
